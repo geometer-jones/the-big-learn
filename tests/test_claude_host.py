@@ -205,6 +205,21 @@ class ClaudeHostTests(unittest.TestCase):
             self.assertIn("one randomly chosen face first", review_content)
             self.assertIn("the next review step, reveal both faces", review_content)
 
+    def test_force_install_claude_skills_prunes_stale_the_big_learn_skill_dirs(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp)
+            stale = target / "the-big-learn-flashcard-variation-generator"
+            stale.mkdir()
+            (stale / "SKILL.md").write_text("stale\n", encoding="utf-8")
+            third_party = target / "third-party-skill"
+            third_party.mkdir()
+
+            install_claude_skills(target=target, force=True)
+
+            self.assertFalse(stale.exists())
+            self.assertTrue(third_party.exists())
+            self.assertTrue((target / "the-big-learn-flashcard-review" / "SKILL.md").exists())
+
 
 if __name__ == "__main__":
     unittest.main()

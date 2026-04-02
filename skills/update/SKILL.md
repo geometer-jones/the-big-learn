@@ -38,8 +38,9 @@ When the checkout is connected to the official repository and the working tree i
 1. fetch the remote branch
 2. update with `git pull --ff-only origin <default-branch>`
 3. run `python3 -m pip install -e .`
-4. run `python3 -m unittest discover -s tests`
-5. rerun `python3 -m the_big_learn version`
+4. reinstall the current host assets with `python3 -m the_big_learn claude install --force`, `python3 -m the_big_learn codex install --force`, or `python3 -m the_big_learn gemini install --force` for the host that owns the checkout
+5. run `python3 -m unittest discover -s tests`
+6. rerun `python3 -m the_big_learn version`
 
 The goal is to update the whole package from the repository source of truth: runtime code, host assets, and repo skills.
 
@@ -47,6 +48,7 @@ The goal is to update the whole package from the repository source of truth: run
 
 - Prefer `python3 -m the_big_learn update-check --force` over ad hoc version comparisons.
 - Prefer a fast-forward update. Do not create merge commits for routine package updates.
+- Do not stop after the editable package reinstall; refresh the copied host assets too, or deleted skills can linger and new skills will not appear.
 - If the working tree has local changes that would make the update unsafe, stop and explain the blocker instead of forcing through it.
 - If no upstream repository or default branch can be determined, say so plainly and report what was missing.
 - If `update-check` reports no newer version, say that the package is already up to date and stop.

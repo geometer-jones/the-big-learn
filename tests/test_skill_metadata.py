@@ -34,6 +34,8 @@ class SkillMetadataTests(unittest.TestCase):
         content = (ROOT / "skills" / "update" / "SKILL.md").read_text(encoding="utf-8")
         self.assertIn("python3 -m the_big_learn update-check --force", content)
         self.assertIn("git pull --ff-only origin <default-branch>", content)
+        self.assertIn("python3 -m the_big_learn claude install --force", content)
+        self.assertIn("deleted skills can linger", content)
         self.assertNotIn("Learner Translation Log", content)
         self.assertNotIn("queued questions", content)
 

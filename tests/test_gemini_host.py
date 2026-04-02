@@ -219,6 +219,7 @@ class GeminiHostTests(unittest.TestCase):
                 "[unsaved]",
                 guided_reading,
             )
+
             self.assertIn(
                 "persist the current log immediately with `python3 -m the_big_learn progress-save --format json`",
                 guided_reading,
@@ -566,6 +567,19 @@ class GeminiHostTests(unittest.TestCase):
             flashcard_review = (target / "the-big-learn" / "flashcard-review.toml").read_text(encoding="utf-8")
             self.assertIn("skills/flashcard-review/SKILL.md", flashcard_review)
             self.assertIn("python3 -m the_big_learn flashcard-review --format json", flashcard_review)
+
+    def test_force_install_gemini_commands_replaces_existing_tree(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp)
+            existing = target / "the-big-learn"
+            existing.mkdir(parents=True)
+            (existing / "stale-command.toml").write_text("stale\n", encoding="utf-8")
+
+            install_gemini_commands(target=target, force=True)
+
+            self.assertFalse((existing / "stale-command.toml").exists())
+            self.assertTrue((existing / "guided-reading.toml").exists())
+            self.assertTrue((existing / "flashcard-review.toml").exists())
 
 
 if __name__ == "__main__":
