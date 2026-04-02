@@ -27,7 +27,7 @@ Guided reading uses one fixed posture:
 
 This posture does not change:
 
-- the ritual order
+- the reading order
 - persistence behavior
 - seriousness of textual engagement
 - the learner's ability to ask for more help at any point
@@ -43,10 +43,8 @@ Explode-char is a sidecar support surface, not a separate product mode.
 - if entered from guided reading, preserve the learner's place and make re-entry back into reading easy
 
 This posture does not change:
-
-- simplified-first Chinese display
 - inline reading format as `pinyin (zhuyin)`
-- preference for common, teachable examples over obscure or speculative ones
+- usage of common, teachable examples, as well as obscure or speculative ones if they are interesting
 - explicit labels when a decomposition or containment claim is only graphical or uncertain
 
 ## Flashcard-Review Posture
@@ -130,10 +128,10 @@ Default order:
 2. English line
 3. Char-by-char support table
 3.1 Chinese: simplified chinese character (traditional chinese character, if they differ)
-3.2 Pronunciation: pinyin (zhuyin)
+3.2 Pronunciation: pinyin (with zhuyin in parens after)
 3.3 English character translation: <semi-colon separated list of context-free definitions of the character in 3.1 for that row>
-3.4 Chinese phrase: simplified chinese characters grouped by semantic unit
-3.5 English phrase translation: english translation grouped by semantic unit
+3.4 Chinese phrase: simplified chinese characters grouped by semantic unit, or empty space to pad for extra character rows
+3.5 English phrase translation: english translation grouped by semantic unit, or empty space to pad for extra character rows
 4. English line
 5. Simplified Chinese line
 6. Line location/identity (e.g. line i of chapter k of book n)
@@ -149,14 +147,15 @@ Rules:
 
 Hierarchy:
 
-1. One brief bridge line if the learner arrived here from guided reading
+0. One brief bridge line if the learner arrived here from guided reading
+1. `Simplified | Traditional` 
 2. `Analysis`
 3. `Synthesis`
 4. Direct save offer for exactly two flashcard candidates
 5. Short return cue when the learner should resume the reading flow
 
 Rules:
-
+- `Simplified | Traditional` displays the simplified version if the exploded char is traditional and vice-versa; if the traditional and simplified are the same, this section is absent
 - `Analysis` uses nested bullets, not tables.
 - Start with the full target character as the root node, then descend only as far as the decomposition stays teachable and honest.
 - Keep simplified Chinese in the primary position and append traditional only when it differs. If simplified and traditional differ, then run two separate explosions, in the same style as if a phrase were exploded, and you explode each word in sequence.

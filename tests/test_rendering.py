@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from the_big_learn.rendering import TRANSLATION_PROMPT, render_lines_markdown
+from the_big_learn.rendering import TRANSLATION_PROMPT, build_character_rows, render_lines_markdown
 
 
 class RenderingTests(unittest.TestCase):
@@ -228,6 +228,48 @@ class RenderingTests(unittest.TestCase):
         self.assertIn("<td rowspan=\"2\">great learning</td>", output)
         self.assertIn("<td rowspan=\"2\">the way of</td>", output)
 
+    def test_build_character_rows_leaves_spanned_phrase_cells_absent_until_next_segment(self) -> None:
+        rows = build_character_rows(
+            {
+                "id": "demo-line-phrase-cells",
+                "layers": {
+                    "traditional": "大學之道",
+                    "simplified": "大学之道",
+                    "zhuyin": "ㄉㄚˋ ㄒㄩㄝˊ ㄓ ㄉㄠˋ",
+                    "pinyin": "dà xué zhī dào",
+                    "gloss_en": "great learning, the way of",
+                    "translation_en": "The way of great learning.",
+                },
+                "segments": [
+                    {
+                        "id": "demo-line-phrase-cells-a",
+                        "traditional": "大學",
+                        "simplified": "大学",
+                        "zhuyin": "ㄉㄚˋ ㄒㄩㄝˊ",
+                        "pinyin": "dà xué",
+                        "gloss_en": "great learning",
+                    },
+                    {
+                        "id": "demo-line-phrase-cells-b",
+                        "traditional": "之道",
+                        "simplified": "之道",
+                        "zhuyin": "ㄓ ㄉㄠˋ",
+                        "pinyin": "zhī dào",
+                        "gloss_en": "the way of",
+                    },
+                ],
+            }
+        )
+
+        self.assertEqual(rows[0]["phrase"], {"text": "大学(大學) 〃", "rowspan": 2})
+        self.assertEqual(rows[0]["phrase_translation_en"], {"text": "great learning", "rowspan": 2})
+        self.assertIsNone(rows[1]["phrase"])
+        self.assertIsNone(rows[1]["phrase_translation_en"])
+        self.assertEqual(rows[2]["phrase"], {"text": "之道 〃", "rowspan": 2})
+        self.assertEqual(rows[2]["phrase_translation_en"], {"text": "the way of", "rowspan": 2})
+        self.assertIsNone(rows[3]["phrase"])
+        self.assertIsNone(rows[3]["phrase_translation_en"])
+
     def test_render_lines_markdown_uses_explicit_character_glosses_for_multi_character_segments(self) -> None:
         output = render_lines_markdown(
             [
@@ -299,8 +341,9 @@ class RenderingTests(unittest.TestCase):
         self.assertIn("Chinese: 知", output)
         self.assertIn("Reading: zhī(ㄓ)", output)
         self.assertIn("English Definition: know", output)
-        self.assertEqual(output.count("Chinese Phrase: 知止 〃"), 2)
-        self.assertEqual(output.count("English Phrase Translation: know where to stop"), 2)
+        self.assertEqual(output.count("Chinese Phrase: 知止 〃"), 1)
+        self.assertEqual(output.count("English Phrase Translation: know where to stop"), 1)
+        self.assertIn("Chinese: 止\nReading: zhǐ(ㄓˇ)\nEnglish Definition: stop\n\nChinese: 而", output)
         self.assertIn("Line 1/1 | demo-line-stacked", output)
         self.assertTrue(output.rstrip().endswith(f"Line 1/1 | demo-line-stacked\n{TRANSLATION_PROMPT}"))
 

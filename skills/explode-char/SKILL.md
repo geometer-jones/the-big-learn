@@ -5,7 +5,7 @@ description: Break one or more Chinese characters into nested component trees, t
 
 # Explode Char
 
-Use this skill when the learner gives one or more Chinese characters and wants both structural analysis and practical synthesis through phrases, larger containing characters, homophones, and a compact meaning map for each chosen sense.
+Use this skill when the learner gives one or more Chinese characters and wants both structural analysis and practical synthesis through phrases, larger containing characters, homophones, and a compact meaning map for each chosen sense. Treat explode-char as a sidecar support surface: answer the requested character immediately without reopening the full guided-reading frame.
 
 ## Startup
 
@@ -18,12 +18,15 @@ Stay inside the host thread and work directly from the repository context alread
 - accept one or more Chinese characters and handle them one at a time in the order given
 - show the simplified form in the primary position and append the traditional form in parentheses only when it differs
 - keep that simplified-primary display rule throughout `## Analysis`, including component nodes, and do not add redundant traditional parentheses when the scripts match
+- if the request came from guided reading, use one brief bridge line to signal that this is a quick sidecar answer and keep the learner's reading place intact
+- when the simplified and traditional forms differ, show a short `## Simplified | Traditional` block before `## Analysis` so both forms are visible without duplicating the whole turn
 - break components into smaller components only when the split is plausible and useful
 - give each node its Chinese form, a reading rendered as `pinyin (zhuyin)` when available, and a short English meaning or function
 - separate visual teaching decomposition from historical etymology when those differ
 - follow the analysis with synthesis examples that use the full target character in phrases, show larger characters that contain the target form inside them, list common homophones for the chosen reading across both same-tone and different-tone matches, and map the chosen meaning through nearby and opposite Chinese expressions
 - whenever you show a reading anywhere in the answer, keep it inline as `pinyin (zhuyin)` rather than splitting pinyin and zhuyin into separate lines
 - end each exploded character with an offer to save exactly two salient character or phrase candidates to flashcards
+- if the learner came from guided reading, end with a short return cue that makes it easy to resume the same reading spot
 
 ## Inputs
 
@@ -42,15 +45,23 @@ Do not collapse multiple adjacent characters into a word-level analysis unless t
 
 ## Output Shape
 
-For a single target character, use exactly two top-level sections in this order:
+For a single target character, keep the turn compact and use visible blocks in this order:
 
-1. `## Analysis`
-2. `## Synthesis`
+1. one brief bridge line when the learner arrived from guided reading
+2. `## Simplified | Traditional` only when the scripts differ
+3. `## Analysis`
+4. `## Synthesis`
+5. a direct offer to save exactly two flashcard candidates
+6. a short return cue when the learner should resume guided reading
 
-For multiple target characters, repeat the same pair in order for each character using:
+For multiple target characters, repeat the same order for each character before moving to the next one. Use:
 
-1. `## Analysis: <character>`
-2. `## Synthesis: <character>`
+1. one brief bridge line only when it helps preserve guided-reading continuity
+2. `## Simplified | Traditional: <character>` only when the scripts differ
+3. `## Analysis: <character>`
+4. `## Synthesis: <character>`
+
+Do not add extra top-level headings beyond the optional `## Simplified | Traditional` block, `## Analysis`, and `## Synthesis`.
 
 Do not use tables for the main answer. Use nested bullet lists so the structure reads like a tree.
 
@@ -79,6 +90,18 @@ When useful, add a brief note such as:
 - `historical form differs`
 
 Stop descending once the next split would be speculative, historically dubious, or no longer helpful to the learner.
+
+### Simplified | Traditional
+
+Use this block only when the target character's simplified and traditional forms differ.
+
+Keep it short:
+
+- show the simplified form first and the traditional form second
+- add one short note only when the alternate script materially changes or clarifies the decomposition
+- if the forms are identical, omit this block entirely
+- if the learner supplied the traditional form, still keep the simplified form in the primary position inside this block and throughout the rest of the answer
+- do not duplicate the full explosion under both script forms unless the learner explicitly asks for a separate script-by-script comparison
 
 ### Synthesis
 
@@ -122,10 +145,10 @@ Preferred pattern:
 
 Prefer short, common, teachable phrases and common containing characters over obscure compounds or graph variants.
 
-For the meaning-map portion, use these subsection headers inside `## Synthesis` in this order:
+For the synthesis portion, use these subsection headers inside `## Synthesis` in this order:
 
-1. `### Phrase Use`
-2. `### Containing Characters`
+1. `### Containing Characters`
+2. `### Phrase Use`
 3. `### Homophones`
 4. `### Meaning Map`
 5. `### Flashcard Candidates`
@@ -241,6 +264,12 @@ If the target character is not normally used as a standalone word for the intend
 
 ## Synthesis
 
+### Containing Characters
+
+- `悟`: `wu4 (ㄨˋ)` - realize; understand; contains `吾` as a visible component
+  - `吾`: `wu2 (ㄨˊ)` - I; my
+  - `忄`: `non-standalone` - heart semantic hint
+
 ### Phrase Use
 
 - `语言` (`語言`): `yu3 yan2 (ㄩˇ ㄧㄢˊ)` - language
@@ -249,12 +278,6 @@ If the target character is not normally used as a standalone word for the intend
 - `汉语` (`漢語`): `han4 yu3 (ㄏㄢˋ ㄩˇ)` - Chinese language
   - `汉` (`漢`): `han4 (ㄏㄢˋ)` - Han; Chinese
   - `语` (`語`): `yu3 (ㄩˇ)` - speech; language
-
-### Containing Characters
-
-- `悟`: `wu4 (ㄨˋ)` - realize; understand; contains `吾` as a visible component
-  - `吾`: `wu2 (ㄨˊ)` - I; my
-  - `忄`: `non-standalone` - heart semantic hint
 
 ### Homophones
 
@@ -288,3 +311,4 @@ If you want, I can save `语` (`語`) and `汉语` (`漢語`) through `the-big-l
 ## Handoff
 
 If the learner wants to save the two offered candidates for review, hand them to `the-big-learn-flashcard-bank-add`.
+If the learner arrived from guided reading, end with a short return cue such as: `When you're ready, go back to the same line and keep reading from there.`

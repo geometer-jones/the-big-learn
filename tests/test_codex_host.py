@@ -218,6 +218,9 @@ class CodexHostTests(unittest.TestCase):
             self.assertIn("Preserve the original character order", explode_content)
             self.assertIn("If the invocation does not include a target character", explode_content)
             self.assertIn("ask the learner to confirm which character to explode", explode_content)
+            self.assertIn("## Simplified | Traditional", explode_content)
+            self.assertIn("keep the learner's reading place intact", explode_content)
+            self.assertIn("end with a short return cue", explode_content)
             self.assertIn("### Homophones", explode_content)
             self.assertIn("#### Same Tone", explode_content)
             self.assertIn("#### Different Tone", explode_content)
@@ -230,6 +233,10 @@ class CodexHostTests(unittest.TestCase):
             self.assertIn("If you want, I can save `语` (`語`) and `汉语` (`漢語`)", explode_content)
             self.assertIn("- `语` (`語`): `yu3 (ㄩˇ)` - language; speech", explode_content)
             self.assertIn("- `沉默`: `chen2 mo4 (ㄔㄣˊ ㄇㄛˋ)`", explode_content)
+            self.assertLess(
+                explode_content.index("### Containing Characters"),
+                explode_content.index("### Phrase Use"),
+            )
 
             synonyms_example = re.search(
                 r"#### Synonyms\n\n(.*?)\n#### Antonyms",

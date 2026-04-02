@@ -296,41 +296,13 @@ def _render_character_table(line: dict) -> str:
 def _render_stacked_character_rows(line: dict) -> str:
     rows = build_character_rows(line)
     chunks: list[str] = []
-    active_phrase_text = ""
-    active_phrase_remaining = 0
-    active_phrase_translation_text = ""
-    active_phrase_translation_remaining = 0
 
     for row in rows:
         phrase_cell = row["phrase"]
-        if phrase_cell is None:
-            phrase_text = active_phrase_text if active_phrase_remaining > 0 else ""
-            if active_phrase_remaining > 0:
-                active_phrase_remaining -= 1
-                if active_phrase_remaining == 0:
-                    active_phrase_text = ""
-        else:
-            phrase_text = str(phrase_cell["text"])
-            phrase_rowspan = int(phrase_cell["rowspan"])
-            active_phrase_text = phrase_text if phrase_rowspan > 1 else ""
-            active_phrase_remaining = max(phrase_rowspan - 1, 0)
+        phrase_text = "" if phrase_cell is None else str(phrase_cell["text"])
 
         phrase_translation_cell = row["phrase_translation_en"]
-        if phrase_translation_cell is None:
-            phrase_translation_text = (
-                active_phrase_translation_text if active_phrase_translation_remaining > 0 else ""
-            )
-            if active_phrase_translation_remaining > 0:
-                active_phrase_translation_remaining -= 1
-                if active_phrase_translation_remaining == 0:
-                    active_phrase_translation_text = ""
-        else:
-            phrase_translation_text = str(phrase_translation_cell["text"])
-            phrase_translation_rowspan = int(phrase_translation_cell["rowspan"])
-            active_phrase_translation_text = (
-                phrase_translation_text if phrase_translation_rowspan > 1 else ""
-            )
-            active_phrase_translation_remaining = max(phrase_translation_rowspan - 1, 0)
+        phrase_translation_text = "" if phrase_translation_cell is None else str(phrase_translation_cell["text"])
 
         chunks.append(f"Chinese: {row['simplified']}")
         chunks.append(f"Reading: {row['pinyin']}")

@@ -66,12 +66,24 @@ class SkillMetadataTests(unittest.TestCase):
             content,
         )
         self.assertIn(
+            "show a short `## Simplified | Traditional` block before `## Analysis`",
+            content,
+        )
+        self.assertIn(
+            "if the learner came from guided reading, end with a short return cue",
+            content,
+        )
+        self.assertIn(
             "keep it inline as `pinyin (zhuyin)` rather than splitting pinyin and zhuyin into separate lines",
             content,
         )
         self.assertIn(
             "Do not print separate pinyin or Zhuyin lines in the synthesis subsections.",
             content,
+        )
+        self.assertLess(
+            content.index("1. `### Containing Characters`"),
+            content.index("2. `### Phrase Use`"),
         )
         self.assertIn(
             "### Flashcard Candidates",
