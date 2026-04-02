@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://the-big-learn.local/flashcards/schema/bank-entry.schema.json",
+  "title": "The Big Learn Flashcard Bank Entry",
+  "description": "Canonical flashcard bank record derived from a curriculum line, segment, or learner question.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "source_work",
+    "origin",
+    "layers",
+    "eligible_prompt_layers",
+    "status"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "source_work": {
+      "type": "string"
+    },
+    "source_line_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_segment_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "origin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "learner-question",
+            "manual-curation",
+            "review-session"
+          ]
+        },
+        "question_id": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "layers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "traditional",
+        "simplified",
+        "zhuyin",
+        "pinyin",
+        "gloss_en",
+        "translation_en"
+      ],
+      "properties": {
+        "traditional": {
+          "type": "string"
+        },
+        "simplified": {
+          "type": "string"
+        },
+        "zhuyin": {
+          "type": "string"
+        },
+        "pinyin": {
+          "type": "string"
+        },
+        "gloss_en": {
+          "type": "string"
+        },
+        "translation_en": {
+          "type": "string"
+        }
+      }
+    },
+    "eligible_prompt_layers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "simplified",
+          "traditional",
+          "pinyin",
+          "zhuyin",
+          "gloss_en",
+          "translation_en"
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "suspended"
+      ]
+    }
+  }
+}

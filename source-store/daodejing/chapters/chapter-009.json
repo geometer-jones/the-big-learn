@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 39,
+    "id": "chapter-009",
+    "order": 9,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 39,
+        "id": "chapter-009-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "持而盈之，不如其已；揣而銳之，不可長保。金玉滿堂，莫之能守；富貴而驕，自遺其咎。功遂身退天之道。"
+      }
+    ],
+    "summary": "持而盈之，不如其已；揣而銳之，不可長保",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "持而盈之，不如其已；揣而銳之，不可長保。金玉滿堂，莫之能守；富貴而驕，自遺其咎。功遂身退天之道。",
+    "title": "第9章"
+  },
+  "chapter_path": "source-store/daodejing/chapters/chapter-009.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

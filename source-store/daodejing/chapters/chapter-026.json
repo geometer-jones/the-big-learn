@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 47,
+    "id": "chapter-026",
+    "order": 26,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 47,
+        "id": "chapter-026-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "重為輕根，靜為躁君。是以聖人終日行不離輜重。雖有榮觀，燕處超然。奈何萬乘之主，而以身輕天下？輕則失本，躁則失君。"
+      }
+    ],
+    "summary": "重為輕根，靜為躁君",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "重為輕根，靜為躁君。是以聖人終日行不離輜重。雖有榮觀，燕處超然。奈何萬乘之主，而以身輕天下？輕則失本，躁則失君。",
+    "title": "第26章"
+  },
+  "chapter_path": "source-store/daodejing/chapters/chapter-026.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

@@ -1,0 +1,78 @@
+{
+  "chapter": {
+    "character_count": 136,
+    "id": "chapter-031",
+    "order": 31,
+    "reading_unit_count": 4,
+    "reading_units": [
+      {
+        "character_count": 52,
+        "id": "chapter-031-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "唯天下至聖，為能聰明睿知，足以有臨也；寬裕溫柔，足以有容也；發強剛毅，足以有執也；齊莊中正，足以有敬也；文理密察，足以有別也。"
+      },
+      {
+        "character_count": 8,
+        "id": "chapter-031-line-002",
+        "order": 2,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "溥博淵泉，而時出之。"
+      },
+      {
+        "character_count": 26,
+        "id": "chapter-031-line-003",
+        "order": 3,
+        "source_block_chunk": 1,
+        "source_block_order": 3,
+        "text": "溥博如天，淵泉如淵。見而民莫不敬，言而民莫不信，行而民莫不說。"
+      },
+      {
+        "character_count": 50,
+        "id": "chapter-031-line-004",
+        "order": 4,
+        "source_block_chunk": 1,
+        "source_block_order": 4,
+        "text": "是以聲名洋溢乎中國，施及蠻貊；舟車所至，人力所通；天之所覆，地之所載，日月所照，霜露所隊；凡有血氣者，莫不尊親，故曰配天。"
+      }
+    ],
+    "summary": "承上章而言小德之川流，亦天道也",
+    "supplemental_text": "知，去聲。齊，側皆反。別，彼列反。聰明睿知，生知之質。臨，謂居上而臨下也。其下四者，乃仁義禮知之德。文，文章也。理，條理也。密，詳細也。察，明辯也。溥博，周遍而廣闊也。淵泉，靜深而有本也。出，發見也。言五者之德，充積於中，而以時發見於外也。見，音現。說，音悅。言其充積極其盛，而發見當其可也。施，去聲。隊，音墜。舟車所至以下，蓋極言之。配天，言其德之所及，廣大如天也。\n右第三十一章。承上章而言小德之川流，亦天道也。",
+    "supplemental_unit_count": 3,
+    "supplemental_units": [
+      {
+        "character_count": 91,
+        "id": "chapter-031-supp-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "知，去聲。齊，側皆反。別，彼列反。聰明睿知，生知之質。臨，謂居上而臨下也。其下四者，乃仁義禮知之德。文，文章也。理，條理也。密，詳細也。察，明辯也。溥博，周遍而廣闊也。淵泉，靜深而有本也。出，發見也。言五者之德，充積於中，而以時發見於外也。"
+      },
+      {
+        "character_count": 49,
+        "id": "chapter-031-supp-002",
+        "order": 2,
+        "source_block_chunk": 2,
+        "source_block_order": 1,
+        "text": "見，音現。說，音悅。言其充積極其盛，而發見當其可也。施，去聲。隊，音墜。舟車所至以下，蓋極言之。配天，言其德之所及，廣大如天也。"
+      },
+      {
+        "character_count": 20,
+        "id": "chapter-031-supp-003",
+        "order": 3,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "右第三十一章。承上章而言小德之川流，亦天道也。"
+      }
+    ],
+    "text": "唯天下至聖，為能聰明睿知，足以有臨也；寬裕溫柔，足以有容也；發強剛毅，足以有執也；齊莊中正，足以有敬也；文理密察，足以有別也。\n溥博淵泉，而時出之。\n溥博如天，淵泉如淵。見而民莫不敬，言而民莫不信，行而民莫不說。\n是以聲名洋溢乎中國，施及蠻貊；舟車所至，人力所通；天之所覆，地之所載，日月所照，霜露所隊；凡有血氣者，莫不尊親，故曰配天。",
+    "title": "右第三十一章"
+  },
+  "chapter_path": "source-store/zhong-yong/chapters/chapter-031.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "四書章句集注 : 中庸章句",
+  "source_url": "https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju?if=en"
+}

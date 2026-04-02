@@ -1,0 +1,78 @@
+{
+  "chapter": {
+    "character_count": 103,
+    "id": "chapter-017",
+    "order": 17,
+    "reading_unit_count": 5,
+    "reading_units": [
+      {
+        "character_count": 30,
+        "id": "chapter-017-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "子曰：「舜其大孝也與！德為聖人，尊為天子，富有四海之內。宗廟饗之，子孫保之。"
+      },
+      {
+        "character_count": 19,
+        "id": "chapter-017-line-002",
+        "order": 2,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "故大德必得其位，必得其祿，必得其名，必得其壽。"
+      },
+      {
+        "character_count": 21,
+        "id": "chapter-017-line-003",
+        "order": 3,
+        "source_block_chunk": 1,
+        "source_block_order": 3,
+        "text": "故天之生物，必因其材而篤焉。故栽者培之，傾者覆之，"
+      },
+      {
+        "character_count": 26,
+        "id": "chapter-017-line-004",
+        "order": 4,
+        "source_block_chunk": 1,
+        "source_block_order": 4,
+        "text": "詩曰：『嘉樂君子，憲憲令德！宜民宜人；受祿于天；保佑命之，自天申之！』"
+      },
+      {
+        "character_count": 7,
+        "id": "chapter-017-line-005",
+        "order": 5,
+        "source_block_chunk": 1,
+        "source_block_order": 5,
+        "text": "故大德者必受命。」"
+      }
+    ],
+    "summary": "此由庸行之常，推之以極其至，見道之用廣也",
+    "supplemental_text": "與，平聲。子孫，謂虞思、陳胡公之屬。舜年百有十歲，材，質也。篤，厚也。栽，植也。氣至而滋息為培。氣反而游散則覆。詩大雅假樂之篇。假，當依此作嘉。憲，當依詩作顯。申，重也。受命者，受天命為天子也。\n右第十七章。此由庸行之常，推之以極其至，見道之用廣也。而其所以然者，則為體微矣。後二章亦此意。",
+    "supplemental_unit_count": 2,
+    "supplemental_units": [
+      {
+        "character_count": 74,
+        "id": "chapter-017-supp-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "與，平聲。子孫，謂虞思、陳胡公之屬。舜年百有十歲，材，質也。篤，厚也。栽，植也。氣至而滋息為培。氣反而游散則覆。詩大雅假樂之篇。假，當依此作嘉。憲，當依詩作顯。申，重也。受命者，受天命為天子也。"
+      },
+      {
+        "character_count": 40,
+        "id": "chapter-017-supp-002",
+        "order": 2,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "右第十七章。此由庸行之常，推之以極其至，見道之用廣也。而其所以然者，則為體微矣。後二章亦此意。"
+      }
+    ],
+    "text": "子曰：「舜其大孝也與！德為聖人，尊為天子，富有四海之內。宗廟饗之，子孫保之。\n故大德必得其位，必得其祿，必得其名，必得其壽。\n故天之生物，必因其材而篤焉。故栽者培之，傾者覆之，\n詩曰：『嘉樂君子，憲憲令德！宜民宜人；受祿于天；保佑命之，自天申之！』\n故大德者必受命。」",
+    "title": "右第十七章"
+  },
+  "chapter_path": "source-store/zhong-yong/chapters/chapter-017.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "四書章句集注 : 中庸章句",
+  "source_url": "https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju?if=en"
+}

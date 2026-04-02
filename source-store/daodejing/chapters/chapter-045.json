@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 40,
+    "id": "chapter-045",
+    "order": 45,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 40,
+        "id": "chapter-045-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "大成若缺，其用不弊。大盈若沖，其用不窮。大直若屈，大巧若拙，大辯若訥。躁勝寒靜勝熱。清靜為天下正。"
+      }
+    ],
+    "summary": "大成若缺，其用不弊",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "大成若缺，其用不弊。大盈若沖，其用不窮。大直若屈，大巧若拙，大辯若訥。躁勝寒靜勝熱。清靜為天下正。",
+    "title": "第45章"
+  },
+  "chapter_path": "source-store/daodejing/chapters/chapter-045.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

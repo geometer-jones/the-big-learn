@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 64,
+    "id": "chapter-073",
+    "order": 73,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 64,
+        "id": "chapter-073-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "勇於敢則殺，勇於不敢則活。此兩者，或利或害。天之所惡，孰知其故？是以聖人猶難之。天之道，不爭而善勝，不言而善應，不召而自來，繟然而善謀。天網恢恢，踈而不失。"
+      }
+    ],
+    "summary": "勇於敢則殺，勇於不敢則活",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "勇於敢則殺，勇於不敢則活。此兩者，或利或害。天之所惡，孰知其故？是以聖人猶難之。天之道，不爭而善勝，不言而善應，不召而自來，繟然而善謀。天網恢恢，踈而不失。",
+    "title": "第73章"
+  },
+  "chapter_path": "source-store/daodejing/chapters/chapter-073.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

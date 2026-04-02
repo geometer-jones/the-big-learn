@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 88,
+    "id": "chapter-023",
+    "order": 23,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 88,
+        "id": "chapter-023-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "希言自然，故飄風不終朝，驟雨不終日。孰為此者？天地。天地尚不能久，而況於人乎？故從事於道者，道者，同於道；德者，同於德；失者，同於失。同於道者，道亦樂得之；同於德者，德亦樂得之；同於失者，失亦樂得之。信不足，焉有不信焉。"
+      }
+    ],
+    "summary": "希言自然，故飄風不終朝，驟雨不終日",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "希言自然，故飄風不終朝，驟雨不終日。孰為此者？天地。天地尚不能久，而況於人乎？故從事於道者，道者，同於道；德者，同於德；失者，同於失。同於道者，道亦樂得之；同於德者，德亦樂得之；同於失者，失亦樂得之。信不足，焉有不信焉。",
+    "title": "第23章"
+  },
+  "chapter_path": "source-store/daodejing/chapters/chapter-023.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

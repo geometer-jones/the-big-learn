@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 49,
+    "id": "chapter-012",
+    "order": 12,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 49,
+        "id": "chapter-012-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "五色令人目盲；五音令人耳聾；五味令人口爽；馳騁田獵，令人心發狂；難得之貨，令人行妨。是以聖人為腹不為目，故去彼取此。"
+      }
+    ],
+    "summary": "五色令人目盲；五音令人耳聾；五味令人口爽；馳騁田獵，令人心發狂；難得之貨，令人行妨",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "五色令人目盲；五音令人耳聾；五味令人口爽；馳騁田獵，令人心發狂；難得之貨，令人行妨。是以聖人為腹不為目，故去彼取此。",
+    "title": "第12章"
+  },
+  "chapter_path": "source-store/daodejing/chapters/chapter-012.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

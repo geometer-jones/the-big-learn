@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 43,
+    "id": "chapter-035",
+    "order": 35,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 43,
+        "id": "chapter-035-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "執大象，天下往。往而不害，安平大。樂與餌，過客止。道之出口，淡乎其無味，視之不足見，聽之不足聞，用之不足既。"
+      }
+    ],
+    "summary": "執大象，天下往",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "執大象，天下往。往而不害，安平大。樂與餌，過客止。道之出口，淡乎其無味，視之不足見，聽之不足聞，用之不足既。",
+    "title": "第35章"
+  },
+  "chapter_path": "source-store/daodejing/chapters/chapter-035.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

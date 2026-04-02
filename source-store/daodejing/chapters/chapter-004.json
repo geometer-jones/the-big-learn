@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 42,
+    "id": "chapter-004",
+    "order": 4,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 42,
+        "id": "chapter-004-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "道沖而用之或不盈。淵兮似萬物之宗。挫其銳，解其紛，和其光，同其塵。湛兮似或存。吾不知誰之子，象帝之先。"
+      }
+    ],
+    "summary": "道沖而用之或不盈",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "道沖而用之或不盈。淵兮似萬物之宗。挫其銳，解其紛，和其光，同其塵。湛兮似或存。吾不知誰之子，象帝之先。",
+    "title": "第4章"
+  },
+  "chapter_path": "source-store/daodejing/chapters/chapter-004.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

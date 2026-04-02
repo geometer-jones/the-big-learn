@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 88,
+    "id": "chapter-057",
+    "order": 57,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 88,
+        "id": "chapter-057-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "以正治國，以奇用兵，以無事取天下。吾何以知其然哉？以此：天下多忌諱，而民彌貧；民多利器，國家滋昏；人多伎巧，奇物滋起；法令滋彰，盜賊多有。故聖人云：我無為，而民自化；我好靜，而民自正；我無事，而民自富；我無欲，而民自樸。"
+      }
+    ],
+    "summary": "以正治國，以奇用兵，以無事取天下",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "以正治國，以奇用兵，以無事取天下。吾何以知其然哉？以此：天下多忌諱，而民彌貧；民多利器，國家滋昏；人多伎巧，奇物滋起；法令滋彰，盜賊多有。故聖人云：我無為，而民自化；我好靜，而民自正；我無事，而民自富；我無欲，而民自樸。",
+    "title": "第57章"
+  },
+  "chapter_path": "source-store/daodejing/chapters/chapter-057.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 25,
+    "id": "chapter-006",
+    "order": 6,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 25,
+        "id": "chapter-006-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "谷神不死，是謂玄牝。玄牝之門，是謂天地根。綿綿若存，用之不勤。"
+      }
+    ],
+    "summary": "谷神不死，是謂玄牝",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "谷神不死，是謂玄牝。玄牝之門，是謂天地根。綿綿若存，用之不勤。",
+    "title": "第6章"
+  },
+  "chapter_path": "source-store/daodejing/chapters/chapter-006.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

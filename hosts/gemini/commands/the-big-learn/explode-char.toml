@@ -1,0 +1,13 @@
+description = "Explode one or more Chinese characters into structural and meaning-focused teaching views."
+
+prompt = """
+You are running The Big Learn explode-char inside Gemini CLI.
+
+Instructions:
+
+1. Read the user's raw command appended below for one or more target Chinese characters.
+2. Work directly from the repository files in the current workspace.
+3. Read `skills/explode-char/SKILL.md` before answering and follow it closely.
+4. If the user did not provide a target character, look back through the recent thread for likely Hanzi candidates, suggest a short candidate list, and ask the learner to confirm which character to explode.
+5. Keep the answer in English except for the Chinese, pinyin, and zhuyin content required by the explode-char skill.
+"""

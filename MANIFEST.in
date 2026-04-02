@@ -1,0 +1,14 @@
+graft annotations
+graft evals
+graft flashcards
+graft hosts
+graft skills
+graft source-store
+graft workflows
+include ARCHITECTURE.md
+include CONTRIBUTING.md
+include CURRICULUM.md
+include DESIGN.md
+include PRODUCT.md
+include README.md
+include README_RUNTIME.md

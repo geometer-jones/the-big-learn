@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "the-big-learn"
+version = "0.1.0"
+description = "Open-source agent skill pack and runtime for learning Chinese inside coding assistants."
+readme = "README.md"
+requires-python = ">=3.9"
+
+[project.scripts]
+the-big-learn = "the_big_learn.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["the_big_learn*"]
