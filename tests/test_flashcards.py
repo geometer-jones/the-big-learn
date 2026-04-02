@@ -75,13 +75,13 @@ def _demo_character_line(
 
 
 class FlashcardPersistenceTests(unittest.TestCase):
-    def test_flashcard_weight_counts_significance_flags_plus_citations(self) -> None:
+    def test_flashcard_weight_uses_ten_times_significance_flags_plus_citations(self) -> None:
         entry = _demo_bank_entry()
         entry["significance_flag_count"] = 2
         entry["citations"] = [{}, {}, {}]
 
         self.assertEqual(flashcard_occurrence_count(entry), 3)
-        self.assertEqual(flashcard_weight(entry), 5)
+        self.assertEqual(flashcard_weight(entry), 23)
 
     def test_choose_weighted_bank_entry_skips_zero_weight_entries(self) -> None:
         zero_weight_entry = _demo_bank_entry()
@@ -107,7 +107,7 @@ class FlashcardPersistenceTests(unittest.TestCase):
         self.assertEqual(selected["bank_entry"]["id"], "fc-char-u5b78-u5b66")
         self.assertEqual(selected["occurrence_count"], 2)
         self.assertEqual(selected["significance_flag_count"], 1)
-        self.assertEqual(selected["weight"], 3)
+        self.assertEqual(selected["weight"], 12)
 
     def test_run_flashcard_review_step_alternates_between_prompt_and_reveal(self) -> None:
         entry = _demo_bank_entry()

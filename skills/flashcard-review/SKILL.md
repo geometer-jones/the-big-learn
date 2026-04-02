@@ -16,7 +16,7 @@ Work from the saved flashcard bank already on disk.
 ## Job
 
 - sample one saved flashcard from the weighted distribution
-- use `weight = significance_flag_count + occurrence_count`
+- use `weight = 10 * significance_flag_count + occurrence_count`
 - show only one randomly chosen face first
 - on the next review step, reveal both faces for that same card
 - then move on to a newly sampled card and repeat

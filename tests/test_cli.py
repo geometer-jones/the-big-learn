@@ -624,7 +624,7 @@ class CliTests(unittest.TestCase):
         self.assertEqual(first["bank_entry_id"], "fc-char-u5b78-u5b66")
         self.assertEqual(first["occurrence_count"], 2)
         self.assertEqual(first["significance_flag_count"], 2)
-        self.assertEqual(first["weight"], 4)
+        self.assertEqual(first["weight"], 22)
         self.assertEqual(len(first["visible_faces"]), 1)
 
         self.assertEqual(second_exit_code, 0)

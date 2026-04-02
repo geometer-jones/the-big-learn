@@ -47,7 +47,7 @@ class SkillMetadataTests(unittest.TestCase):
         self.assertIn("~/.the-big-learn/flashcards/bank/", bank_add)
         self.assertIn("translation_en` may legitimately be identical to `gloss_en`", bank_add)
         self.assertIn("python3 -m the_big_learn flashcard-review --format json", review)
-        self.assertIn("weight = significance_flag_count + occurrence_count", review)
+        self.assertIn("weight = 10 * significance_flag_count + occurrence_count", review)
         self.assertIn("~/.the-big-learn/flashcards/review-state.json", review)
 
     def test_explode_char_uses_simplified_primary_display(self) -> None:

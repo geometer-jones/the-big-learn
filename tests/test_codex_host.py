@@ -245,7 +245,7 @@ class CodexHostTests(unittest.TestCase):
             flashcard_review = target / "the-big-learn-flashcard-review" / "SKILL.md"
             review_content = flashcard_review.read_text(encoding="utf-8")
             self.assertIn("python3 -m the_big_learn flashcard-review --format json", review_content)
-            self.assertIn("weight = significance_flag_count + occurrence_count", review_content)
+            self.assertIn("weight = 10 * significance_flag_count + occurrence_count", review_content)
             self.assertIn("one randomly chosen face first", review_content)
             self.assertIn("the next review step, reveal both faces", review_content)
 

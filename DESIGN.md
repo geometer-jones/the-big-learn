@@ -54,7 +54,7 @@ This posture does not change:
 Flashcard review is a lightweight recall loop, not a deck-builder.
 
 - sample saved cards from a weighted distribution
-- use `weight = significance_flag_count + occurrence_count`
+- use `weight = 10 * significance_flag_count + occurrence_count`
 - treat `occurrence_count` as the number of saved citations on that card
 - show exactly one randomly chosen face first
 - on the next step, reveal both faces for that same card

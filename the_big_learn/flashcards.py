@@ -459,7 +459,7 @@ def flashcard_occurrence_count(bank_entry: dict[str, Any]) -> int:
 
 
 def flashcard_weight(bank_entry: dict[str, Any]) -> int:
-    return int(bank_entry.get("significance_flag_count", 0)) + flashcard_occurrence_count(bank_entry)
+    return (10 * int(bank_entry.get("significance_flag_count", 0))) + flashcard_occurrence_count(bank_entry)
 
 
 def flashcard_review_faces(bank_entry: dict[str, Any]) -> dict[str, dict[str, str]]:
@@ -486,37 +486,35 @@ def choose_weighted_bank_entry(
             bank_entry,
             flashcard_occurrence_count(bank_entry),
             int(bank_entry.get("significance_flag_count", 0)),
+            flashcard_weight(bank_entry),
         )
         for bank_entry in bank_entries
     ]
     weighted_entries = [
-        (bank_entry, occurrence_count, significance_flag_count)
-        for bank_entry, occurrence_count, significance_flag_count in weighted_entries
-        if occurrence_count + significance_flag_count > 0
+        (bank_entry, occurrence_count, significance_flag_count, weight)
+        for bank_entry, occurrence_count, significance_flag_count, weight in weighted_entries
+        if weight > 0
     ]
     if not weighted_entries:
         raise ValueError("No flashcards with positive review weight were found.")
 
-    total_weight = sum(
-        occurrence_count + significance_flag_count
-        for _, occurrence_count, significance_flag_count in weighted_entries
-    )
+    total_weight = sum(weight for _, _, _, weight in weighted_entries)
     threshold = (rng or random.Random()).random() * total_weight
     cumulative = 0
     selected_entry = weighted_entries[-1]
     for candidate in weighted_entries:
-        bank_entry, occurrence_count, significance_flag_count = candidate
-        cumulative += occurrence_count + significance_flag_count
+        bank_entry, occurrence_count, significance_flag_count, weight = candidate
+        cumulative += weight
         selected_entry = candidate
         if threshold < cumulative:
             break
 
-    bank_entry, occurrence_count, significance_flag_count = selected_entry
+    bank_entry, occurrence_count, significance_flag_count, weight = selected_entry
     return {
         "bank_entry": bank_entry,
         "occurrence_count": occurrence_count,
         "significance_flag_count": significance_flag_count,
-        "weight": occurrence_count + significance_flag_count,
+        "weight": weight,
     }
 
 
