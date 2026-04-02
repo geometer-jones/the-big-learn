@@ -510,7 +510,11 @@ class GeminiHostTests(unittest.TestCase):
                 guided_reading,
             )
             self.assertIn(
-                "mark the matched choice plainly",
+                "specific curriculum book, chapter, or line",
+                guided_reading,
+            )
+            self.assertIn(
+                "go straight to that book's chapter menu without first showing the opening book menu",
                 guided_reading,
             )
             self.assertIn(
@@ -535,6 +539,18 @@ class GeminiHostTests(unittest.TestCase):
             )
             self.assertIn(
                 "If the learner replies with only `+` while a chapter menu page is open",
+                guided_reading,
+            )
+            self.assertIn(
+                "begin the reading pass without first showing the opening book menu or the chapter menu",
+                guided_reading,
+            )
+            self.assertIn(
+                "begin the reading pass at that line without first showing the opening book menu or the chapter menu",
+                guided_reading,
+            )
+            self.assertIn(
+                "keep the first rendered focus on the requested line instead of forcing a menu detour",
                 guided_reading,
             )
             self.assertIn(

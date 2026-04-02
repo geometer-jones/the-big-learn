@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "the-big-learn"
-version = "0.2.6"
+version = "0.2.7"
 description = "Open-source agent skill pack and runtime for learning Chinese inside coding assistants."
 readme = "README.md"
 requires-python = ">=3.9"

@@ -132,14 +132,14 @@ For `Da Xue`, use the same source-backed chapter path as the rest of the shipped
 ## Rules
 
 - Prefer the repository data over improvised rendering when the requested text is already encoded.
-- Open the session with the book-selection menu before rendering source text.
+- Open the session with the book-selection menu before rendering source text unless the opening request already resolves to a specific curriculum book, chapter, or line.
 - In that menu, recommend proceeding with the designed curriculum by starting with `Da Xue`.
 - Read the guided-reading progress store before displaying the opening menu.
 - In the opening menu, show each saved source-backed chapter with its saved-status indicators for personal translation and personal response.
 - Do not read every bundled full-book catalog while rendering the opening book menu. Read only enough local data to list books and saved-status indicators.
 - For curriculum books that are packaged locally, prefer bundled `source-store/` chapter catalogs and raw chapter files before any live source discovery.
 - For books that are in `CURRICULUM.md` but not yet locally encoded or locally bundled, mark them plainly as supported through live source discovery and download-on-demand rather than as unavailable.
-- If the user already named a valid book in the opening request, still show the book menu, mark the matched choice plainly, and continue to the chapter menu for that book.
+- If the opening request already resolves to a valid curriculum book and nothing more specific, confirm the resolved book in English and go straight to that book's chapter menu without first showing the opening book menu.
 - If the user picks a curriculum book whose full chapter list is neither already encoded locally nor available from bundled local `source-store/`, do not invent a partial chapter menu from only what is locally annotated or already downloaded. Query the web for likely source pages first.
 - If you cannot search the web in the current environment, throw a warning immediately instead of pretending source discovery succeeded.
 - If the web query returns multiple plausible source pages, show them plainly and let the learner choose which source to draw from.
@@ -148,12 +148,14 @@ For `Da Xue`, use the same source-backed chapter path as the rest of the shipped
 - If a saved or bundled source catalog already exists for the chosen book and still covers the full book, you may reuse it, but do not collapse the menu to only the chapters that were previously downloaded.
 - If `python3 -m the_big_learn source catalog` reports zero detectable chapters, say so plainly and ask the learner to choose another source page.
 - If the user replies with a menu number or a book name, confirm the resolved book in English and then open the chapter menu for that book.
-- Show the chapter-selection menu after the book is resolved and before rendering source text.
+- Show the chapter-selection menu after the book is resolved and before rendering source text unless the opening request already resolves to a specific chapter or line.
 - When the book is resolved, load only that book's catalog to build the chapter menu. Do not preload chapter catalogs for books the learner did not choose.
 - That chapter-selection menu must contain all chapters of the chosen book, not only the chapters already loaded locally. For books with more than 10 chapters, satisfy that through a paged menu that reveals 10 chapters at a time instead of dumping the whole list at once.
 - Do not invent synthetic starter chapters or progress labels for `Da Xue`; keep the full chapter menu keyed to the bundled source-backed chapter ids.
 - Use the bundled, saved, or live-source catalog chapter numbers as the menu indices for full-book chapter menus, and keep those real chapter numbers on later pages instead of renumbering each 10-chapter slice.
-- If the user already named a valid chapter in the opening request, still show the chapter menu, mark the matched choice plainly, and continue with that chapter. If the matched chapter falls outside the first 10 entries, open the page that contains it instead of forcing the learner to page forward manually.
+- If the opening request already resolves to a valid chapter, confirm the resolved book and chapter in English and begin the reading pass without first showing the opening book menu or the chapter menu.
+- If the opening request already resolves to a valid line or line id inside a supported chapter, confirm the resolved book, chapter, and line in English and begin the reading pass at that line without first showing the opening book menu or the chapter menu.
+- When the opening request already resolves to a specific line, include enough local context to orient the learner, but keep the first rendered focus on the requested line instead of forcing a menu detour.
 - If the learner replies with only `+` while a chapter menu page is open, show the next 10 chapter entries and repeat that `+` loads 10 more chapters until the learner chooses a chapter or the catalog is exhausted.
 - After the learner chooses a chapter, load only that chapter payload or source-backed chapter read for the reading pass. Do not load the full book text when the chapter menu alone is enough.
 - If the user replies with a chapter number or a chapter name, confirm the resolved chapter in English and then begin the reading pass.
