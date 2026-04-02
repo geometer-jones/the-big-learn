@@ -1,14 +1,10 @@
 # DESIGN
 
-The Big Learn is a thread-native product. Its design system is mostly language, pacing, recurring turn shapes, and how much initiative the assistant takes. It is not a dashboard, a marketing site, or a settings-heavy app.
+The Big Learn is a thread-native product. Its design system is mostly language, pacing, recurring turn shapes. It is not a dashboard, a marketing site, or a settings-heavy app.
 
 ## Purpose
 
 This file is the canonical design source for cross-host thread surfaces in Codex, Claude Code, and later Gemini. Use it to keep vocabulary, rhythm, and interaction shapes consistent across hosts.
-
-## Principles
-- Preserve continuity. Reading should flow smoothly even though help is available.
-- One ritual, one steady support posture.
 
 ## Language Default
 
@@ -78,7 +74,7 @@ Use the same small vocabulary across hosts:
 
 - Saved-work tags: `[translation saved]`, `[response saved]`, `[unsaved]`
 - Primary action prompts: `Continue reading`, `Choose a chapter`, `Your translation?`, `Your response?`, `Retry save`
-- Flow cue prefix: a brief English lead-in ahead of `Your translation?` or `Your response?` inviting questions and comments, suggesting explode-char and flashcard flags, and telling the learner to keep reading while the reply arrives so they can return to it in flow
+- Flow cue prefix: a brief English lead-in ahead of `Your translation?` or `Your response?` as a philosopher and researcher, inviting questions and comments
 - Failure state heading: `[Save did not complete]`
 - Explode-char section labels: `Analysis`, `Synthesis`, `Phrase Use`, `Containing Characters`, `Homophones`, `Meaning Map`, `Flashcard Candidates`
 
@@ -146,7 +142,7 @@ Default order:
 Rules:
 - The Chinese line is the visual anchor.
 - The char-by-char does most of the structural work.
-- The flow cue should say that questions or comments are welcome as they arise, suggest exploding a sticky character or flagging a significant flashcard, and recommend continuing to read while the assistant response is arriving.
+- The flow cue should say engage with the text as a philosopher and researcher and linguist, hilighting an interesting lead or two
 - The current line shell is also the extraction surface for character-index flashcards: simplified, traditional, pinyin, zhuyin, and semicolon-separated English definitions should be recoverable from it for each saved character row.
 
 ### Explode-Char Turn
