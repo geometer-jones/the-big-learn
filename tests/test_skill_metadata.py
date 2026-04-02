@@ -78,7 +78,7 @@ class SkillMetadataTests(unittest.TestCase):
             content,
         )
         self.assertIn(
-            "Place the meaning map before structural analysis and synthesis",
+            "Place the meaning map after structural analysis and synthesis",
             content,
         )
         self.assertIn(
@@ -103,12 +103,12 @@ class SkillMetadataTests(unittest.TestCase):
             content.index("3. `## Simplified | Traditional`"),
         )
         self.assertLess(
-            content.index("4. `## Meaning Map`"),
-            content.index("5. `## Analysis`"),
+            content.index("4. `## Analysis`"),
+            content.index("5. `## Synthesis`"),
         )
         self.assertLess(
-            content.index("4. `## Meaning Map`"),
-            content.index("6. `## Synthesis`"),
+            content.index("6. `## Meaning Map`"),
+            content.index("## Rules"),
         )
         self.assertLess(
             content.index("1. `### Containing Characters`"),
@@ -120,7 +120,7 @@ class SkillMetadataTests(unittest.TestCase):
         )
         self.assertLess(
             content.index("3. `### Homophones`"),
-            content.index("## Rules"),
+            content.index("### Meaning Map"),
         )
         self.assertNotIn("### Flashcard Candidates", content)
         self.assertNotIn(

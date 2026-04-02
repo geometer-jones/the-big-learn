@@ -51,9 +51,9 @@ For a single target character, keep the turn compact and use visible blocks in t
 1. one brief bridge line when the learner arrived from guided reading
 2. `## Definition`
 3. `## Simplified | Traditional` only when the scripts differ
-4. `## Meaning Map`
-5. `## Analysis`
-6. `## Synthesis`
+4. `## Analysis`
+5. `## Synthesis`
+6. `## Meaning Map`
 7. a short return cue when the learner should resume guided reading
 
 For multiple target characters, repeat the same order for each character before moving to the next one. Use:
@@ -61,11 +61,11 @@ For multiple target characters, repeat the same order for each character before 
 1. one brief bridge line only when it helps preserve guided-reading continuity
 2. `## Definition: <character>`
 3. `## Simplified | Traditional: <character>` only when the scripts differ
-4. `## Meaning Map: <character>`
-5. `## Analysis: <character>`
-6. `## Synthesis: <character>`
+4. `## Analysis: <character>`
+5. `## Synthesis: <character>`
+6. `## Meaning Map: <character>`
 
-Do not add extra top-level headings beyond `## Definition`, the optional `## Simplified | Traditional` block, `## Meaning Map`, `## Analysis`, and `## Synthesis`.
+Do not add extra top-level headings beyond `## Definition`, the optional `## Simplified | Traditional` block, `## Analysis`, `## Synthesis`, and `## Meaning Map`.
 
 Do not use tables for the main answer. Use nested bullet lists so the structure reads like a tree.
 
@@ -121,38 +121,6 @@ Keep it short:
 - if the forms are identical, omit this block entirely
 - if the learner supplied the traditional form, still keep the simplified form in the primary position inside this block and throughout the rest of the answer
 - do not duplicate the full explosion under both script forms unless the learner explicitly asks for a separate script-by-script comparison
-
-### Meaning Map
-
-Place the meaning map before structural analysis and synthesis so the learner sees nearby and opposite meanings early.
-
-Use exactly these subsection headers inside `## Meaning Map` in this order:
-
-1. `#### Synonyms`
-2. `#### Antonyms`
-
-Render each synonym item as a single bullet line, similar to the homophone list, with zhuyin kept inline in parentheses after the pinyin.
-
-For each synonym item, include:
-
-- the synonym in simplified Chinese, with traditional in parentheses only when it differs
-- the synonym reading as `pinyin (zhuyin)`
-- the English word-by-word gloss
-- the English holistic translation
-
-Render each antonym item as a single bullet line in the same compact reading format:
-
-- Simplified Chinese
-- Traditional Chinese, in parentheses only when it differs
-- Pinyin with zhuyin in parentheses
-- English word-by-word gloss
-- English holistic translation
-
-Preferred patterns:
-
-- `传统` (`傳統`): `chuan2 tong3 (ㄔㄨㄢˊ ㄊㄨㄥˇ)` - `transmit; pass down + rule; system`; tradition
-
-If the target character is not normally used as a standalone word for the intended sense, use short Chinese words or phrases that stay tightly anchored to that sense instead of forcing isolated single-character items.
 
 ### Synthesis
 
@@ -225,6 +193,38 @@ For different-tone items, prefer this pattern:
 
 Prefer exact same-syllable matches first. Then include different-tone homophones for the same syllable before falling back to looser sound-alikes. If you include near-homophones because common same-syllable items are sparse, label them clearly as near-homophones instead of mixing them in silently.
 
+### Meaning Map
+
+Place the meaning map after structural analysis and synthesis so the learner gets the semantic neighborhood once the decomposition and examples are already on the page.
+
+Use exactly these subsection headers inside `## Meaning Map` in this order:
+
+1. `#### Synonyms`
+2. `#### Antonyms`
+
+Render each synonym item as a single bullet line, similar to the homophone list, with zhuyin kept inline in parentheses after the pinyin.
+
+For each synonym item, include:
+
+- the synonym in simplified Chinese, with traditional in parentheses only when it differs
+- the synonym reading as `pinyin (zhuyin)`
+- the English word-by-word gloss
+- the English holistic translation
+
+Render each antonym item as a single bullet line in the same compact reading format:
+
+- Simplified Chinese
+- Traditional Chinese, in parentheses only when it differs
+- Pinyin with zhuyin in parentheses
+- English word-by-word gloss
+- English holistic translation
+
+Preferred patterns:
+
+- `传统` (`傳統`): `chuan2 tong3 (ㄔㄨㄢˊ ㄊㄨㄥˇ)` - `transmit; pass down + rule; system`; tradition
+
+If the target character is not normally used as a standalone word for the intended sense, use short Chinese words or phrases that stay tightly anchored to that sense instead of forcing isolated single-character items.
+
 ## Rules
 
 - Be explicit about uncertainty. If a decomposition is only a teaching convenience, say so.
@@ -237,9 +237,9 @@ Prefer exact same-syllable matches first. Then include different-tone homophones
 - If simplified and traditional forms differ in a way that affects decomposition, mention that briefly.
 - If no target character is provided, mine only the recent thread context for plausible Hanzi candidates, then stop and get confirmation before doing the full explosion.
 - In `## Definition`, state the chosen reading and sense plainly before the decomposition starts.
-- In `## Meaning Map`, put `#### Synonyms` and `#### Antonyms` before `## Analysis` and `## Synthesis`.
 - In `## Analysis`, keep simplified primary at every node and append traditional in parentheses only when it differs.
 - In `## Synthesis`, include phrase-use examples, larger containing-character examples, and a homophone list.
+- In `## Meaning Map`, put `#### Synonyms` and `#### Antonyms` after `## Analysis` and `## Synthesis`.
 - Keep every displayed reading inline as `pinyin (zhuyin)` instead of splitting pinyin and zhuyin into separate lines.
 - If multiple target characters are provided, finish the full analysis-and-synthesis block for one character before moving to the next.
 - Preserve the input order for multi-character requests unless the learner explicitly asks for a different order.
@@ -261,16 +261,6 @@ Prefer exact same-syllable matches first. Then include different-tone homophones
 ## Definition
 
 - `语` (`語`): `yu3 (ㄩˇ)` - language; speech
-
-## Meaning Map
-
-#### Synonyms
-
-- `话语` (`話語`): `hua4 yu3 (ㄏㄨㄚˋ ㄩˇ)` - `speech + language`; speech; utterance
-
-#### Antonyms
-
-- `沉默`: `chen2 mo4 (ㄔㄣˊ ㄇㄛˋ)` - `sink; deep + silent`; silent; silence
 
 ## Analysis
 
@@ -308,6 +298,16 @@ Prefer exact same-syllable matches first. Then include different-tone homophones
 
 - `鱼` (`魚`): `yu2 (ㄩˊ)` - fish; same syllable, different tone from target
 - `玉`: `yu4 (ㄩˋ)` - jade; same syllable, different tone from target
+
+## Meaning Map
+
+#### Synonyms
+
+- `话语` (`話語`): `hua4 yu3 (ㄏㄨㄚˋ ㄩˇ)` - `speech + language`; speech; utterance
+
+#### Antonyms
+
+- `沉默`: `chen2 mo4 (ㄔㄣˊ ㄇㄛˋ)` - `sink; deep + silent`; silent; silence
 
 ## Handoff
 

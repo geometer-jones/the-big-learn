@@ -154,20 +154,20 @@ Hierarchy:
 0. One brief bridge line if the learner arrived here from guided reading
 1. `Definition`
 2. `Simplified | Traditional`
-3. `Meaning Map`
-4. `Analysis`
-5. `Synthesis`
+3. `Analysis`
+4. `Synthesis`
+5. `Meaning Map`
 6. Short return cue when the learner should resume the reading flow
 
 Rules:
 - `Simplified | Traditional` displays the simplified version if the exploded char is traditional and vice-versa; if the traditional and simplified are the same, this section is absent
-- `Meaning Map` comes before structural analysis so the learner gets the semantic neighborhood early; keep its subsection order fixed as `Synonyms`, then `Antonyms`
 - `Analysis` uses nested bullets, not tables.
 - Start with the full target character as the root node, then descend only as far as the decomposition stays teachable and honest.
 - Keep simplified Chinese in the primary position and append traditional only when it differs. If simplified and traditional differ, then run two separate explosions, in the same style as if a phrase were exploded, and you explode each word in sequence.
 - Render every reading inline as `pinyin (zhuyin)`.
 - Keep `Synthesis` subsection order fixed: `Containing Characters, ie character that contain the exploded-char within its composition`, `Phrase Use, ie multi-character phrases that contain the exploded-char as one char`, `Homophones`.
 - Inside `Homophones`, include both `Same Tone` and `Different Tone` subgroups when honest same-syllable examples exist, and do not stop after same-tone matches.
+- `Meaning Map` comes after structural analysis and synthesis; keep its subsection order fixed as `Synonyms`, then `Antonyms`
 - Do not end the exploder with flashcard candidate recommendations or save prompts.
 - Try to divine the etymology, but be disciplined in qualifying the strength of your hunches
 

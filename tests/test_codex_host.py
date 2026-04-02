@@ -245,8 +245,12 @@ class CodexHostTests(unittest.TestCase):
                 explode_content.index("3. `## Simplified | Traditional`"),
             )
             self.assertLess(
-                explode_content.index("4. `## Meaning Map`"),
-                explode_content.index("5. `## Analysis`"),
+                explode_content.index("4. `## Analysis`"),
+                explode_content.index("5. `## Synthesis`"),
+            )
+            self.assertLess(
+                explode_content.index("5. `## Synthesis`"),
+                explode_content.index("6. `## Meaning Map`"),
             )
             self.assertLess(
                 explode_content.index("### Containing Characters"),
