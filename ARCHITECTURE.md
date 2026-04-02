@@ -67,7 +67,7 @@ Responsibilities:
 Early examples:
 
 - `the-big-learn-flashcard-bank-add`
-- `the-big-learn-flashcard-variation-generator`
+- `the-big-learn-flashcard-review`
 
 ### 2. Workflows
 
@@ -142,7 +142,7 @@ Responsibilities:
 
 ### 5. Flashcard Bank
 
-Purpose: store learner-relevant items and support many review directions across the six-layer model and its combined learner-facing units.
+Purpose: store learner-relevant items and support weighted flashcard review across the learner-facing units derived from the six stored layers.
 
 Likely location:
 

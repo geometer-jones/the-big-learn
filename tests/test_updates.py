@@ -21,6 +21,9 @@ from the_big_learn.updates import (
     write_snooze,
 )
 
+VERSION_PARTS = [int(part) for part in __version__.split(".")]
+NEWER_VERSION = ".".join([*(str(part) for part in VERSION_PARTS[:-1]), str(VERSION_PARTS[-1] + 1)])
+
 
 class UpdateTests(unittest.TestCase):
     def setUp(self) -> None:
@@ -64,13 +67,13 @@ class UpdateTests(unittest.TestCase):
         self.assertFalse((self.state / "last-update-check.json").exists())
 
     def test_update_check_returns_upgrade_available_when_remote_version_differs(self) -> None:
-        self._set_remote_version("0.2.0")
+        self._set_remote_version(NEWER_VERSION)
 
         result = check_for_updates()
 
         self.assertIsNotNone(result)
         self.assertEqual(result.status, UPGRADE_AVAILABLE)
-        self.assertEqual(result.output_line(), f"UPGRADE_AVAILABLE {__version__} 0.2.0")
+        self.assertEqual(result.output_line(), f"UPGRADE_AVAILABLE {__version__} {NEWER_VERSION}")
         self.assertEqual(self._cache_payload()["status"], UPGRADE_AVAILABLE)
 
     def test_update_check_is_silent_when_remote_version_matches(self) -> None:
@@ -85,7 +88,7 @@ class UpdateTests(unittest.TestCase):
 
     def test_update_check_respects_disabled_config(self) -> None:
         set_config_value("update_check", "false")
-        self._set_remote_version("0.2.0")
+        self._set_remote_version(NEWER_VERSION)
 
         result = check_for_updates()
 
@@ -94,7 +97,7 @@ class UpdateTests(unittest.TestCase):
         self.assertFalse(update_checks_enabled())
 
     def test_update_check_uses_fresh_upgrade_cache(self) -> None:
-        self._set_remote_version("0.2.0")
+        self._set_remote_version(NEWER_VERSION)
         first = check_for_updates()
         self.assertIsNotNone(first)
 
@@ -103,12 +106,12 @@ class UpdateTests(unittest.TestCase):
 
         second = check_for_updates()
         self.assertIsNotNone(second)
-        self.assertEqual(second.output_line(), f"UPGRADE_AVAILABLE {__version__} 0.2.0")
+        self.assertEqual(second.output_line(), f"UPGRADE_AVAILABLE {__version__} {NEWER_VERSION}")
 
     def test_force_busts_cache_and_snooze(self) -> None:
-        self._set_remote_version("0.2.0")
+        self._set_remote_version(NEWER_VERSION)
         self.assertIsNotNone(check_for_updates())
-        write_snooze("0.2.0", 1)
+        write_snooze(NEWER_VERSION, 1)
 
         remote_file = self.root / "REMOTE_VERSION"
         remote_file.write_text(__version__ + "\n", encoding="utf-8")
@@ -119,8 +122,8 @@ class UpdateTests(unittest.TestCase):
         self.assertFalse(snooze_path().exists())
 
     def test_snoozed_upgrade_is_silent(self) -> None:
-        self._set_remote_version("0.2.0")
-        write_snooze("0.2.0", 1)
+        self._set_remote_version(NEWER_VERSION)
+        write_snooze(NEWER_VERSION, 1)
 
         result = check_for_updates()
 
@@ -128,8 +131,8 @@ class UpdateTests(unittest.TestCase):
         self.assertEqual(self._cache_payload()["status"], UPGRADE_AVAILABLE)
 
     def test_expired_snooze_reprompts(self) -> None:
-        self._set_remote_version("0.2.0")
-        write_snooze("0.2.0", 1)
+        self._set_remote_version(NEWER_VERSION)
+        write_snooze(NEWER_VERSION, 1)
 
         payload = json.loads(snooze_path().read_text(encoding="utf-8"))
         payload["snoozed_at"] = int(time.time()) - (25 * 60 * 60)
@@ -138,12 +141,12 @@ class UpdateTests(unittest.TestCase):
         result = check_for_updates()
 
         self.assertIsNotNone(result)
-        self.assertEqual(result.output_line(), f"UPGRADE_AVAILABLE {__version__} 0.2.0")
+        self.assertEqual(result.output_line(), f"UPGRADE_AVAILABLE {__version__} {NEWER_VERSION}")
 
     def test_local_version_change_emits_just_upgraded(self) -> None:
         self.state.mkdir(parents=True, exist_ok=True)
         (self.state / "installed-version").write_text("0.0.9\n", encoding="utf-8")
-        self._set_remote_version("0.2.0")
+        self._set_remote_version(NEWER_VERSION)
 
         result = check_for_updates()
 

@@ -20,7 +20,7 @@ Future expansions can target the rest of the Four Books without changing the wor
 
 - `the-big-learn-guided-reading`
 - `the-big-learn-flashcard-bank-add`
-- `the-big-learn-flashcard-variation-generator`
+- `the-big-learn-flashcard-review`
 
 ## Ordered Steps
 
@@ -43,7 +43,7 @@ Future expansions can target the rest of the Four Books without changing the wor
 17. Evaluate the learner's chapter-end response as both a researcher and a philosopher, staying explicit about textual support versus extrapolation.
 18. If the learner asks follow-up questions at the stopping point, answer them directly inside the same thread.
 19. For durable confusion points, create bank entries with `the-big-learn-flashcard-bank-add`.
-20. Generate review directions with `the-big-learn-flashcard-variation-generator`.
+20. Review saved cards later with `the-big-learn-flashcard-review`.
 
 ## Required Records
 

@@ -39,7 +39,7 @@ Candidate skills:
 
 - `the-big-learn-guided-reading`
 - `the-big-learn-flashcard-bank-add`
-- `the-big-learn-flashcard-variation-generator`
+- `the-big-learn-flashcard-review`
 - `the-big-learn-explode-char`
 - `the-big-learn-update`
 

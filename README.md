@@ -11,7 +11,7 @@ The project is built around a small number of explicit ideas:
 - Render each annotated line in a fixed learner-facing sequence: full-line simplified Chinese, full-line English, a char-by-char breakdown table with `Chinese`, `Reading`, `English Definition`, `Chinese Phrase`, and `English Phrase Translation`, then the same full line again in English and simplified Chinese before any learner translation or notes.
 - In that table, keep simplified primary and append traditional in parens only where it differs, keep pinyin primary with zhuyin in parens, use semicolon-separated context-free English definitions in the `English Definition` column, and let the phrase columns span multiple character rows when a stored segment covers more than one character.
 - Keep reading continuous: let the learner keep moving, ask line-grounded questions as they arise, and answer them in the same discussion.
-- Turn durable confusion points into flashcards and generate multiple review directions from the same entry.
+- Turn durable confusion points into flashcards and review them through a weighted random prompt-and-reveal loop.
 - Keep prompts, curriculum data, fixtures, and policies in the repository so the behavior is inspectable and editable.
 
 The current curriculum spine starts with the Four Books and begins with `Da Xue`. The guided-reading menu now reflects the full curriculum in `CURRICULUM.md`, while keeping `Da Xue` as the recommended starting point. The install bundle now ships with prepackaged local source catalogs and chapter payloads with precomputed reading units for the current curriculum set: `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, and `Sanguo Yanyi`. Guided reading now uses that bundled source-backed chapter path across the shipped curriculum, with live assistant support during the reading pass and saved generated help available on reread.
@@ -35,7 +35,7 @@ The current curriculum spine starts with the Four Books and begins with `Da Xue`
 - `hosts/`: host-specific assets for Codex, Claude Code, and Gemini
 - `source-store/`: bundled and saved full-book source catalogs plus raw chapter payloads
 - `the_big_learn/`: optional Python runtime, renderers, installers, progress storage, live source cataloging, and update helpers
-- `flashcards/`: bank schemas and variation policies
+- `flashcards/`: bank schemas and review-state support
 - `scripts/`: local verification and source-store build helpers
 - `evals/` and `tests/`: fixtures and regression coverage
 
@@ -85,7 +85,7 @@ python3 -m unittest discover -s tests
 - Live source support beyond the bundled curriculum set: full-book source catalogs, saved raw chapter downloads, and raw-source reading units from selected source URLs
 - Supported workflow: guided reading with line-grounded question handling for bundled or download-on-demand source texts
 - Saved progress inspection: `python3 -m the_big_learn progress` currently reports chapter-level saved line-translation and line-response status plus book-level summary and response status from `reading-progress.json`
-- Flashcards: bank entry creation and variation generation
+- Flashcards: bank entry creation and weighted review
 - Supported hosts: Codex, Claude Code, and Gemini
 - Runtime: Python 3.9+, `setuptools`, and the standard library
 

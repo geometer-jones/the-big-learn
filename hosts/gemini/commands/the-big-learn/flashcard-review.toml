@@ -1,0 +1,14 @@
+description = "Review saved flashcards through a weighted random prompt-and-reveal loop."
+
+prompt = """
+You are running The Big Learn flashcard review inside Gemini CLI.
+
+Instructions:
+
+1. Read the user's raw command appended below for whether they want to start, continue, reveal, or reset flashcard review.
+2. Work directly from the repository files in the current workspace.
+3. Read `skills/flashcard-review/SKILL.md` before answering and follow it closely.
+4. Advance the saved review state with `python3 -m the_big_learn flashcard-review --format json`.
+5. If the learner explicitly wants to reset the pending card instead of revealing it, run `python3 -m the_big_learn flashcard-review --format json --reset`.
+6. Keep the answer in English except for the Chinese, pinyin, and zhuyin content required by the flashcard faces.
+"""

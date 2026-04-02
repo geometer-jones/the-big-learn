@@ -17,6 +17,7 @@ class ClaudeHostTests(unittest.TestCase):
         self.assertNotIn("deferred-answer", names)
         self.assertNotIn("question-queue", names)
         self.assertNotIn("source-text-reader", names)
+        self.assertIn("flashcard-review", names)
         self.assertIn("update", names)
 
     def test_install_claude_skills_copies_skills(self) -> None:
@@ -27,6 +28,7 @@ class ClaudeHostTests(unittest.TestCase):
 
             self.assertIn("the-big-learn-guided-reading", installed_names)
             self.assertIn("the-big-learn-explode-char", installed_names)
+            self.assertIn("the-big-learn-flashcard-review", installed_names)
             self.assertNotIn("the-big-learn-question-queue", installed_names)
             self.assertNotIn("the-big-learn-source-text-reader", installed_names)
             self.assertIn("the-big-learn-update", installed_names)
@@ -103,6 +105,7 @@ class ClaudeHostTests(unittest.TestCase):
             self.assertIn("guided reading centered on the base text", launcher_content)
             self.assertIn("This way you come to your questions when the answers are ready", launcher_content)
             self.assertIn("you do not disturb the flow of reading", launcher_content)
+            self.assertIn("flagged, and they should keep reading while the reply arrives", launcher_content)
             self.assertIn("Continue reading", launcher_content)
             self.assertIn("Choose a chapter", launcher_content)
             self.assertIn("Your translation?", launcher_content)
@@ -118,7 +121,7 @@ class ClaudeHostTests(unittest.TestCase):
             self.assertIn("line location and identity", launcher_content)
             self.assertIn("if the learner asks about the current line or a phrase inside it, answer directly and then return to the translation, discussion, and response loop", launcher_content)
             self.assertIn("after the learner gives a personal translation, give brief, text-grounded feedback on it and invite discussion before advancing", launcher_content)
-            self.assertIn("if that translation feedback discussion closes, prompt the learner with `Your response?`", launcher_content)
+            self.assertIn("if that translation feedback discussion closes, pad `Your response?` with the same brief flow cue", launcher_content)
             self.assertIn("after the learner gives that line-level response, give brief, text-grounded feedback and invite discussion before advancing", launcher_content)
             self.assertIn("persist the current log immediately with `python3 -m the_big_learn progress-save --format json`", launcher_content)
             self.assertIn("another terminal session can see the saved line-by-line translation before chapter end", launcher_content)
@@ -126,6 +129,12 @@ class ClaudeHostTests(unittest.TestCase):
             self.assertIn("saved line-by-line response before chapter end", launcher_content)
             self.assertIn("automatically recommend at most one or two salient characters from the current line", launcher_content)
             self.assertIn("one or two salient characters or phrases worth saving as flashcards", launcher_content)
+            self.assertIn(
+                "convert every non-punctuation character row in that line shell into or update a character-index flashcard",
+                launcher_content,
+            )
+            self.assertIn("append a citation showing work, chapter, line id, and character position", launcher_content)
+            self.assertIn("`significance_flag_count`", launcher_content)
             self.assertIn("the-big-learn-explode-char", launcher_content)
             self.assertIn("return to the same reading spot", launcher_content)
             self.assertIn("Learner Translation Log", launcher_content)
@@ -165,6 +174,8 @@ class ClaudeHostTests(unittest.TestCase):
             self.assertNotIn("translation + response saved", launcher_content)
             self.assertIn("python3 -m the_big_learn flashcard-save --format json", launcher_content)
             self.assertIn("~/.the-big-learn/flashcards/bank/", launcher_content)
+            self.assertIn("~/.the-big-learn/flashcards/review-state.json", launcher_content)
+            self.assertIn("increment that card's `significance_flag_count`", launcher_content)
             self.assertIn("as both a researcher and a philosopher", launcher_content)
             self.assertIn("textual grounding, evidence", launcher_content)
             self.assertIn("mark the matched choice plainly", launcher_content)
@@ -186,6 +197,13 @@ class ClaudeHostTests(unittest.TestCase):
             self.assertIn("Prefer recurring, semantically dense, or graphically teachable characters", launcher_content)
             self.assertIn("When the learner reaches the requested stopping point, return to any deferred questions and comments one by one in reading order", launcher_content)
             self.assertIn("bundled curriculum `source-store/` data where it is packaged", launcher_content)
+
+            flashcard_review = target / "the-big-learn-flashcard-review" / "SKILL.md"
+            review_content = flashcard_review.read_text(encoding="utf-8")
+            self.assertIn("python3 -m the_big_learn flashcard-review --format json", review_content)
+            self.assertIn("weight = significance_flag_count + occurrence_count", review_content)
+            self.assertIn("one randomly chosen face first", review_content)
+            self.assertIn("the next review step, reveal both faces", review_content)
 
 
 if __name__ == "__main__":

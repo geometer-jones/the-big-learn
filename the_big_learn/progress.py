@@ -7,8 +7,10 @@ from pathlib import Path
 from typing import Any
 
 from .bundled_sources import BUNDLED_SOURCES
+from .flashcards import save_character_index_entries
 from .repository import RepositoryError, load_lines
 from .source_catalog import (
+    build_source_reading_pass,
     load_saved_source_catalog,
     load_saved_source_chapter,
     save_source_chapter_generated_annotations,
@@ -760,16 +762,36 @@ def save_chapter_generated_annotations(
     *,
     saved_at: int | None = None,
 ) -> dict[str, Any]:
-    chapter = _resolve_chapter_entry(work, section)
+    normalized_work = _normalize_work_id(work)
+    chapter = _resolve_chapter_entry(normalized_work, section)
     source_url = chapter.get("source_url")
     if not isinstance(source_url, str) or not source_url.strip():
         raise ValueError(
-            f"Chapter {section!r} for work {work!r} is not source-backed and cannot store generated annotations."
+            f"Chapter {section!r} for work {normalized_work!r} is not source-backed and cannot store generated annotations."
         )
 
-    return save_source_chapter_generated_annotations(
+    saved = save_source_chapter_generated_annotations(
         source_url,
         str(chapter["id"]),
         generated_annotations,
         saved_at=saved_at,
     )
+    reading_pass = build_source_reading_pass(source_url, str(chapter["id"]))
+    lines_by_id = {
+        str(line["id"]): line
+        for line in reading_pass.get("lines", [])
+        if isinstance(line, dict) and isinstance(line.get("id"), str)
+    }
+    indexed_lines = [lines_by_id[line_id] for line_id in saved.get("line_ids", []) if line_id in lines_by_id]
+    if indexed_lines:
+        character_index_result = save_character_index_entries(
+            normalized_work,
+            str(chapter["id"]),
+            indexed_lines,
+            source_url=source_url,
+        )
+        saved["saved_character_index_cards"] = character_index_result["entry_count"]
+        saved["saved_character_index_citations"] = character_index_result["citation_count"]
+        saved["character_index_bank_entry_ids"] = character_index_result["bank_entry_ids"]
+
+    return saved

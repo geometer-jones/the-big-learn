@@ -136,7 +136,7 @@ The first skill set should stay narrow:
 - source-text reader
 - guided-reading launcher with built-in line-grounded question handling
 - flashcard bank inserter
-- flashcard variation generator
+- flashcard review
 
 That is enough to prove the loop.
 

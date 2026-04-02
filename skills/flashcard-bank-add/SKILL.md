@@ -32,6 +32,10 @@ Use the repository files in the workspace to recover the source line, segment, a
 - eligible prompt layers
 - status
 
+Optional field:
+
+- `significance_flag_count` when the learner explicitly marks the card as especially significant or relevant
+
 ## Rules
 
 - Prefer phrase-level entries when the learner asked about a phrase.
@@ -39,6 +43,7 @@ Use the repository files in the workspace to recover the source line, segment, a
 - Do not create duplicate bank entries if the same segment already exists.
 - For single-character entries, `translation_en` may legitimately be identical to `gloss_en`; do not force a longer English translation just to make the two fields differ.
 - Preserve the learner-origin note so future review can explain why this card matters.
+- If the learner is flagging a newly created card as especially significant or relevant, initialize `significance_flag_count` to `1`; later flags should increment the saved count instead of creating duplicate cards.
 - When the bank entry is ready, save it with `python3 -m the_big_learn flashcard-save --format json`.
 - The saved bank entry lives under `$THE_BIG_LEARN_STATE_DIR/flashcards/bank/` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise under `~/.the-big-learn/flashcards/bank/`.
 
@@ -53,4 +58,4 @@ All six layers should be stored when available:
 - gloss_en
 - translation_en
 
-Storing zhuyin and pinyin does not make them separate prioritized review directions. That priority is defined separately by the flashcard variation policy.
+Storing zhuyin and pinyin does not make them separate prioritized review faces. Review presentation is defined separately by the flashcard review flow.

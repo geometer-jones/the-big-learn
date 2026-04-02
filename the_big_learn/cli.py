@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import random
 import sys
 from pathlib import Path
 from typing import Callable
@@ -10,7 +11,7 @@ from . import __version__
 from .claude_host import default_claude_target, install_claude_skills
 from .display import canonical_layer_name, format_hanzi_layers, format_reading_layers
 from .codex_host import default_codex_target, install_codex_skills
-from .flashcards import save_flashcard_artifacts
+from .flashcards import run_flashcard_review_step, save_flashcard_artifacts
 from .gemini_host import default_gemini_target, install_gemini_commands
 from .progress import (
     guided_reading_catalog,
@@ -180,6 +181,14 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     flashcard_save_parser.add_argument("--format", choices=["markdown", "json"], default="markdown")
 
+    flashcard_review_parser = subparsers.add_parser(
+        "flashcard-review",
+        help="Step through weighted flashcard review, alternating prompt and reveal.",
+    )
+    flashcard_review_parser.add_argument("--format", choices=["markdown", "json"], default="markdown")
+    flashcard_review_parser.add_argument("--seed", type=int)
+    flashcard_review_parser.add_argument("--reset", action="store_true")
+
     return parser
 
 
@@ -292,6 +301,14 @@ def _render_progress_save_markdown(result: dict) -> str:
     if isinstance(saved_generated_annotations, int):
         chunks.append(f"- Saved generated annotations: {saved_generated_annotations}")
 
+    saved_character_index_cards = result.get("saved_character_index_cards")
+    if isinstance(saved_character_index_cards, int):
+        chunks.append(f"- Character index cards touched: {saved_character_index_cards}")
+
+    saved_character_index_citations = result.get("saved_character_index_citations")
+    if isinstance(saved_character_index_citations, int):
+        chunks.append(f"- Character index citations added: {saved_character_index_citations}")
+
     generated_annotation_chapter_path = result.get("generated_annotation_chapter_path")
     if isinstance(generated_annotation_chapter_path, str) and generated_annotation_chapter_path.strip():
         chunks.append(f"- Generated annotation chapter file: {generated_annotation_chapter_path}")
@@ -354,6 +371,10 @@ def _render_source_reading_pass_markdown(result: dict) -> str:
     if isinstance(saved_annotation_count, int) and saved_annotation_count:
         chunks.append(f"- Reading units with saved generated annotations: {saved_annotation_count}")
 
+    saved_character_index_count = result.get("saved_character_index_count")
+    if isinstance(saved_character_index_count, int) and saved_character_index_count:
+        chunks.append(f"- Reading units reconstructed from character index: {saved_character_index_count}")
+
     chunks.append("")
 
     for index, line in enumerate(result["lines"], start=1):
@@ -363,6 +384,8 @@ def _render_source_reading_pass_markdown(result: dict) -> str:
         chunks.append(f"Line {line_index}/{line_count}")
         if line.get("has_saved_generated_annotation"):
             chunks.append("Saved generated annotation: yes")
+        if line.get("has_saved_character_index_annotation"):
+            chunks.append("Reconstructed from character index: yes")
         chunks.append(line["text"])
         chunks.append("")
 
@@ -382,6 +405,38 @@ def _render_flashcard_save_markdown(result: dict) -> str:
     if "variations_path" in result:
         chunks.append(f"- Variations file: {result['variations_path']}")
         chunks.append(f"- Saved variations: {result['variation_count']}")
+
+    if "significance_flag_count" in result:
+        chunks.append(f"- Significance flags: {result['significance_flag_count']}")
+
+    return "\n".join(chunks).strip()
+
+
+def _render_flashcard_review_markdown(result: dict) -> str:
+    chunks = [
+        "# Flashcard Review",
+        "",
+        f"- Phase: {result['phase']}",
+        f"- Bank entry id: {result['bank_entry_id']}",
+        f"- Status: {result['status']}",
+        f"- Origin: {result['origin_kind']}",
+        f"- Weight: {result['weight']}",
+        f"- Significance flags: {result['significance_flag_count']}",
+        f"- Occurrences: {result['occurrence_count']}",
+        "",
+        "## Visible",
+    ]
+    for face in result["visible_faces"]:
+        label = "Reading + definitions" if face["name"] == "reading" else "Hanzi"
+        chunks.append(f"- {label}: {face['text']}")
+
+    if result["phase"] == "prompt":
+        hidden_label = "reading + definitions" if result["hidden_face_name"] == "reading" else "hanzi"
+        chunks.append("")
+        chunks.append(f"Next step reveals: {hidden_label}")
+    else:
+        chunks.append("")
+        chunks.append("Next step draws a new card.")
 
     return "\n".join(chunks).strip()
 
@@ -525,6 +580,12 @@ def main(argv: list[str] | None = None) -> int:
             if generated_annotation_result is not None:
                 result["saved_generated_annotations"] = generated_annotation_result["saved_annotation_count"]
                 result["generated_annotation_chapter_path"] = generated_annotation_result["chapter_path"]
+                if "saved_character_index_cards" in generated_annotation_result:
+                    result["saved_character_index_cards"] = generated_annotation_result["saved_character_index_cards"]
+                if "saved_character_index_citations" in generated_annotation_result:
+                    result["saved_character_index_citations"] = generated_annotation_result[
+                        "saved_character_index_citations"
+                    ]
         except ValueError as exc:
             print(str(exc), file=sys.stderr)
             return 1
@@ -658,6 +719,7 @@ def main(argv: list[str] | None = None) -> int:
             bank_entry=bank_entry,
             bank_entry_id=payload.get("bank_entry_id"),
             variations=payload.get("variations"),
+            significance_flag_increment=payload.get("significance_flag_increment"),
         )
         result = {
             "bank_entry_id": saved.get("bank_entry", {}).get("id", saved.get("bank_entry_id")),
@@ -667,7 +729,25 @@ def main(argv: list[str] | None = None) -> int:
         if "variations_path" in saved:
             result["variations_path"] = saved["variations_path"]
             result["variation_count"] = saved["variation_count"]
+        if "significance_flag_count" in saved:
+            result["significance_flag_count"] = saved["significance_flag_count"]
+        elif "bank_entry" in saved and "significance_flag_count" in saved["bank_entry"]:
+            result["significance_flag_count"] = saved["bank_entry"]["significance_flag_count"]
         output = _render_flashcard_save_markdown(result) if args.format == "markdown" else render_json(result)
+        print(output)
+        return 0
+
+    if args.command == "flashcard-review":
+        try:
+            result = run_flashcard_review_step(
+                rng=random.Random(args.seed) if args.seed is not None else None,
+                reset=args.reset,
+            )
+        except ValueError as exc:
+            print(str(exc), file=sys.stderr)
+            return 1
+
+        output = _render_flashcard_review_markdown(result) if args.format == "markdown" else render_json(result)
         print(output)
         return 0
 

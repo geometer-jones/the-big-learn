@@ -45,11 +45,12 @@ Work directly from the repository files in the current workspace.
 - do not offer or persist a separate reading-style mode switch; guided reading uses one steady support posture
 - use that steady support posture consistently: keep support labels explicit, answer direct questions in the current line discussion, let the learner defer a question to the stopping point without creating a visible queue, persist progress as soon as it is available, and surface flashcard candidates from durable confusion
 - use the recurring prompt vocabulary from `DESIGN.md` exactly: `Continue reading`, `Choose a chapter`, `Your translation?`, `Your response?`, and `Retry save`
+- keep those exact action labels, but pad `Your translation?` and `Your response?` with a brief English flow cue telling the learner that questions or comments are welcome as they arise, sticky characters can be exploded, especially significant or relevant flashcards can be flagged, and they should keep reading while the reply arrives so they can come back to it in flow
 - when the opening menu is displayed, indicate which sections already have a saved personal translation log and which sections already have a saved personal response log
 - use saved-work tags that stay explicit and short: `[translation saved]`, `[response saved]`, or `[unsaved]`; when both chapter artifacts exist, show both saved tags side by side
 - let the learner choose which chapter to read by replying with either the chapter number or the chapter name
 - lead the chapter-selection prompt with `Choose a chapter`
-- when the selected text begins, open with a recommendation in English along these lines: We recommend you submit questions or comments as they arise, but stay in the same continuous pass of reading. This way you come to your questions when the answers are ready, and you do not disturb the flow of reading.
+- when the selected text begins, open with a recommendation in English along these lines: We recommend you submit questions or comments as they arise, ask to explode sticky characters, flag especially significant or relevant flashcards, and stay in the same continuous pass of reading. While the reply is arriving, keep reading and come back to it as it lands. This way you come to your questions when the answers are ready, and you do not disturb the flow of reading.
 - keep guided reading centered on the base text; you may draw on commentaries to clarify difficult passages, but do not substitute editorial framing or commentary for the text being read
 - when a raw-source reading unit already carries saved generated layers, segments, or character glosses from an earlier session, you may render that stored help in the line shell from `DESIGN.md`: `Your translation?`, full-line simplified Hanzi, full-line English, then a five-column table in this order: Chinese, Reading, English Definition, Chinese Phrase, English Phrase Translation, using rowspans for encoded multi-character phrases, keeping simplified primary throughout the char-by-char table while appending traditional in parens only where it differs, keeping pinyin primary with zhuyin in parens, and using semicolon-separated context-free character definitions in the `English Definition` column, then the same full line again in English and simplified Hanzi, then line location and identity, then `Your translation?`; if a learner translation is already recorded for that line, show it immediately under that bottom prompt
 - if the host surface is narrow or the five-column table becomes hard to read, switch to a stacked per-character list that preserves the same information order instead of forcing a cramped table
@@ -60,19 +61,23 @@ Work directly from the repository files in the current workspace.
 - if you provide transliteration, glossing, or translation help in raw-source mode, make clear that it is live assistant help grounded in the current source line, not pre-encoded repository annotation
 - if a chosen source interleaves base text with commentary, ignore commentary-only rows, chapter summaries, and commentary chapters in the main reading pass; render only the classic's core text and label any commentary you bring in as supplemental context
 - if a book or chapter title does not have stored six-layer data, make clear that any title readings or glosses you provide are live assistant help rather than pre-encoded repository annotation
-- after each line, prompt the learner with `Your translation?` and keep the request in English
+- after each line, keep the request in English and pad `Your translation?` with that brief flow cue instead of presenting it as an abrupt standalone command
 - if the learner asks about the current line or a phrase inside it, answer directly and then return to the translation, discussion, and response loop
 - after the learner gives a personal translation, give brief, text-grounded feedback on it and invite discussion before advancing
-- if that translation feedback discussion closes, prompt the learner with `Your response?` for a short personal response to the line or claim before advancing
+- if that translation feedback discussion closes, pad `Your response?` with the same brief flow cue and use it for a short personal response to the line or claim before advancing
 - after the learner gives that line-level response, give brief, text-grounded feedback and invite discussion before advancing
 - after the learner gives that line-level response, automatically recommend at most one or two salient characters from the current line that would be worth exploding with `the-big-learn-explode-char`, and at most one or two salient characters or phrases worth saving as flashcards, with a short reason for each recommendation
 - if a phrase rather than a single Hanzi is doing the main conceptual work, recommend the phrase for flashcards and, if helpful, the most semantically dense character inside it for explosion
+- as soon as the current line has enough line-shell data to support simplified, traditional, pinyin, zhuyin, and per-character English definitions, convert every non-punctuation character row in that line shell into or update a character-index flashcard
+- those automatic character-index flashcards should merge by character slice instead of duplicating: if the character already exists in the bank, append a citation showing work, chapter, line id, and character position instead of incrementing an appearance counter; reserve `significance_flag_count` for explicit learner flags that mark a card as especially significant or relevant
 - if exploder content is not ready yet, keep reading moving, do not block the next reading prompt on exploder latency, and surface it later at the learner's stopping point or when the learner explicitly asks for it
 - if the learner wants to explode one of those characters immediately, switch briefly to `the-big-learn-explode-char` for that character, then return to the same reading spot
 - record each learner translation attempt in a running `Learner Translation Log` keyed by line id as soon as it is given, and keep any revisions attached to that same line through the feedback discussion
 - after each new or revised `Learner Translation Log` entry, persist the current log immediately with `python3 -m the_big_learn progress-save --format json` using the current work, chapter, and `learner_translation_log` payload, so another terminal session can see the saved line-by-line translation before chapter end
 - record each learner line-level response in a running `Learner Response Log` keyed by line id as soon as it is given, and keep any revisions attached to that same line through the response feedback discussion
 - after each new or revised `Learner Response Log` entry, persist the current log immediately with `python3 -m the_big_learn progress-save --format json` using the current work, chapter, and `learner_response_log` payload, so another terminal session can see the saved line-by-line response before chapter end
+- when raw-source mode generates or revises reusable line-shell help, persist that line immediately with `python3 -m the_big_learn progress-save --format json` using the current work, chapter, and `generated_annotations`, so the runtime can update the shared character-index flashcard bank during the main loop instead of waiting for chapter end
+- treat that automatic bank as a cumulative cross-book index: by the end of guided reading, the learner should have one deduplicated flashcard per saved character slice, with citations showing every place it appeared
 - keep learner questions tied to the visible line id or phrase under discussion when possible, acknowledge them briefly, and answer them in that same line context without creating a separate question list, counter, or follow-up phase
 - during the reading pass, answer learner questions as soon as they are asked, then resume the reading loop from the same line with `Continue reading`
 - if the learner wants to leave a question for later, acknowledge it briefly, keep no visible queue, and return to it at the stopping point in reading order
@@ -91,7 +96,7 @@ Work directly from the repository files in the current workspace.
 - if `python3 -m the_big_learn progress-save --format json` fails, show `[Save did not complete]`, keep the unsaved `Personal Summary` and `Personal Response` visible in the thread, show an explicit `[unsaved]` state block, offer `Retry save`, and do not move into the next book until persistence succeeds
 - if the learner asks follow-up questions after reaching a stopping point, answer them directly inside the same guided-reading session instead of switching into a separate review mode
 - surface durable confusion points as flashcard candidates without waiting to be asked
-- when a flashcard candidate becomes a real card, save the bank entry and any generated variations with `python3 -m the_big_learn flashcard-save --format json` instead of leaving them only in chat
+- when a flashcard candidate becomes a real card, save the bank entry with `python3 -m the_big_learn flashcard-save --format json` instead of leaving it only in chat
 
 ## Repository Files
 
@@ -101,7 +106,7 @@ Work directly from the repository files in the current workspace.
 - The guided-reading progress store lives at `$THE_BIG_LEARN_STATE_DIR/reading-progress.json` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise at `~/.the-big-learn/reading-progress.json`.
 - Source catalogs and downloaded raw chapters are saved under `$THE_BIG_LEARN_STATE_DIR/source-store/` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise under `~/.the-big-learn/source-store/`.
 - Flashcard bank entries are saved under `$THE_BIG_LEARN_STATE_DIR/flashcards/bank/` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise under `~/.the-big-learn/flashcards/bank/`.
-- Flashcard variation sets are saved under `$THE_BIG_LEARN_STATE_DIR/flashcards/variations/` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise under `~/.the-big-learn/flashcards/variations/`.
+- Flashcard review-step state is saved under `$THE_BIG_LEARN_STATE_DIR/flashcards/review-state.json` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise under `~/.the-big-learn/flashcards/review-state.json`.
 
 The opening guided-reading menu should include the full curriculum from `CURRICULUM.md`:
 
@@ -179,7 +184,8 @@ For `Da Xue`, use the same source-backed chapter path as the rest of the shipped
 - Keep that evaluation constructive and text-grounded. Distinguish what the chapter explicitly supports from what is the learner's own extrapolation.
 - When the learner reaches the requested stopping point, return to any deferred questions and comments one by one in reading order, then answer any new follow-up questions one by one in the same thread before offering the next step.
 - For each follow-up answer, repeat the line id and phrase under discussion, answer the direct question plainly, explain the local language point, separate literal gloss from interpretive translation, note important variants when they matter, and suggest a flashcard candidate when the confusion is durable.
-- If the learner wants to keep that durable confusion for review, route the item through `the-big-learn-flashcard-bank-add` and `the-big-learn-flashcard-variation-generator`, then persist the resulting bank entry and any generated variations with `python3 -m the_big_learn flashcard-save --format json`.
+- If the learner wants to keep that durable confusion for review, route the item through `the-big-learn-flashcard-bank-add`, persist the resulting bank entry with `python3 -m the_big_learn flashcard-save --format json`, and use `the-big-learn-flashcard-review` later to review it.
+- If the learner flags a saved flashcard as especially significant or relevant, increment that card's `significance_flag_count` and persist the update with `python3 -m the_big_learn flashcard-save --format json` instead of creating a duplicate card.
 - Lead with the direct answer, not a lecture.
 - Do not flatten classical ambiguity into fake certainty.
 

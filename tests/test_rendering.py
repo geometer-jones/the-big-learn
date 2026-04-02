@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 
-from the_big_learn.rendering import render_lines_markdown
+from the_big_learn.rendering import TRANSLATION_PROMPT, render_lines_markdown
 
 
 class RenderingTests(unittest.TestCase):
@@ -56,7 +56,9 @@ class RenderingTests(unittest.TestCase):
             output.rindex("学问之道，在止于善。"),
         )
         self.assertIn("Line 1/1 | demo-line-001", output)
-        self.assertEqual(output.count("Your translation?"), 2)
+        self.assertEqual(output.count(TRANSLATION_PROMPT), 2)
+        self.assertIn("Raise any questions or comments as they come up.", output)
+        self.assertIn("flag it.", output)
         self.assertNotIn("- Traditional:", output)
         self.assertNotIn("| Simplified | Traditional | Zhuyin | Pinyin | Gloss EN |", output)
 
@@ -95,7 +97,7 @@ class RenderingTests(unittest.TestCase):
             output.rindex("知止而定。"),
             output.index("Line 1/1 | demo-line-002"),
         )
-        self.assertTrue(output.rstrip().endswith("Line 1/1 | demo-line-002\nYour translation?"))
+        self.assertTrue(output.rstrip().endswith(f"Line 1/1 | demo-line-002\n{TRANSLATION_PROMPT}"))
 
     def test_render_lines_markdown_prefers_explicit_container_position_metadata(self) -> None:
         output = render_lines_markdown(
@@ -151,7 +153,7 @@ class RenderingTests(unittest.TestCase):
         self.assertIn("<td>person</td>", output)
         self.assertIn("<td>心</td>", output)
         self.assertLess(output.rindex("人心"), output.index("Line 1/1 | demo-line"))
-        self.assertTrue(output.rstrip().endswith("Line 1/1 | demo-line\nYour translation?"))
+        self.assertTrue(output.rstrip().endswith(f"Line 1/1 | demo-line\n{TRANSLATION_PROMPT}"))
 
     def test_render_lines_markdown_keeps_tone_marked_pinyin_and_phrase_cells(self) -> None:
         output = render_lines_markdown(
@@ -184,7 +186,7 @@ class RenderingTests(unittest.TestCase):
         self.assertIn("<td>lǜ(ㄌㄩˋ)</td>", output)
         self.assertIn("<td>deliberate</td>", output)
         self.assertLess(output.rindex("虑"), output.index("Line 1/1 | demo-line-umlaut"))
-        self.assertTrue(output.rstrip().endswith("Line 1/1 | demo-line-umlaut\nYour translation?"))
+        self.assertTrue(output.rstrip().endswith(f"Line 1/1 | demo-line-umlaut\n{TRANSLATION_PROMPT}"))
 
     def test_render_lines_markdown_renders_phrase_translation_cells_with_segment_rowspan(self) -> None:
         output = render_lines_markdown(
@@ -300,7 +302,7 @@ class RenderingTests(unittest.TestCase):
         self.assertEqual(output.count("Chinese Phrase: 知止 〃"), 2)
         self.assertEqual(output.count("English Phrase Translation: know where to stop"), 2)
         self.assertIn("Line 1/1 | demo-line-stacked", output)
-        self.assertTrue(output.rstrip().endswith("Line 1/1 | demo-line-stacked\nYour translation?"))
+        self.assertTrue(output.rstrip().endswith(f"Line 1/1 | demo-line-stacked\n{TRANSLATION_PROMPT}"))
 
     def test_render_lines_markdown_fills_single_character_phrase_translation_cells_from_character_definitions(self) -> None:
         output = render_lines_markdown(
@@ -383,20 +385,20 @@ class RenderingTests(unittest.TestCase):
             ],
         )
 
-        self.assertEqual(output.count("Your translation?"), 2)
+        self.assertEqual(output.count(TRANSLATION_PROMPT), 2)
         self.assertIn("I should know where to stop.", output)
         self.assertNotIn("Instruction:", output)
         self.assertIn("Line 1/1 | demo-line-personal", output)
         self.assertLess(output.rindex("知止"), output.index("Line 1/1 | demo-line-personal"))
         self.assertLess(
             output.index("Line 1/1 | demo-line-personal"),
-            output.rindex("Your translation?"),
+            output.rindex(TRANSLATION_PROMPT),
         )
         self.assertLess(
-            output.rindex("Your translation?"),
+            output.rindex(TRANSLATION_PROMPT),
             output.index("I should know where to stop."),
         )
-        self.assertTrue(output.rstrip().endswith("Your translation?\nI should know where to stop."))
+        self.assertTrue(output.rstrip().endswith(f"{TRANSLATION_PROMPT}\nI should know where to stop."))
 
 
 if __name__ == "__main__":

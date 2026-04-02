@@ -128,6 +128,12 @@ Emit JSON instead of Markdown:
 python3 -m the_big_learn session --format json
 ```
 
+Step through weighted flashcard review:
+
+```bash
+python3 -m the_big_learn flashcard-review --format json
+```
+
 Check whether a newer upstream version is available:
 
 ```bash
@@ -168,6 +174,7 @@ The CLI stores local state under `~/.the-big-learn/` by default. That state dire
 - `installed-version` for `JUST_UPGRADED` detection
 - `reading-progress.json` for saved chapter-level line translation and line response logs plus book-level summary and response progress
 - `source-store/` for cached live source catalogs, HTML snapshots, downloaded chapter payloads, and any saved generated line annotations for raw-source reading units
+- `flashcards/review-state.json` for the pending flashcard-review step when a card has been shown but not yet revealed
 
 Supported environment overrides:
 
@@ -200,7 +207,7 @@ There is also a targeted starter-data audit script in `scripts/verify_starter_da
 - answers learner questions from the starter fixture
 - emits deterministic line-grounded answers
 - creates flashcard bank entries
-- generates review card variations from the default layer policy
+- steps through weighted flashcard review with alternating prompt and reveal states
 
 The host loop can run directly from the repository files. The CLI remains useful when you want repeatable rendering, fixture playback, installer commands, or alternate source ingestion beyond the bundled curriculum set.
 

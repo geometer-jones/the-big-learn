@@ -7,9 +7,7 @@ The Big Learn is a thread-native product. Its design system is mostly language, 
 This file is the canonical design source for cross-host thread surfaces in Codex, Claude Code, and later Gemini. Use it to keep vocabulary, rhythm, and interaction shapes consistent across hosts.
 
 ## Principles
-
-- Keep the text louder than the assistant.
-- Preserve continuity. Reading should not shatter because help is available.
+- Preserve continuity. Reading should flow smoothly even though help is available.
 - One ritual, one steady support posture.
 
 ## Guided-Reading Posture
@@ -17,6 +15,9 @@ This file is the canonical design source for cross-host thread surfaces in Codex
 Guided reading uses one fixed posture:
 - answer direct line-grounded questions immediately when the learner asks
 - auto-recommend a very small number of salient character and phrase follow-ups for exploding and flashcards
+- as each line shell is completed, fold every non-punctuation character row into the persistent character-index flashcard bank
+- merge repeated characters into the existing flashcard instead of creating duplicates, store citations of each appearance, and keep a separate `significance_flag_count` for the number of times the learner explicitly flags that card as significant or relevant
+- let those saved cards feed a later weighted review loop instead of generating a separate variation matrix
 - persist progress as soon as the relevant artifact exists
 - as each learner translation is recorded, update and save the current `Personal Translation` immediately
 - when a chapter closes, finalize and save the latest stitched `Personal Translation` without opening a separate chapter-end response checkpoint
@@ -48,12 +49,32 @@ This posture does not change:
 - preference for common, teachable examples over obscure or speculative ones
 - explicit labels when a decomposition or containment claim is only graphical or uncertain
 
+## Flashcard-Review Posture
+
+Flashcard review is a lightweight recall loop, not a deck-builder.
+
+- sample saved cards from a weighted distribution
+- use `weight = significance_flag_count + occurrence_count`
+- treat `occurrence_count` as the number of saved citations on that card
+- show exactly one randomly chosen face first
+- on the next step, reveal both faces for that same card
+- then move directly to the next weighted random card
+- do not generate alternate prompt-direction sets for the same entry
+
+This posture does not change:
+
+- simplified-first Hanzi display, with traditional in parentheses only when it differs
+- reading display as `pinyin (zhuyin)`
+- reading face definitions rendered from the saved semicolon-separated English definitions
+- reveal order fixed as Hanzi first, then Reading plus definitions
+
 ## Surface Vocabulary
 
 Use the same small vocabulary across hosts:
 
 - Saved-work tags: `[translation saved]`, `[response saved]`, `[unsaved]`
 - Primary action prompts: `Continue reading`, `Choose a chapter`, `Your translation?`, `Your response?`, `Retry save`
+- Flow cue prefix: a brief English lead-in ahead of `Your translation?` or `Your response?` inviting questions and comments, suggesting explode-char and flashcard flags, and telling the learner to keep reading while the reply arrives so they can return to it in flow
 - Failure state heading: `[Save did not complete]`
 - Explode-char section labels: `Analysis`, `Synthesis`, `Phrase Use`, `Containing Characters`, `Homophones`, `Meaning Map`, `Flashcard Candidates`
 
@@ -62,6 +83,7 @@ Rules:
 - Keep tags compact and factual.
 - Keep primary actions short and imperative.
 - Use `Your response?` for line-level reflection and book-end reflection, not as a chapter-transition gate.
+- Keep the exact action labels unchanged even when a flow cue prefix is added ahead of them.
 - Secondary actions should be fewer and visually quieter than primary actions.
 - Avoid emojis, decorative separators, and marketing-style headings in the reading flow.
 
@@ -103,7 +125,7 @@ Title line shell:
 
 Default order:
 
-0. Learner prompt
+0. Flow cue + learner prompt
 1. Simplified Chinese line
 2. English line
 3. Char-by-char support table
@@ -115,11 +137,13 @@ Default order:
 4. English line
 5. Simplified Chinese line
 6. Line location/identity (e.g. line i of chapter k of book n)
-7. Learner prompt
+7. Flow cue + learner prompt
 
 Rules:
 - The Chinese line is the visual anchor.
 - The char-by-char does most of the structural work.
+- The flow cue should say that questions or comments are welcome as they arise, suggest exploding a sticky character or flagging a significant flashcard, and recommend continuing to read while the assistant response is arriving.
+- The current line shell is also the extraction surface for character-index flashcards: simplified, traditional, pinyin, zhuyin, and semicolon-separated English definitions should be recoverable from it for each saved character row.
 
 ### Explode-Char Turn
 
@@ -139,6 +163,27 @@ Rules:
 - Render every reading inline as `pinyin (zhuyin)`.
 - Keep `Synthesis` subsection order fixed: `Containing Characters, ie character that contain the exploded-char within its composition`, `Phrase Use, ie multi-character phrases that contain the exploded-char as one char`, `Homophones`, `Synonyms`, `Antonyms`, `Flashcard Candidates`.
 - Try to divine the etymology, but be disciplined in qualifying the strength of your hunches
+
+### Flashcard-Review Turn
+
+Hierarchy:
+
+1. One visible review face
+2. Short prompt to recall the hidden face
+3. On the next step, both faces visible
+4. Short bridge into the next card
+
+Card faces:
+
+- Hanzi face: simplified Chinese, with traditional in parentheses only when it differs
+- Reading face: `pinyin (zhuyin)` followed by the semicolon-separated saved English definitions
+
+Rules:
+
+- The prompt step shows only one face.
+- The reveal step shows both faces in a fixed order: Hanzi first, then Reading plus definitions.
+- After the reveal step, the next advance should draw a fresh weighted random card instead of lingering on the previous one.
+- The review turn should stay compact and non-discursive unless the learner explicitly asks for explanation.
 
 ### Chapter End
 
@@ -170,7 +215,10 @@ Hierarchy:
 
 ## States
 
-- Keep automatic recommendations to one or two characters for exploding and one or two characters or phrases for flashcards at a time.
+- Keep explicit recommendations to one or two characters for exploding and one or two characters or phrases for optional study cards at a time.
+- The automatic character-index flashcards are separate infrastructure: they update silently as lines are processed and should accumulate into a full cross-book character index.
+- Text appearances still accumulate through citations; explicit learner flags increment a separate `significance_flag_count`.
+- Those two signals together determine later review frequency through the weighted review loop.
 
 ### Save Failure
 

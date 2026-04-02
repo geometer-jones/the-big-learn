@@ -19,6 +19,7 @@ class GeminiHostTests(unittest.TestCase):
             self.assertEqual({path.name for path in installed}, {"the-big-learn"})
             self.assertTrue((target / "the-big-learn" / "guided-reading.toml").exists())
             self.assertTrue((target / "the-big-learn" / "explode-char.toml").exists())
+            self.assertTrue((target / "the-big-learn" / "flashcard-review.toml").exists())
             self.assertFalse((target / "the-big-learn" / "deferred-answer.toml").exists())
             guided_reading = (target / "the-big-learn" / "guided-reading.toml").read_text(encoding="utf-8")
             self.assertNotIn("current reading path", guided_reading)
@@ -297,7 +298,11 @@ class GeminiHostTests(unittest.TestCase):
                 guided_reading,
             )
             self.assertIn(
-                "prompt the learner with `Your translation?` in English",
+                "flagged, and they should keep reading while the reply arrives",
+                guided_reading,
+            )
+            self.assertIn(
+                "pad `Your translation?` with that brief flow cue",
                 guided_reading,
             )
             self.assertIn(
@@ -317,7 +322,7 @@ class GeminiHostTests(unittest.TestCase):
                 guided_reading,
             )
             self.assertIn(
-                "prompt the learner with `Your translation?` in English",
+                "`significance_flag_count`",
                 guided_reading,
             )
             self.assertIn(
@@ -329,7 +334,7 @@ class GeminiHostTests(unittest.TestCase):
                 guided_reading,
             )
             self.assertIn(
-                "If that translation feedback discussion closes, prompt the learner with `Your response?` for a short personal response to the line or claim before advancing.",
+                "If that translation feedback discussion closes, pad `Your response?` with the same brief flow cue",
                 guided_reading,
             )
             self.assertIn(
@@ -341,6 +346,12 @@ class GeminiHostTests(unittest.TestCase):
                 guided_reading,
             )
             self.assertIn("one or two salient characters or phrases worth saving as flashcards", guided_reading)
+            self.assertIn(
+                "convert every non-punctuation character row in that line shell into or update a character-index flashcard",
+                guided_reading,
+            )
+            self.assertIn("append a citation showing work, chapter, line id, and character position", guided_reading)
+            self.assertIn("increment that card's `significance_flag_count`", guided_reading)
             self.assertIn(
                 "/the-big-learn:explode-char",
                 guided_reading,
@@ -482,6 +493,10 @@ class GeminiHostTests(unittest.TestCase):
                 guided_reading,
             )
             self.assertIn(
+                "~/.the-big-learn/flashcards/review-state.json",
+                guided_reading,
+            )
+            self.assertIn(
                 "bundled curriculum `source-store/` data where it is packaged",
                 guided_reading,
             )
@@ -548,6 +563,9 @@ class GeminiHostTests(unittest.TestCase):
             explode_char = (target / "the-big-learn" / "explode-char.toml").read_text(encoding="utf-8")
             self.assertIn("skills/explode-char/SKILL.md", explode_char)
             self.assertIn("look back through the recent thread for likely Hanzi candidates", explode_char)
+            flashcard_review = (target / "the-big-learn" / "flashcard-review.toml").read_text(encoding="utf-8")
+            self.assertIn("skills/flashcard-review/SKILL.md", flashcard_review)
+            self.assertIn("python3 -m the_big_learn flashcard-review --format json", flashcard_review)
 
 
 if __name__ == "__main__":

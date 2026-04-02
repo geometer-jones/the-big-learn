@@ -14,6 +14,7 @@ from urllib.request import Request, urlopen
 
 from .bundled_sources import BUNDLED_SOURCE_URL_TO_WORK_ID
 from .data_paths import data_root
+from .flashcards import reconstruct_line_from_character_index
 from .repository import HTTP_USER_AGENT
 from .updates import state_dir
 
@@ -1143,7 +1144,20 @@ def build_source_reading_pass(source_url: str, selector: str | int, *, refresh: 
     payload = download_source_chapter(source_url, selector, refresh=refresh)
     chapter = payload["chapter"]
     lines = _annotate_chapter_line_positions(chapter, _reading_lines_from_chapter(chapter))
+    reconstructed_lines: list[dict[str, Any]] = []
+    for line in lines:
+        if line.get("has_saved_generated_annotation"):
+            reconstructed_lines.append(line)
+            continue
+        reconstructed = reconstruct_line_from_character_index(
+            source_url=source_url,
+            section=str(chapter.get("id", "")),
+            line=line,
+        )
+        reconstructed_lines.append(reconstructed or line)
+    lines = reconstructed_lines
     saved_annotation_count = sum(1 for line in lines if line.get("has_saved_generated_annotation"))
+    saved_character_index_count = sum(1 for line in lines if line.get("has_saved_character_index_annotation"))
     return {
         "mode": "raw-source",
         "provider": payload["provider"],
@@ -1153,6 +1167,7 @@ def build_source_reading_pass(source_url: str, selector: str | int, *, refresh: 
         "chapter_path": payload["chapter_path"],
         "line_count": len(lines),
         "saved_annotation_count": saved_annotation_count,
+        "saved_character_index_count": saved_character_index_count,
         "lines": lines,
     }
 

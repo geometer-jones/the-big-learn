@@ -10,6 +10,7 @@ from unittest.mock import patch
 
 from the_big_learn.claude_host import install_claude_skills
 from the_big_learn.cli import _render_session_markdown, main
+from the_big_learn.flashcards import save_bank_entry
 
 
 class CliTests(unittest.TestCase):
@@ -493,6 +494,196 @@ class CliTests(unittest.TestCase):
         self.assertTrue(bank_exists)
         self.assertTrue(variations_exist)
 
+    def test_flashcard_save_command_can_increment_significance_flag_count(self) -> None:
+        create_payload = {
+            "bank_entry": {
+                "id": "fc-da-xue-001-qin-min",
+                "source_work": "da-xue",
+                "source_line_ids": ["da-xue-zhangju-001"],
+                "source_segment_ids": ["da-xue-zhangju-001-d"],
+                "origin": {
+                    "kind": "learner-question",
+                    "question_id": "q-001",
+                    "note": "Learner asked about 亲民(親民).",
+                },
+                "layers": {
+                    "traditional": "親民",
+                    "simplified": "亲民",
+                    "zhuyin": "ㄑㄧㄣ ㄇㄧㄣˊ",
+                    "pinyin": "qīn mín",
+                    "gloss_en": "renew the people",
+                    "translation_en": "renew the people",
+                },
+                "eligible_prompt_layers": [
+                    "simplified",
+                    "traditional",
+                    "pinyin",
+                    "zhuyin",
+                    "gloss_en",
+                    "translation_en",
+                ],
+                "status": "draft",
+            }
+        }
+        increment_payload = {
+            "bank_entry_id": "fc-da-xue-001-qin-min",
+            "significance_flag_increment": 2,
+        }
+        with tempfile.TemporaryDirectory() as tmp, patch(
+            "the_big_learn.flashcards.state_dir",
+            return_value=Path(tmp),
+        ):
+            create_stdout = StringIO()
+            with redirect_stderr(StringIO()), patch("sys.stdout", create_stdout), patch(
+                "sys.stdin",
+                StringIO(json.dumps(create_payload)),
+            ):
+                first_exit_code = main(["flashcard-save", "--format", "json"])
+
+            self.assertEqual(first_exit_code, 0)
+
+            stdout = StringIO()
+            with redirect_stderr(StringIO()), patch("sys.stdout", stdout), patch(
+                "sys.stdin",
+                StringIO(json.dumps(increment_payload)),
+            ):
+                second_exit_code = main(["flashcard-save", "--format", "json"])
+                bank_payload = json.loads(
+                    (Path(tmp) / "flashcards" / "bank" / "fc-da-xue-001-qin-min.json").read_text(encoding="utf-8")
+                )
+
+            self.assertEqual(second_exit_code, 0)
+            result = json.loads(stdout.getvalue())
+            self.assertEqual(result["bank_entry_id"], "fc-da-xue-001-qin-min")
+            self.assertEqual(result["significance_flag_count"], 2)
+            self.assertEqual(bank_payload["significance_flag_count"], 2)
+
+    def test_flashcard_review_command_alternates_between_prompt_and_reveal(self) -> None:
+        stdout = StringIO()
+        with tempfile.TemporaryDirectory() as tmp, patch(
+            "the_big_learn.flashcards.state_dir",
+            return_value=Path(tmp),
+        ), redirect_stderr(StringIO()), patch("sys.stdout", stdout):
+            save_bank_entry(
+                {
+                    "id": "fc-char-u5b78-u5b66",
+                    "source_work": "lunyu",
+                    "source_line_ids": ["chapter-001-line-001", "chapter-002-line-003"],
+                    "source_segment_ids": [],
+                    "origin": {
+                        "kind": "line-index",
+                        "note": "Auto-indexed from guided-reading line shells.",
+                    },
+                    "layers": {
+                        "traditional": "學",
+                        "simplified": "学",
+                        "zhuyin": "ㄒㄩㄝˊ",
+                        "pinyin": "xué",
+                        "gloss_en": "study; learn",
+                        "translation_en": "study; learn",
+                    },
+                    "eligible_prompt_layers": [
+                        "simplified",
+                        "traditional",
+                        "pinyin",
+                        "zhuyin",
+                        "gloss_en",
+                        "translation_en",
+                    ],
+                    "tags": ["character-index", "lunyu"],
+                    "status": "active",
+                    "citations": [
+                        {
+                            "work": "lunyu",
+                            "section": "chapter-001",
+                            "line_id": "chapter-001-line-001",
+                            "char_index": 1,
+                        },
+                        {
+                            "work": "lunyu",
+                            "section": "chapter-002",
+                            "line_id": "chapter-002-line-003",
+                            "char_index": 1,
+                        },
+                    ],
+                    "significance_flag_count": 2,
+                }
+            )
+
+            first_exit_code = main(["flashcard-review", "--format", "json", "--seed", "1"])
+            first = json.loads(stdout.getvalue())
+
+            stdout.seek(0)
+            stdout.truncate(0)
+
+            second_exit_code = main(["flashcard-review", "--format", "json"])
+            second = json.loads(stdout.getvalue())
+
+        self.assertEqual(first_exit_code, 0)
+        self.assertEqual(first["phase"], "prompt")
+        self.assertEqual(first["bank_entry_id"], "fc-char-u5b78-u5b66")
+        self.assertEqual(first["occurrence_count"], 2)
+        self.assertEqual(first["significance_flag_count"], 2)
+        self.assertEqual(first["weight"], 4)
+        self.assertEqual(len(first["visible_faces"]), 1)
+
+        self.assertEqual(second_exit_code, 0)
+        self.assertEqual(second["phase"], "reveal")
+        self.assertEqual(second["bank_entry_id"], "fc-char-u5b78-u5b66")
+        self.assertEqual(len(second["visible_faces"]), 2)
+        self.assertEqual(second["visible_faces"][0]["name"], "hanzi")
+        self.assertEqual(second["visible_faces"][1]["name"], "reading")
+        self.assertEqual(
+            {face["name"] for face in second["visible_faces"]},
+            {"hanzi", "reading"},
+        )
+        self.assertIn("study; learn", second["visible_faces"][1]["text"])
+
+    def test_flashcard_review_command_rejects_empty_or_zero_weight_bank(self) -> None:
+        stderr = StringIO()
+        stdout = StringIO()
+        with tempfile.TemporaryDirectory() as tmp, patch(
+            "the_big_learn.flashcards.state_dir",
+            return_value=Path(tmp),
+        ), redirect_stderr(stderr), patch("sys.stdout", stdout):
+            save_bank_entry(
+                {
+                    "id": "fc-da-xue-001-qin-min",
+                    "source_work": "da-xue",
+                    "source_line_ids": ["da-xue-zhangju-001"],
+                    "source_segment_ids": ["da-xue-zhangju-001-d"],
+                    "origin": {
+                        "kind": "learner-question",
+                        "question_id": "q-001",
+                        "note": "Learner asked about 亲民(親民).",
+                    },
+                    "layers": {
+                        "traditional": "親民",
+                        "simplified": "亲民",
+                        "zhuyin": "ㄑㄧㄣ ㄇㄧㄣˊ",
+                        "pinyin": "qīn mín",
+                        "gloss_en": "renew the people",
+                        "translation_en": "renew the people",
+                    },
+                    "eligible_prompt_layers": [
+                        "simplified",
+                        "traditional",
+                        "pinyin",
+                        "zhuyin",
+                        "gloss_en",
+                        "translation_en",
+                    ],
+                    "status": "draft",
+                    "significance_flag_count": 0,
+                }
+            )
+
+            exit_code = main(["flashcard-review", "--format", "json"])
+
+        self.assertEqual(exit_code, 1)
+        self.assertIn("No flashcards with positive review weight were found.", stderr.getvalue())
+        self.assertEqual("", stdout.getvalue())
+
     def test_source_catalog_command_renders_detected_chapters(self) -> None:
         stdout = StringIO()
         with patch(
@@ -598,6 +789,41 @@ class CliTests(unittest.TestCase):
         self.assertEqual(exit_code, 0)
         self.assertIn("Reading units with saved generated annotations: 1", stdout.getvalue())
         self.assertIn("Saved generated annotation: yes", stdout.getvalue())
+
+    def test_source_read_command_surfaces_character_index_reconstruction(self) -> None:
+        stdout = StringIO()
+        with patch(
+            "the_big_learn.cli.build_source_reading_pass",
+            return_value={
+                "mode": "raw-source",
+                "provider": "ctext-html",
+                "source_url": "https://ctext.org/demo-memory",
+                "source_title": "Demo Source",
+                "chapter_path": "/tmp/chapter-001.json",
+                "line_count": 1,
+                "saved_annotation_count": 0,
+                "saved_character_index_count": 1,
+                "chapter": {
+                    "order": 1,
+                    "title": "學而第一",
+                    "character_count": 6,
+                },
+                "lines": [
+                    {
+                        "id": "chapter-001-line-001",
+                        "text": "學而時習之。",
+                        "character_count": 6,
+                        "has_saved_character_index_annotation": True,
+                        "annotation_source": "saved-character-index",
+                    }
+                ],
+            },
+        ), redirect_stderr(StringIO()), patch("sys.stdout", stdout):
+            exit_code = main(["source", "read", "--url", "https://ctext.org/demo-memory", "--chapter", "1"])
+
+        self.assertEqual(exit_code, 0)
+        self.assertIn("Reading units reconstructed from character index: 1", stdout.getvalue())
+        self.assertIn("Reconstructed from character index: yes", stdout.getvalue())
 
     def test_render_command_can_use_stacked_character_layout(self) -> None:
         stdout = StringIO()

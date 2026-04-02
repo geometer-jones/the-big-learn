@@ -27,6 +27,12 @@
         "type": "string"
       }
     },
+    "source_works": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "source_segment_ids": {
       "type": "array",
       "items": {
@@ -44,6 +50,7 @@
           "type": "string",
           "enum": [
             "learner-question",
+            "line-index",
             "manual-curation",
             "review-session"
           ]
@@ -116,6 +123,71 @@
         "type": "string"
       }
     },
+    "citations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "work",
+          "section",
+          "line_id",
+          "char_index"
+        ],
+        "properties": {
+          "work": {
+            "type": "string"
+          },
+          "section": {
+            "type": "string"
+          },
+          "line_id": {
+            "type": "string"
+          },
+          "source_url": {
+            "type": "string"
+          },
+          "char_index": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "char_traditional": {
+            "type": "string"
+          },
+          "char_simplified": {
+            "type": "string"
+          },
+          "char_zhuyin": {
+            "type": "string"
+          },
+          "char_pinyin": {
+            "type": "string"
+          },
+          "char_gloss_en": {
+            "type": "string"
+          },
+          "line_index_in_container": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "line_traditional": {
+            "type": "string"
+          },
+          "line_simplified": {
+            "type": "string"
+          },
+          "line_zhuyin": {
+            "type": "string"
+          },
+          "line_pinyin": {
+            "type": "string"
+          },
+          "line_translation_en": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "status": {
       "type": "string",
       "enum": [
@@ -123,6 +195,10 @@
         "active",
         "suspended"
       ]
+    },
+    "significance_flag_count": {
+      "type": "integer",
+      "minimum": 0
     }
   }
 }

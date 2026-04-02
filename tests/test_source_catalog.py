@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
+from the_big_learn import flashcards
 from the_big_learn import source_catalog
 from the_big_learn.bundled_sources import BUNDLED_SOURCES
 
@@ -317,6 +318,73 @@ class SourceCatalogTests(unittest.TestCase):
         self.assertEqual(
             reading_pass["lines"][0]["layers"]["translation_en"],
             "The way of great learning lies in manifesting bright virtue and renewing the people.",
+        )
+
+    def test_build_source_reading_pass_can_reconstruct_line_shell_from_character_index(self) -> None:
+        source_url = "https://ctext.org/demo-memory"
+        chapter_payload = {
+            "provider": "ctext-html",
+            "source_url": source_url,
+            "source_title": "Demo Memory Source",
+            "chapter_path": "/tmp/chapter-001.json",
+            "chapter": {
+                "id": "chapter-001",
+                "order": 1,
+                "title": "學而第一",
+                "character_count": 6,
+                "reading_unit_count": 1,
+                "reading_units": [
+                    {
+                        "id": "chapter-001-line-001",
+                        "order": 1,
+                        "text": "學而時習之。",
+                        "character_count": 6,
+                    }
+                ],
+            },
+        }
+
+        with tempfile.TemporaryDirectory() as tmp, patch(
+            "the_big_learn.source_catalog.state_dir",
+            return_value=Path(tmp),
+        ), patch(
+            "the_big_learn.flashcards.state_dir",
+            return_value=Path(tmp),
+        ), patch(
+            "the_big_learn.source_catalog.download_source_chapter",
+            return_value=chapter_payload,
+        ):
+            flashcards.save_character_index_entries(
+                "lunyu",
+                "chapter-001",
+                [
+                    {
+                        "id": "chapter-001-line-001",
+                        "line_index_in_container": 1,
+                        "layers": {
+                            "traditional": "學而時習之。",
+                            "simplified": "学而时习之。",
+                            "zhuyin": "ㄒㄩㄝˊ ㄦˊ ㄕˊ ㄒㄧˊ ㄓ。",
+                            "pinyin": "xué ér shí xí zhī.",
+                            "gloss_en": "study; and; timely; practice; it",
+                            "translation_en": "Study it and practice it in season.",
+                        },
+                        "character_glosses_en": ["study", "and", "timely", "practice", "it"],
+                    }
+                ],
+                source_url=source_url,
+            )
+            reading_pass = source_catalog.build_source_reading_pass(source_url, "1")
+
+        self.assertEqual(reading_pass["saved_annotation_count"], 0)
+        self.assertEqual(reading_pass["saved_character_index_count"], 1)
+        self.assertEqual(reading_pass["lines"][0]["annotation_source"], "saved-character-index")
+        self.assertTrue(reading_pass["lines"][0]["has_saved_character_index_annotation"])
+        self.assertEqual(reading_pass["lines"][0]["layers"]["simplified"], "学而时习之。")
+        self.assertEqual(reading_pass["lines"][0]["layers"]["translation_en"], "Study it and practice it in season.")
+        self.assertEqual(
+            reading_pass["lines"][0]["character_glosses_en"],
+            ["study", "and", "timely", "practice", "it"],
         )
 
     def test_build_source_reading_pass_strips_ctext_control_text(self) -> None:

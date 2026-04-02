@@ -39,14 +39,14 @@ class SkillMetadataTests(unittest.TestCase):
 
     def test_flashcard_repo_skills_call_flashcard_persistence_command(self) -> None:
         bank_add = (ROOT / "skills" / "flashcard-bank-add" / "SKILL.md").read_text(encoding="utf-8")
-        variations = (ROOT / "skills" / "flashcard-variation-generator" / "SKILL.md").read_text(encoding="utf-8")
+        review = (ROOT / "skills" / "flashcard-review" / "SKILL.md").read_text(encoding="utf-8")
 
         self.assertIn("python3 -m the_big_learn flashcard-save --format json", bank_add)
         self.assertIn("~/.the-big-learn/flashcards/bank/", bank_add)
         self.assertIn("translation_en` may legitimately be identical to `gloss_en`", bank_add)
-        self.assertIn("python3 -m the_big_learn flashcard-save --format json", variations)
-        self.assertIn("~/.the-big-learn/flashcards/variations/", variations)
-        self.assertIn("Treat `gloss_en` and `translation_en` as one effective English direction", variations)
+        self.assertIn("python3 -m the_big_learn flashcard-review --format json", review)
+        self.assertIn("weight = significance_flag_count + occurrence_count", review)
+        self.assertIn("~/.the-big-learn/flashcards/review-state.json", review)
 
     def test_explode_char_uses_simplified_primary_display(self) -> None:
         content = (ROOT / "skills" / "explode-char" / "SKILL.md").read_text(encoding="utf-8")

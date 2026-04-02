@@ -397,7 +397,33 @@ class ProgressTests(unittest.TestCase):
                 "saved_annotation_count": 1,
                 "line_ids": ["chapter-001-line-001"],
             },
-        ) as save_source_chapter_generated_annotations:
+        ) as save_source_chapter_generated_annotations, patch(
+            "the_big_learn.progress.build_source_reading_pass",
+            return_value={
+                "lines": [
+                    {
+                        "id": "chapter-001-line-001",
+                        "line_index_in_container": 1,
+                        "layers": {
+                            "traditional": "學",
+                            "simplified": "学",
+                            "zhuyin": "ㄒㄩㄝˊ",
+                            "pinyin": "xué",
+                            "gloss_en": "study",
+                            "translation_en": "study",
+                        },
+                        "character_glosses_en": ["study"],
+                    }
+                ]
+            },
+        ) as build_source_reading_pass, patch(
+            "the_big_learn.progress.save_character_index_entries",
+            return_value={
+                "entry_count": 1,
+                "citation_count": 1,
+                "bank_entry_ids": ["fc-char-u5b66-u5b78"],
+            },
+        ) as save_character_index_entries:
             saved = progress.save_chapter_generated_annotations(
                 "lunyu",
                 "chapter-001",
@@ -421,8 +447,34 @@ class ProgressTests(unittest.TestCase):
             ],
             saved_at=1712345678,
         )
+        build_source_reading_pass.assert_called_once_with(
+            "https://ctext.org/si-shu-zhang-ju-ji-zhu/lun-yu-ji-zhu?if=en",
+            "chapter-001",
+        )
+        save_character_index_entries.assert_called_once_with(
+            "lunyu",
+            "chapter-001",
+            [
+                {
+                    "id": "chapter-001-line-001",
+                    "line_index_in_container": 1,
+                    "layers": {
+                        "traditional": "學",
+                        "simplified": "学",
+                        "zhuyin": "ㄒㄩㄝˊ",
+                        "pinyin": "xué",
+                        "gloss_en": "study",
+                        "translation_en": "study",
+                    },
+                    "character_glosses_en": ["study"],
+                }
+            ],
+            source_url="https://ctext.org/si-shu-zhang-ju-ji-zhu/lun-yu-ji-zhu?if=en",
+        )
         self.assertEqual(saved["saved_annotation_count"], 1)
         self.assertEqual(saved["line_ids"], ["chapter-001-line-001"])
+        self.assertEqual(saved["saved_character_index_cards"], 1)
+        self.assertEqual(saved["saved_character_index_citations"], 1)
 
 
 if __name__ == "__main__":

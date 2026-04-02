@@ -15,7 +15,13 @@ CHARACTER_MODE_ORDER = [
 PHRASE_LABEL = "Chinese Phrase"
 PHRASE_TRANSLATION_LABEL = "English Phrase Translation"
 REPEATED_PHRASE_MARKER = " 〃"
-TRANSLATION_PROMPT = "Your translation?"
+FLOW_PROMPT_PREFIX = (
+    "Raise any questions or comments as they come up. "
+    "If a character feels worth unpacking, ask to explode it; "
+    "if a flashcard feels especially significant or relevant, flag it. "
+    "While I respond, keep reading and come back to the reply as it appears so the flow of reading stays intact."
+)
+TRANSLATION_PROMPT = f"{FLOW_PROMPT_PREFIX}\nYour translation?"
 DEFAULT_CHARACTER_LAYOUT = "table"
 STACKED_CHARACTER_LAYOUT = "stacked"
 CHARACTER_LAYOUT_CHOICES = frozenset({DEFAULT_CHARACTER_LAYOUT, STACKED_CHARACTER_LAYOUT})
@@ -179,7 +185,7 @@ def _build_phrase_cells(
     return phrase_cells
 
 
-def _build_character_rows(line: dict) -> list[dict[str, object]]:
+def build_character_rows(line: dict) -> list[dict[str, object]]:
     simplified_chars = list(line["layers"]["simplified"])
     traditional_chars = list(line["layers"]["traditional"])
     if len(traditional_chars) != len(simplified_chars):
@@ -207,17 +213,27 @@ def _build_character_rows(line: dict) -> list[dict[str, object]]:
     token_index = 0
 
     for index, simplified_char in enumerate(simplified_chars):
+        is_punctuation = _is_punctuation(simplified_char)
+        pinyin_token = simplified_char
+        zhuyin_token = simplified_char
         pinyin = simplified_char
-        if not _is_punctuation(simplified_char):
-            pinyin = format_reading_pair(zhuyin_tokens[token_index], pinyin_tokens[token_index])
+        if not is_punctuation:
+            zhuyin_token = zhuyin_tokens[token_index]
+            pinyin_token = pinyin_tokens[token_index]
+            pinyin = format_reading_pair(zhuyin_token, pinyin_token)
         row = {
+            "is_punctuation": is_punctuation,
+            "traditional_char": traditional_chars[index],
+            "simplified_char": simplified_char,
+            "zhuyin_token": zhuyin_token,
+            "pinyin_token": pinyin_token,
             "simplified": format_hanzi_pair(traditional_chars[index], simplified_char),
             "pinyin": pinyin,
             "gloss_en": gloss_cells[index],
             "phrase": phrase_cells[index],
             "phrase_translation_en": phrase_translation_cells[index],
         }
-        if not _is_punctuation(simplified_char):
+        if not is_punctuation:
             token_index += 1
         rows.append(row)
 
@@ -242,7 +258,7 @@ def _render_character_table(line: dict) -> str:
         ]
     )
 
-    for row in _build_character_rows(line):
+    for row in build_character_rows(line):
         chunks.append("    <tr>")
         for key, _ in CHARACTER_MODE_ORDER:
             chunks.append(f"      <td>{html.escape(str(row[key]))}</td>")
@@ -278,7 +294,7 @@ def _render_character_table(line: dict) -> str:
 
 
 def _render_stacked_character_rows(line: dict) -> str:
-    rows = _build_character_rows(line)
+    rows = build_character_rows(line)
     chunks: list[str] = []
     active_phrase_text = ""
     active_phrase_remaining = 0

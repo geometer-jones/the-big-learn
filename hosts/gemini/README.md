@@ -30,3 +30,4 @@ That installs the current checkout in editable mode and installs The Big Learn c
 
 - `/the-big-learn:guided-reading` for line-by-line reading with immediate, line-grounded questions
 - `/the-big-learn:explode-char` for structural Hanzi decomposition and synthesis examples during reading or review
+- `/the-big-learn:flashcard-review` for weighted random flashcard review that alternates between one visible face and a full reveal
