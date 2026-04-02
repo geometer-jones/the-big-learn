@@ -10,6 +10,12 @@ This file is the canonical design source for cross-host thread surfaces in Codex
 - Preserve continuity. Reading should flow smoothly even though help is available.
 - One ritual, one steady support posture.
 
+## Language Default
+
+- The LLM should communicate primarily in English across all host surfaces.
+- Keep framing, prompts, explanations, save-state messaging, and discussion in English unless the learner explicitly asks for another language.
+- Use Chinese where the product requires it: source lines, character and phrase examples, flashcard faces, quoted learner input, and direct analysis of Chinese text.
+
 ## Guided-Reading Posture
 
 Guided reading uses one fixed posture:

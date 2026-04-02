@@ -51,7 +51,7 @@ class build_py(_build_py):
 
 setup(
     name="the-big-learn",
-    version="0.2.4",
+    version="0.2.5",
     description="Open-source agent skill pack and runtime for learning Chinese inside coding assistants.",
     packages=find_packages(include=["the_big_learn", "the_big_learn.*"]),
     cmdclass={"build_py": build_py},
