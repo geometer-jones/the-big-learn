@@ -37,11 +37,13 @@ class RenderingTests(unittest.TestCase):
         self.assertNotIn("学问之道，在止于善。(學問之道，在止於善。)", output)
         self.assertIn("The way of learning rests in goodness.", output)
         self.assertIn("<table>", output)
+        self.assertIn("<th>Index</th>", output)
         self.assertIn("<th>Chinese</th>", output)
         self.assertIn("<th>Reading</th>", output)
         self.assertIn("<th>English Definition</th>", output)
         self.assertIn("<th>Chinese Phrase</th>", output)
         self.assertIn("<th>English Phrase Translation</th>", output)
+        self.assertIn("<td>1</td>", output)
         self.assertIn("<td>学(學)</td>", output)
         self.assertIn("<td>xué(ㄒㄩㄝˊ)</td>", output)
         self.assertIn("<td>道</td>", output)
@@ -261,14 +263,50 @@ class RenderingTests(unittest.TestCase):
             }
         )
 
+        self.assertEqual(rows[0]["char_index"], 1)
         self.assertEqual(rows[0]["phrase"], {"text": "大学(大學) 〃", "rowspan": 2})
         self.assertEqual(rows[0]["phrase_translation_en"], {"text": "great learning", "rowspan": 2})
+        self.assertEqual(rows[1]["char_index"], 2)
         self.assertIsNone(rows[1]["phrase"])
         self.assertIsNone(rows[1]["phrase_translation_en"])
+        self.assertEqual(rows[2]["char_index"], 3)
         self.assertEqual(rows[2]["phrase"], {"text": "之道 〃", "rowspan": 2})
         self.assertEqual(rows[2]["phrase_translation_en"], {"text": "the way of", "rowspan": 2})
+        self.assertEqual(rows[3]["char_index"], 4)
         self.assertIsNone(rows[3]["phrase"])
         self.assertIsNone(rows[3]["phrase_translation_en"])
+
+    def test_build_character_rows_numbers_every_character_position_including_punctuation(self) -> None:
+        rows = build_character_rows(
+            {
+                "id": "demo-line-indexed",
+                "character_glosses_en": [
+                    "study",
+                    "ask",
+                    "of",
+                    "way",
+                    "at",
+                    "stop",
+                    "to",
+                    "goodness",
+                ],
+                "layers": {
+                    "traditional": "學問之道，在止於善。",
+                    "simplified": "学问之道，在止于善。",
+                    "zhuyin": "ㄒㄩㄝˊ ㄨㄣˋ ㄓ ㄉㄠˋ，ㄗㄞˋ ㄓˇ ㄩˊ ㄕㄢˋ。",
+                    "pinyin": "xué wèn zhī dào, zài zhǐ yú shàn.",
+                    "gloss_en": "the way of learning rests in goodness",
+                    "translation_en": "The way of learning rests in goodness.",
+                },
+            }
+        )
+
+        self.assertEqual([row["char_index"] for row in rows], list(range(1, 11)))
+        self.assertTrue(rows[4]["is_punctuation"])
+        self.assertEqual(rows[4]["simplified_char"], "，")
+        self.assertEqual(rows[4]["char_index"], 5)
+        self.assertEqual(rows[9]["simplified_char"], "。")
+        self.assertEqual(rows[9]["char_index"], 10)
 
     def test_render_lines_markdown_uses_explicit_character_glosses_for_multi_character_segments(self) -> None:
         output = render_lines_markdown(
@@ -338,12 +376,13 @@ class RenderingTests(unittest.TestCase):
         )
 
         self.assertNotIn("<table>", output)
+        self.assertIn("Index: 1", output)
         self.assertIn("Chinese: 知", output)
         self.assertIn("Reading: zhī(ㄓ)", output)
         self.assertIn("English Definition: know", output)
         self.assertEqual(output.count("Chinese Phrase: 知止 〃"), 1)
         self.assertEqual(output.count("English Phrase Translation: know where to stop"), 1)
-        self.assertIn("Chinese: 止\nReading: zhǐ(ㄓˇ)\nEnglish Definition: stop\n\nChinese: 而", output)
+        self.assertIn("Chinese: 止\nReading: zhǐ(ㄓˇ)\nEnglish Definition: stop\n\nIndex: 3\nChinese: 而", output)
         self.assertIn("Line 1/1 | demo-line-stacked", output)
         self.assertTrue(output.rstrip().endswith(f"Line 1/1 | demo-line-stacked\n{TRANSLATION_PROMPT}"))
 

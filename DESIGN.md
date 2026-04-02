@@ -41,7 +41,7 @@ Explode-char is a sidecar support surface, not a separate product mode.
 - answer the requested character immediately instead of reopening the whole reading frame
 - keep structural analysis compact, nested, and explicit about uncertainty
 - use synthesis examples to make the target character usable right away
-- end with exactly two concrete flashcard candidates
+- do not turn the exploder into a flashcard-saving surface
 - if entered from guided reading, preserve the learner's place and make re-entry back into reading easy
 
 This posture does not change:
@@ -76,7 +76,7 @@ Use the same small vocabulary across hosts:
 - Primary action prompts: `Continue reading`, `Choose a chapter`, `Your translation?`, `Your response?`, `Retry save`
 - Flow cue prefix: a brief English lead-in ahead of `Your translation?` or `Your response?` as a philosopher and researcher, inviting questions and comments
 - Failure state heading: `[Save did not complete]`
-- Explode-char section labels: `Analysis`, `Synthesis`, `Phrase Use`, `Containing Characters`, `Homophones`, `Meaning Map`, `Flashcard Candidates`
+- Explode-char section labels: `Definition`, `Simplified | Traditional`, `Meaning Map`, `Analysis`, `Synthesis`, `Containing Characters`, `Phrase Use`, `Homophones`
 
 Rules:
 
@@ -129,11 +129,12 @@ Default order:
 1. Simplified Chinese line
 2. English line
 3. Char-by-char support table
-3.1 Chinese: simplified chinese character (traditional chinese character, if they differ)
-3.2 Pronunciation: pinyin (with zhuyin in parens after)
-3.3 English character translation: <semi-colon separated list of context-free definitions of the character in 3.1 for that row>
-3.4 Chinese phrase: simplified chinese characters grouped by semantic unit, or empty space to pad for extra character rows
-3.5 English phrase translation: english translation grouped by semantic unit, or empty space to pad for extra character rows
+3.1 Index: character position in the line, numbered from 1 to k where k is the number of characters in the line
+3.2 Chinese: simplified chinese character (traditional chinese character, if they differ)
+3.3 Pronunciation: pinyin (with zhuyin in parens after)
+3.4 English character translation: <semi-colon separated list of context-free definitions of the character in 3.2 for that row>
+3.5 Chinese phrase: simplified chinese characters grouped by semantic unit, or empty space to pad for extra character rows
+3.6 English phrase translation: english translation grouped by semantic unit, or empty space to pad for extra character rows
 4. English line
 5. Simplified Chinese line
 6. Line location/identity (e.g. line i of chapter k of book n)
@@ -142,6 +143,7 @@ Default order:
 Rules:
 - The Chinese line is the visual anchor.
 - The char-by-char does most of the structural work.
+- The first table column is `Index`, and every character row in the line shell, including punctuation rows, gets a stable number so the learner can refer to any visible position directly.
 - The flow cue should say engage with the text as a philosopher and researcher and linguist, hilighting an interesting lead or two
 - The current line shell is also the extraction surface for character-index flashcards: simplified, traditional, pinyin, zhuyin, and semicolon-separated English definitions should be recoverable from it for each saved character row.
 
@@ -150,19 +152,23 @@ Rules:
 Hierarchy:
 
 0. One brief bridge line if the learner arrived here from guided reading
-1. `Simplified | Traditional` 
-2. `Analysis`
-3. `Synthesis`
-4. Direct save offer for exactly two flashcard candidates
-5. Short return cue when the learner should resume the reading flow
+1. `Definition`
+2. `Simplified | Traditional`
+3. `Meaning Map`
+4. `Analysis`
+5. `Synthesis`
+6. Short return cue when the learner should resume the reading flow
 
 Rules:
 - `Simplified | Traditional` displays the simplified version if the exploded char is traditional and vice-versa; if the traditional and simplified are the same, this section is absent
+- `Meaning Map` comes before structural analysis so the learner gets the semantic neighborhood early; keep its subsection order fixed as `Synonyms`, then `Antonyms`
 - `Analysis` uses nested bullets, not tables.
 - Start with the full target character as the root node, then descend only as far as the decomposition stays teachable and honest.
 - Keep simplified Chinese in the primary position and append traditional only when it differs. If simplified and traditional differ, then run two separate explosions, in the same style as if a phrase were exploded, and you explode each word in sequence.
 - Render every reading inline as `pinyin (zhuyin)`.
-- Keep `Synthesis` subsection order fixed: `Containing Characters, ie character that contain the exploded-char within its composition`, `Phrase Use, ie multi-character phrases that contain the exploded-char as one char`, `Homophones`, `Synonyms`, `Antonyms`, `Flashcard Candidates`.
+- Keep `Synthesis` subsection order fixed: `Containing Characters, ie character that contain the exploded-char within its composition`, `Phrase Use, ie multi-character phrases that contain the exploded-char as one char`, `Homophones`.
+- Inside `Homophones`, include both `Same Tone` and `Different Tone` subgroups when honest same-syllable examples exist, and do not stop after same-tone matches.
+- Do not end the exploder with flashcard candidate recommendations or save prompts.
 - Try to divine the etymology, but be disciplined in qualifying the strength of your hunches
 
 ### Flashcard-Review Turn
@@ -239,7 +245,7 @@ Secondary action: Stop here and keep this chapter open
 
 ## Responsive and Accessibility
 
-- Default to the five-column char-by-char table when it renders clearly.
+- Default to the six-column char-by-char table when it renders clearly.
 - Switch to a stacked per-character list when the host pane is narrow or table readability is poor.
 - Do not mix both formats for the same rendered line.
 - Preserve stable top-to-bottom order so the thread still works without visual scanning.
@@ -249,10 +255,11 @@ Secondary action: Stop here and keep this chapter open
 Stacked fallback:
 
 ```text
+Index: n
 <simplified char> (traditional char, if different)
 pinyin (zhuyin)
 <char translation>
-<Phras>
+<Phrase>
 <Phrase translation>
 ```
 

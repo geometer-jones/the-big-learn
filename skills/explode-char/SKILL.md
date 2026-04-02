@@ -17,6 +17,7 @@ Stay inside the host thread and work directly from the repository context alread
 
 - accept one or more Chinese characters and handle them one at a time in the order given
 - show the simplified form in the primary position and append the traditional form in parentheses only when it differs
+- make `## Definition` the first visible section of the explosion so the learner gets the chosen reading and sense before the structural breakdown
 - keep that simplified-primary display rule throughout `## Analysis`, including component nodes, and do not add redundant traditional parentheses when the scripts match
 - if the request came from guided reading, use one brief bridge line to signal that this is a quick sidecar answer and keep the learner's reading place intact
 - when the simplified and traditional forms differ, show a short `## Simplified | Traditional` block before `## Analysis` so both forms are visible without duplicating the whole turn
@@ -25,7 +26,7 @@ Stay inside the host thread and work directly from the repository context alread
 - separate visual teaching decomposition from historical etymology when those differ
 - follow the analysis with synthesis examples that use the full target character in phrases, show larger characters that contain the target form inside them, list common homophones for the chosen reading across both same-tone and different-tone matches, and map the chosen meaning through nearby and opposite Chinese expressions
 - whenever you show a reading anywhere in the answer, keep it inline as `pinyin (zhuyin)` rather than splitting pinyin and zhuyin into separate lines
-- end each exploded character with an offer to save exactly two salient character or phrase candidates to flashcards
+- do not end the exploder with flashcard save suggestions or candidate lists
 - if the learner came from guided reading, end with a short return cue that makes it easy to resume the same reading spot
 
 ## Inputs
@@ -48,22 +49,40 @@ Do not collapse multiple adjacent characters into a word-level analysis unless t
 For a single target character, keep the turn compact and use visible blocks in this order:
 
 1. one brief bridge line when the learner arrived from guided reading
-2. `## Simplified | Traditional` only when the scripts differ
-3. `## Analysis`
-4. `## Synthesis`
-5. a direct offer to save exactly two flashcard candidates
-6. a short return cue when the learner should resume guided reading
+2. `## Definition`
+3. `## Simplified | Traditional` only when the scripts differ
+4. `## Meaning Map`
+5. `## Analysis`
+6. `## Synthesis`
+7. a short return cue when the learner should resume guided reading
 
 For multiple target characters, repeat the same order for each character before moving to the next one. Use:
 
 1. one brief bridge line only when it helps preserve guided-reading continuity
-2. `## Simplified | Traditional: <character>` only when the scripts differ
-3. `## Analysis: <character>`
-4. `## Synthesis: <character>`
+2. `## Definition: <character>`
+3. `## Simplified | Traditional: <character>` only when the scripts differ
+4. `## Meaning Map: <character>`
+5. `## Analysis: <character>`
+6. `## Synthesis: <character>`
 
-Do not add extra top-level headings beyond the optional `## Simplified | Traditional` block, `## Analysis`, and `## Synthesis`.
+Do not add extra top-level headings beyond `## Definition`, the optional `## Simplified | Traditional` block, `## Meaning Map`, `## Analysis`, and `## Synthesis`.
 
 Do not use tables for the main answer. Use nested bullet lists so the structure reads like a tree.
+
+### Definition
+
+Lead with a compact definition block before any script note or decomposition so the learner sees the selected reading and meaning first.
+
+Include:
+
+- the target character in simplified Chinese, with traditional in parentheses only when it differs
+- the chosen reading as `pinyin (zhuyin)`
+- a short learner-facing English definition for the intended sense
+- one short note only when the character is polyphonic, sense-specific, or not normally used standalone
+
+Preferred pattern:
+
+- `语` (`語`): `yu3 (ㄩˇ)` - language; speech
 
 ### Analysis
 
@@ -103,6 +122,38 @@ Keep it short:
 - if the learner supplied the traditional form, still keep the simplified form in the primary position inside this block and throughout the rest of the answer
 - do not duplicate the full explosion under both script forms unless the learner explicitly asks for a separate script-by-script comparison
 
+### Meaning Map
+
+Place the meaning map before structural analysis and synthesis so the learner sees nearby and opposite meanings early.
+
+Use exactly these subsection headers inside `## Meaning Map` in this order:
+
+1. `#### Synonyms`
+2. `#### Antonyms`
+
+Render each synonym item as a single bullet line, similar to the homophone list, with zhuyin kept inline in parentheses after the pinyin.
+
+For each synonym item, include:
+
+- the synonym in simplified Chinese, with traditional in parentheses only when it differs
+- the synonym reading as `pinyin (zhuyin)`
+- the English word-by-word gloss
+- the English holistic translation
+
+Render each antonym item as a single bullet line in the same compact reading format:
+
+- Simplified Chinese
+- Traditional Chinese, in parentheses only when it differs
+- Pinyin with zhuyin in parentheses
+- English word-by-word gloss
+- English holistic translation
+
+Preferred patterns:
+
+- `传统` (`傳統`): `chuan2 tong3 (ㄔㄨㄢˊ ㄊㄨㄥˇ)` - `transmit; pass down + rule; system`; tradition
+
+If the target character is not normally used as a standalone word for the intended sense, use short Chinese words or phrases that stay tightly anchored to that sense instead of forcing isolated single-character items.
+
 ### Synthesis
 
 List all of these synthesis outputs:
@@ -110,10 +161,8 @@ List all of these synthesis outputs:
 - short multi-character phrases that use the full target character
 - larger characters that contain the target symbol inside them as a visible component or subshape
 - a homophone list for the chosen reading of the target character
-- one synonym cluster and one antonym cluster for the chosen meaning of the target character
-- a brief flashcard offer that names exactly two salient character or phrase candidates from the current explosion
 
-Include all five synthesis sections when honest examples exist. If one content category is sparse, say so briefly instead of stretching.
+Include all three synthesis sections when honest examples exist. If one content category is sparse, say so briefly instead of stretching.
 
 For phrase examples, include:
 
@@ -150,10 +199,8 @@ For the synthesis portion, use these subsection headers inside `## Synthesis` in
 1. `### Containing Characters`
 2. `### Phrase Use`
 3. `### Homophones`
-4. `### Meaning Map`
-5. `### Flashcard Candidates`
 
-For the homophone portion, list common characters or short words that share the same syllable as the target under the chosen reading, including both same-tone and different-tone matches when honest examples exist.
+For the homophone portion, list common characters or short words that share the same syllable as the target under the chosen reading, including both same-tone and different-tone matches when honest examples exist. Do not stop after same-tone matches when honest different-tone homophones are available.
 
 Use these subsection headers inside `### Homophones` in this order:
 
@@ -178,50 +225,6 @@ For different-tone items, prefer this pattern:
 
 Prefer exact same-syllable matches first. Then include different-tone homophones for the same syllable before falling back to looser sound-alikes. If you include near-homophones because common same-syllable items are sparse, label them clearly as near-homophones instead of mixing them in silently.
 
-Inside `### Meaning Map`, use exactly these subsection headers in this order:
-
-1. `#### Synonyms`
-2. `#### Antonyms`
-
-Inside `### Flashcard Candidates`, offer exactly two concrete save options drawn from the current character's most teachable outputs.
-
-Prefer these sources, in order:
-
-1. the target character itself when it is semantically rich, structurally teachable, or genuinely confusing
-2. a short phrase from `### Phrase Use`
-3. a larger containing character or closely related meaning-map item when that would make a better review target than another phrase
-
-For each candidate, include:
-
-- the simplified form, with traditional in parentheses only when it differs
-- the reading as `pinyin (zhuyin)`
-- a short reason that says why this would make a good flashcard
-
-Then end the subsection with a direct offer to save those two items through `the-big-learn-flashcard-bank-add`.
-
-Render each synonym item as a single bullet line, similar to the homophone list, with zhuyin kept inline in parentheses after the pinyin.
-
-For each synonym item, include:
-
-- the synonym in simplified Chinese, with traditional in parentheses only when it differs
-- the synonym reading as `pinyin (zhuyin)`
-- the English word-by-word gloss
-- the English holistic translation
-
-Render each antonym item as a single bullet line in the same compact reading format:
-
-- Simplified Chinese
-- Traditional Chinese, in parentheses only when it differs
-- Pinyin with zhuyin in parentheses
-- English word-by-word gloss
-- English holistic translation
-
-Preferred patterns:
-
-- `传统` (`傳統`): `chuan2 tong3 (ㄔㄨㄢˊ ㄊㄨㄥˇ)` - `transmit; pass down + rule; system`; tradition
-
-If the target character is not normally used as a standalone word for the intended sense, use short Chinese words or phrases that stay tightly anchored to that sense instead of forcing isolated single-character items.
-
 ## Rules
 
 - Be explicit about uncertainty. If a decomposition is only a teaching convenience, say so.
@@ -233,8 +236,10 @@ If the target character is not normally used as a standalone word for the intend
 - When decomposition depends on the written form, reason from the script that best explains the structure, but keep the displayed output simplified-first.
 - If simplified and traditional forms differ in a way that affects decomposition, mention that briefly.
 - If no target character is provided, mine only the recent thread context for plausible Hanzi candidates, then stop and get confirmation before doing the full explosion.
+- In `## Definition`, state the chosen reading and sense plainly before the decomposition starts.
+- In `## Meaning Map`, put `#### Synonyms` and `#### Antonyms` before `## Analysis` and `## Synthesis`.
 - In `## Analysis`, keep simplified primary at every node and append traditional in parentheses only when it differs.
-- In `## Synthesis`, include phrase-use examples, larger containing-character examples, a homophone list, and a synonym-antonym meaning map for the same chosen sense.
+- In `## Synthesis`, include phrase-use examples, larger containing-character examples, and a homophone list.
 - Keep every displayed reading inline as `pinyin (zhuyin)` instead of splitting pinyin and zhuyin into separate lines.
 - If multiple target characters are provided, finish the full analysis-and-synthesis block for one character before moving to the next.
 - Preserve the input order for multi-character requests unless the learner explicitly asks for a different order.
@@ -242,18 +247,31 @@ If the target character is not normally used as a standalone word for the intend
 - Build the homophone list for the same chosen reading used elsewhere in the answer.
 - Prefer exact same-syllable matches first, then different-tone homophones, then loose sound-alikes only if needed.
 - Keep different-tone homophones in their own subgroup instead of mixing them into the same-tone list.
+- Include a `#### Different Tone` subgroup whenever honest same-syllable different-tone homophones are available.
 - Do not print separate pinyin or Zhuyin lines in the synthesis subsections.
 - Do not use nested bullets under `#### Synonyms`.
 - Keep synonym items close in part of speech, register, and semantic scope when possible.
 - Use genuine antonyms when possible; when Chinese uses a contrast pair rather than a perfect opposite, pick the most standard contrast and say so briefly.
 - If the target character has multiple meanings, build the meaning map for one sense only and keep that sense aligned with the reading used in `## Analysis`.
-- In `### Flashcard Candidates`, name exactly two candidates when two honest review targets exist; prefer the strongest two instead of padding the list with weak items.
-- Prefer candidates that would repay spaced review: dense target characters, short high-yield phrases, or especially teachable containing characters.
-- Do not offer vague flashcard advice. Name the two concrete save candidates and ask whether the learner wants to save them.
+- Do not end the exploder with flashcard candidate recommendations or save prompts.
 
 ## Example Skeleton
 
 ```markdown
+## Definition
+
+- `语` (`語`): `yu3 (ㄩˇ)` - language; speech
+
+## Meaning Map
+
+#### Synonyms
+
+- `话语` (`話語`): `hua4 yu3 (ㄏㄨㄚˋ ㄩˇ)` - `speech + language`; speech; utterance
+
+#### Antonyms
+
+- `沉默`: `chen2 mo4 (ㄔㄣˊ ㄇㄛˋ)` - `sink; deep + silent`; silent; silence
+
 ## Analysis
 
 - `语` (`語`): `yu3 (ㄩˇ)` - language; speech
@@ -291,24 +309,6 @@ If the target character is not normally used as a standalone word for the intend
 - `鱼` (`魚`): `yu2 (ㄩˊ)` - fish; same syllable, different tone from target
 - `玉`: `yu4 (ㄩˋ)` - jade; same syllable, different tone from target
 
-### Meaning Map
-
-#### Synonyms
-
-- `话语` (`話語`): `hua4 yu3 (ㄏㄨㄚˋ ㄩˇ)` - `speech + language`; speech; utterance
-
-#### Antonyms
-
-- `沉默`: `chen2 mo4 (ㄔㄣˊ ㄇㄛˋ)` - `sink; deep + silent`; silent; silence
-
-### Flashcard Candidates
-
-- `语` (`語`): `yu3 (ㄩˇ)` - worth saving because it anchors the full decomposition and the speech/language sense used across the examples
-- `汉语` (`漢語`): `han4 yu3 (ㄏㄢˋ ㄩˇ)` - worth saving because it is a short, common phrase that reuses the target in a high-frequency context
-
-If you want, I can save `语` (`語`) and `汉语` (`漢語`) through `the-big-learn-flashcard-bank-add`.
-
 ## Handoff
 
-If the learner wants to save the two offered candidates for review, hand them to `the-big-learn-flashcard-bank-add`.
 If the learner arrived from guided reading, end with a short return cue such as: `When you're ready, go back to the same line and keep reading from there.`

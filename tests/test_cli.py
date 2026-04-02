@@ -861,6 +861,7 @@ class CliTests(unittest.TestCase):
 
         self.assertEqual(exit_code, 0)
         self.assertNotIn("<table>", stdout.getvalue())
+        self.assertIn("Index: 1", stdout.getvalue())
         self.assertIn("Chinese: 大", stdout.getvalue())
         self.assertIn("Chinese: 学(學)", stdout.getvalue())
         self.assertIn("Reading: dà(ㄉㄚˋ)", stdout.getvalue())

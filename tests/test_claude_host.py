@@ -146,9 +146,10 @@ class ClaudeHostTests(unittest.TestCase):
             self.assertIn("full English translation for the chapter", launcher_content)
             self.assertIn("collected line-by-line personal translation", launcher_content)
             self.assertIn(
-                "Chinese, Reading, English Definition, Chinese Phrase, English Phrase Translation",
+                "Index, Chinese, Reading, English Definition, Chinese Phrase, English Phrase Translation",
                 launcher_content,
             )
+            self.assertIn("numbering each character row from 1 through the full line length", launcher_content)
             self.assertIn("keeping simplified primary throughout the char-by-char table while appending traditional in parens only where it differs", launcher_content)
             self.assertIn("then the same full line again in English and simplified Hanzi", launcher_content)
             self.assertIn("stacked per-character list", launcher_content)

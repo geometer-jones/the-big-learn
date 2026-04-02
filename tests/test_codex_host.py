@@ -145,9 +145,10 @@ class CodexHostTests(unittest.TestCase):
             self.assertIn("full English translation for the chapter", launcher_content)
             self.assertIn("collected line-by-line personal translation", launcher_content)
             self.assertIn(
-                "Chinese, Reading, English Definition, Chinese Phrase, English Phrase Translation",
+                "Index, Chinese, Reading, English Definition, Chinese Phrase, English Phrase Translation",
                 launcher_content,
             )
+            self.assertIn("numbering each character row from 1 through the full line length", launcher_content)
             self.assertIn("keeping simplified primary throughout the char-by-char table while appending traditional in parens only where it differs", launcher_content)
             self.assertIn("then the same full line again in English and simplified Hanzi", launcher_content)
             self.assertIn("stacked per-character list", launcher_content)
@@ -222,6 +223,8 @@ class CodexHostTests(unittest.TestCase):
             self.assertIn("Preserve the original character order", explode_content)
             self.assertIn("If the invocation does not include a target character", explode_content)
             self.assertIn("ask the learner to confirm which character to explode", explode_content)
+            self.assertIn("## Definition", explode_content)
+            self.assertIn("## Meaning Map", explode_content)
             self.assertIn("## Simplified | Traditional", explode_content)
             self.assertIn("keep the learner's reading place intact", explode_content)
             self.assertIn("end with a short return cue", explode_content)
@@ -232,11 +235,19 @@ class CodexHostTests(unittest.TestCase):
             self.assertIn("synonym-antonym meaning map", explode_content)
             self.assertIn("#### Synonyms", explode_content)
             self.assertIn("#### Antonyms", explode_content)
-            self.assertIn("### Flashcard Candidates", explode_content)
-            self.assertIn("offer exactly two concrete save options", explode_content)
-            self.assertIn("If you want, I can save `语` (`語`) and `汉语` (`漢語`)", explode_content)
             self.assertIn("- `语` (`語`): `yu3 (ㄩˇ)` - language; speech", explode_content)
             self.assertIn("- `沉默`: `chen2 mo4 (ㄔㄣˊ ㄇㄛˋ)`", explode_content)
+            self.assertIn("Do not end the exploder with flashcard candidate recommendations or save prompts", explode_content)
+            self.assertNotIn("### Flashcard Candidates", explode_content)
+            self.assertNotIn("the-big-learn-flashcard-bank-add", explode_content)
+            self.assertLess(
+                explode_content.index("2. `## Definition`"),
+                explode_content.index("3. `## Simplified | Traditional`"),
+            )
+            self.assertLess(
+                explode_content.index("4. `## Meaning Map`"),
+                explode_content.index("5. `## Analysis`"),
+            )
             self.assertLess(
                 explode_content.index("### Containing Characters"),
                 explode_content.index("### Phrase Use"),

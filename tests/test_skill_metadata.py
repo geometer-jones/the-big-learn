@@ -62,11 +62,23 @@ class SkillMetadataTests(unittest.TestCase):
             content,
         )
         self.assertIn(
-            "end each exploded character with an offer to save exactly two salient character or phrase candidates to flashcards",
+            "do not end the exploder with flashcard save suggestions or candidate lists",
             content,
         )
         self.assertIn(
             "show a short `## Simplified | Traditional` block before `## Analysis`",
+            content,
+        )
+        self.assertIn(
+            "make `## Definition` the first visible section of the explosion",
+            content,
+        )
+        self.assertIn(
+            "Lead with a compact definition block before any script note or decomposition",
+            content,
+        )
+        self.assertIn(
+            "Place the meaning map before structural analysis and synthesis",
             content,
         )
         self.assertIn(
@@ -81,14 +93,36 @@ class SkillMetadataTests(unittest.TestCase):
             "Do not print separate pinyin or Zhuyin lines in the synthesis subsections.",
             content,
         )
+        self.assertIn(
+            "Do not stop after same-tone matches when honest different-tone homophones are available.",
+            content,
+        )
+        self.assertIn("#### Different Tone", content)
+        self.assertLess(
+            content.index("2. `## Definition`"),
+            content.index("3. `## Simplified | Traditional`"),
+        )
+        self.assertLess(
+            content.index("4. `## Meaning Map`"),
+            content.index("5. `## Analysis`"),
+        )
+        self.assertLess(
+            content.index("4. `## Meaning Map`"),
+            content.index("6. `## Synthesis`"),
+        )
         self.assertLess(
             content.index("1. `### Containing Characters`"),
             content.index("2. `### Phrase Use`"),
         )
-        self.assertIn(
-            "### Flashcard Candidates",
-            content,
+        self.assertLess(
+            content.index("1. `#### Same Tone`"),
+            content.index("2. `#### Different Tone`"),
         )
+        self.assertLess(
+            content.index("3. `### Homophones`"),
+            content.index("## Rules"),
+        )
+        self.assertNotIn("### Flashcard Candidates", content)
         self.assertNotIn(
             "show the traditional form as the decomposition root and list the simplified form alongside it",
             content,
@@ -101,6 +135,7 @@ class SkillMetadataTests(unittest.TestCase):
             "Do not print a Zhuyin line under `#### Synonyms`.",
             content,
         )
+        self.assertNotIn("the-big-learn-flashcard-bank-add", content)
 
 
 if __name__ == "__main__":

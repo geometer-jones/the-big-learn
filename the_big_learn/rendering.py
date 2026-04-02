@@ -8,6 +8,7 @@ from .display import format_hanzi_layers, format_hanzi_pair, format_reading_pair
 
 
 CHARACTER_MODE_ORDER = [
+    ("char_index", "Index"),
     ("simplified", "Chinese"),
     ("pinyin", "Reading"),
     ("gloss_en", "English Definition"),
@@ -209,7 +210,7 @@ def build_character_rows(line: dict) -> list[dict[str, object]]:
         gloss_cells,
         layer_key="gloss_en",
     )
-    rows: list[dict[str, str | dict[str, int | str] | None]] = []
+    rows: list[dict[str, object]] = []
     token_index = 0
 
     for index, simplified_char in enumerate(simplified_chars):
@@ -222,6 +223,7 @@ def build_character_rows(line: dict) -> list[dict[str, object]]:
             pinyin_token = pinyin_tokens[token_index]
             pinyin = format_reading_pair(zhuyin_token, pinyin_token)
         row = {
+            "char_index": index + 1,
             "is_punctuation": is_punctuation,
             "traditional_char": traditional_chars[index],
             "simplified_char": simplified_char,
@@ -304,6 +306,7 @@ def _render_stacked_character_rows(line: dict) -> str:
         phrase_translation_cell = row["phrase_translation_en"]
         phrase_translation_text = "" if phrase_translation_cell is None else str(phrase_translation_cell["text"])
 
+        chunks.append(f"Index: {row['char_index']}")
         chunks.append(f"Chinese: {row['simplified']}")
         chunks.append(f"Reading: {row['pinyin']}")
 

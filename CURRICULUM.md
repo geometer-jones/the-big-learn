@@ -161,7 +161,8 @@ Learner-facing guided-reading views should render each annotated line in this fi
 
 1. Full-line simplified Chinese
 2. Full-line English translation
-3. A five-column table:
+3. A six-column table:
+   `Index`, numbering each character row from 1 through the full line length
    `Chinese`, with simplified primary and traditional in parens when it differs
    `Reading`, with pinyin primary and zhuyin in parens
    `English Definition`, using semicolon-separated context-free character definitions where needed

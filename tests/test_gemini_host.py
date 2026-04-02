@@ -390,7 +390,11 @@ class GeminiHostTests(unittest.TestCase):
                 guided_reading,
             )
             self.assertIn(
-                "Chinese, Reading, English Definition, Chinese Phrase, English Phrase Translation",
+                "Index, Chinese, Reading, English Definition, Chinese Phrase, English Phrase Translation",
+                guided_reading,
+            )
+            self.assertIn(
+                "numbering each character row from 1 through the full line length",
                 guided_reading,
             )
             self.assertIn(
