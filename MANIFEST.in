@@ -1,6 +1,7 @@
 graft evals
 graft flashcards
 graft hosts
+graft references
 graft skills
 graft books
 include ARCHITECTURE.md

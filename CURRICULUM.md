@@ -12,7 +12,7 @@ The goal is not to cover all of Chinese literature. The goal is to choose a smal
 - Separate foundational texts from later literary expansion.
 - Be honest that this is a path into the written tradition first, not modern spoken Mandarin first.
 
-## The Five Tracks
+## The Six Tracks
 
 The initial curriculum set is:
 
@@ -21,6 +21,7 @@ The initial curriculum set is:
 3. `Daodejing`
 4. `San Zi Jing` / `Qian Zi Wen`
 5. `Sanguo Yanyi`
+6. `Chengyu Catalog`
 
 These are not equal in priority. They serve different jobs.
 
@@ -133,6 +134,27 @@ Teaching note:
 - do not treat this as a foundational starter text
 - it belongs after the learner has a framework
 
+## 6. Chengyu Catalog
+
+Role:
+
+- idiom reinforcement and recall track
+- compact support rail for high-frequency four-character patterns
+- bridge between line-by-line reading and flashcard review
+
+Why it belongs:
+
+- gives the learner a dense pack of culturally durable phrases
+- works well in short waiting-time sessions because each unit is small
+- reinforces phrase patterns that recur in classical texts and later literary reading
+
+Teaching note:
+
+- do not treat this as the main beginner spine
+- use it as a bundled support catalog alongside the longer texts
+- keep it thematic and curated rather than pretending it is a single canonical book
+- the current bundled edition ships 1000 four-character idioms in a pedagogy-first sequence across 20 review-sized local chapters
+
 ## Recommended Sequence
 
 The default project sequence should be:
@@ -143,6 +165,7 @@ The default project sequence should be:
 4. `Daodejing`
 5. `San Zi Jing` / `Qian Zi Wen` as support or alternate ramp
 6. `Sanguo Yanyi`
+7. `Chengyu Catalog` as a support and review pack
 
 The ordering is about pedagogy, not prestige.
 

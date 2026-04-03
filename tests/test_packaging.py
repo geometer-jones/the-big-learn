@@ -46,9 +46,16 @@ class PackagingTests(unittest.TestCase):
     def test_bundle_assets_include_design_doc(self) -> None:
         self.assertIn("DESIGN.md", _bundled_asset_paths())
 
+    def test_bundle_assets_include_references_dir(self) -> None:
+        self.assertIn("references", _bundled_asset_paths())
+
     def test_manifest_includes_design_doc(self) -> None:
         manifest = (REPO_ROOT / "MANIFEST.in").read_text(encoding="utf-8")
         self.assertIn("include DESIGN.md", manifest)
+
+    def test_manifest_includes_references_dir(self) -> None:
+        manifest = (REPO_ROOT / "MANIFEST.in").read_text(encoding="utf-8")
+        self.assertIn("graft references", manifest)
 
     def test_bundled_source_store_uses_readable_work_ids(self) -> None:
         bundled_source_dirs = sorted(

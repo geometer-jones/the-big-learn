@@ -49,6 +49,11 @@ BUNDLED_SOURCES = {
         "source_url": "https://zh.wikisource.org/wiki/%E4%B8%89%E5%9C%8B%E6%BC%94%E7%BE%A9",
         "chapter_count": 120,
     },
+    "chengyu-catalog": {
+        "title": "Chengyu Catalog",
+        "source_url": "the-big-learn://chengyu-catalog",
+        "chapter_count": 20,
+    },
 }
 
 

@@ -25,7 +25,7 @@ Work directly from the repository files in the current workspace.
 - explain each book entry in English so the learner knows what kind of writing it is, how it fits into the designed curriculum, and whether the book uses bundled local text or alternate source support
 - in book and chapter framing, use compact support-level labels: `bundled text + generated help` or `alternate source`
 - under each book title in the menu, render the title as a miniature reference line using the same order as regular line rendering: full-title Chinese, full-title English, then a char-by-char table in this order: Index, Chinese, Reading, English Definition, Chinese Phrase, English Phrase Translation; do not open the learner translation and response loop for titles
-- let the learner choose which book to read by replying with either the book number or the book name
+- let the learner choose which book to read by replying with either the book number or the book name, or reply with `0` for the Hanzi Components Reference
 - when the learner chooses a book, ensure the chapter menu covers the full book, not only previously downloaded chapters or any hypothetical local starter slice
 - before invoking web discovery for a chosen book, check whether the repository or installed package already ships a bundled full-book source catalog and raw chapter store for that book under local `books/`, and use that bundled data directly when it exists
 - when the repository does not already encode a full book-level chapter catalog for the chosen book and the local bundled `books/` does not already provide one, run a web query for likely source pages before inventing any chapter count or chapter menu
@@ -102,7 +102,7 @@ Work directly from the repository files in the current workspace.
 ## Repository Files
 
 - `CURRICULUM.md` defines the full guided-reading curriculum and the intended sequence across the Four Books, bonus tracks, bridge texts, and later expansion works.
-- The repository `books/` and the installed package `books/` hold bundled full-book source catalogs plus raw chapter files for the current curriculum set: `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, and `Sanguo Yanyi`.
+- The repository `books/` and the installed package `books/` hold bundled full-book source catalogs plus raw chapter files for the current curriculum set: `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, `Sanguo Yanyi`, and `Chengyu Catalog`.
 - The guided-reading progress store lives at `$THE_BIG_LEARN_STATE_DIR/reading-progress.json` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise at `~/.the-big-learn/reading-progress.json`.
 - Source catalogs and downloaded raw chapters are saved under `$THE_BIG_LEARN_STATE_DIR/books/` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise under `~/.the-big-learn/books/`.
 - Flashcard bank entries are saved under `$THE_BIG_LEARN_STATE_DIR/flashcards/bank/` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise under `~/.the-big-learn/flashcards/bank/`.
@@ -110,6 +110,7 @@ Work directly from the repository files in the current workspace.
 
 The opening guided-reading menu should include the full curriculum from `CURRICULUM.md`:
 
+- `0. Hanzi Components Reference`. Explain that this is a support/reference option rather than a curriculum book, that it is backed by `references/hanzi/modern-common-components-gf0014-2009-grouped.json`, which groups 441 modern common components with variant forms collapsed under one entry, and that the default browse view is frequency-ranked in pages of 100 rows.
 - `1. Da Xue`. Explain that this is the recommended start and the first book in the designed curriculum spine. Also explain that the full book chapter menu and raw chapter text are bundled locally in `books/`.
 - Under the `Da Xue` book entry, if saved work already exists for a source-backed chapter, show it compactly inline, for example: `Chapter 1 [translation saved] [response saved]`. Treat that label as progress metadata, not as a featured excerpt or substitute for the full book chapter menu.
 - `2. Zhong Yong`. Explain that this is the second Four Books text in the default sequence and is supported through bundled local source catalogs plus raw chapters when local annotations are absent.
@@ -120,6 +121,15 @@ The opening guided-reading menu should include the full curriculum from `CURRICU
 - `7. San Zi Jing`. Explain that this is one side of the pedagogical bridge track and is supported through bundled local source catalogs plus raw chapters when local annotations are absent.
 - `8. Qian Zi Wen`. Explain that this is the paired pedagogical bridge text alongside `San Zi Jing` and is supported through bundled local source catalogs plus raw chapters when local annotations are absent.
 - `9. Sanguo Yanyi`. Explain that this is the later expansion track for narrative and cultural literacy and is supported through bundled local source catalogs plus raw chapters when local annotations are absent.
+- `10. Chengyu Catalog`. Explain that this is a bundled idiom reinforcement and review track and is supported through bundled local source catalogs plus raw chapters when local annotations are absent.
+- If the learner chooses `0`, do not open a chapter menu. Load `references/hanzi/modern-common-components-gf0014-2009-grouped.json`, explain that this is a reference lookup surface rather than a reading pass, start with the first 100 grouped components, and let the learner ask for a component by form, variant form, name, group, or frequency-ranked range.
+- For the Hanzi Components Reference, follow the `Component Reference Turn` in `DESIGN.md`: render results as a compact table with columns `Chinese Forms`, `Reading`, `English Meaning`, and `Example Words`.
+- In that table, show the canonical form first and variant forms in the same `Chinese Forms` cell.
+- In that table, render `Reading` as `pinyin (zhuyin)`.
+- In that table, keep `English Meaning` concise and keep `Example Words` to 1-4 short examples that visibly use the component.
+- In the default browse view, show 100 component groups at a time ordered by descending grouped `occurrence_count`, which is the local frequency proxy in the dataset, and keep ties stable.
+- If the learner asks for more, continue with the next 100 rows in the same order and let `+` or `next` mean the next frequency-ranked page.
+- Be explicit when `Reading`, `English Meaning`, or `Example Words` are live assistant help rather than pre-encoded repository data. The grouped forms and source example characters come from `references/hanzi/modern-common-components-gf0014-2009-grouped.json`.
 
 For `Da Xue`, use the same source-backed chapter path as the rest of the shipped curriculum:
 

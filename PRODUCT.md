@@ -64,6 +64,7 @@ The broader initial canon is defined in [CURRICULUM.md](./CURRICULUM.md):
 - `Daodejing`
 - `San Zi Jing` / `Qian Zi Wen`
 - `Sanguo Yanyi`
+- `Chengyu Catalog`
 
 The guided-reading menu should show that full curriculum, not just the locally annotated subset. When a learner chooses a curriculum book that is not yet fully encoded, the product should search for likely source pages, let the learner choose a source when there are multiple plausible candidates, derive the real chapter count from that source, and save the selected raw chapter locally.
 

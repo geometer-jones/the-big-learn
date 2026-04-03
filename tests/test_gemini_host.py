@@ -56,7 +56,15 @@ class GeminiHostTests(unittest.TestCase):
                 guided_reading,
             )
             self.assertIn(
+                "reply with `0` for the Hanzi Components Reference",
+                guided_reading,
+            )
+            self.assertIn(
                 "Under each book title in the menu, render the title as a miniature reference line",
+                guided_reading,
+            )
+            self.assertIn(
+                "0. Hanzi Components Reference",
                 guided_reading,
             )
             self.assertIn(
@@ -93,6 +101,46 @@ class GeminiHostTests(unittest.TestCase):
             )
             self.assertIn(
                 "9. Sanguo Yanyi",
+                guided_reading,
+            )
+            self.assertIn(
+                "10. Chengyu Catalog",
+                guided_reading,
+            )
+            self.assertIn(
+                "references/hanzi/modern-common-components-gf0014-2009-grouped.json",
+                guided_reading,
+            )
+            self.assertIn(
+                "If the learner chooses `0`, do not open a chapter menu.",
+                guided_reading,
+            )
+            self.assertIn(
+                "compact table with columns `Chinese Forms`, `Reading`, `English Meaning`, and `Example Words`",
+                guided_reading,
+            )
+            self.assertIn(
+                "render `Reading` as `pinyin (zhuyin)`",
+                guided_reading,
+            )
+            self.assertIn(
+                "frequency-ranked table in pages of 100 rows",
+                guided_reading,
+            )
+            self.assertIn(
+                "start with the first 100 grouped components",
+                guided_reading,
+            )
+            self.assertIn(
+                "descending grouped `occurrence_count`",
+                guided_reading,
+            )
+            self.assertIn(
+                "let `+` or `next` mean the next frequency-ranked page",
+                guided_reading,
+            )
+            self.assertIn(
+                "live assistant help rather than pre-encoded repository data",
                 guided_reading,
             )
             self.assertIn(

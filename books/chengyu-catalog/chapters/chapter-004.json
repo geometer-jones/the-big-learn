@@ -1,0 +1,14 @@
+{
+  "chapter": {
+    "id": "chapter-004",
+    "order": 4,
+    "summary": "同舟共济",
+    "text": "同舟共济\n群策群力\n同心协力\n开诚布公\n推心置腹\n将心比心\n和而不同\n相辅相成\n肝胆相照\n患难与共\n设身处地\n平易近人\n宽以待人\n与人为善\n成人之美\n先人后己\n舍己为人\n雪中送炭\n锦上添花\n礼尚往来\n相敬如宾\n心悦诚服\n情同手足\n朝夕相处\n志同道合\n同甘共苦\n通力合作\n各抒己见\n求同存异\n一团和气\n不卑不亢\n直言不讳\n一诺千金\n一言九鼎\n推己及人\n言传身教\n集思广益\n众志成城\n同仇敌忾\n取信于民\n披肝沥胆\n和衷共济\n相亲相爱\n扶危济困\n风雨同舟\n推诚相见\n同心同德\n休戚相关\n相得益彰\n同气连枝",
+    "title": "入门常用·人际与协作"
+  },
+  "chapter_path": "books/chengyu-catalog/chapters/chapter-004.json",
+  "provider": "bundled-local",
+  "schema_version": 2,
+  "source_title": "成語目錄",
+  "source_url": "the-big-learn://chengyu-catalog"
+}

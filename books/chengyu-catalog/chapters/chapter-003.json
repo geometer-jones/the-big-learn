@@ -1,0 +1,14 @@
+{
+  "chapter": {
+    "id": "chapter-003",
+    "order": 3,
+    "summary": "知难而进",
+    "text": "知难而进\n亡羊补牢\n化险为夷\n转危为安\n水到渠成\n事半功倍\n半途而废\n功亏一篑\n雷厉风行\n身体力行\n力挽狂澜\n一鼓作气\n一马当先\n破釜沉舟\n再接再厉\n马到成功\n行之有效\n井井有条\n轻车熟路\n得心应手\n游刃有余\n立竿见影\n一劳永逸\n事必躬亲\n开源节流\n拨乱反正\n拨云见日\n乘胜追击\n过犹不及\n迎刃而解\n以退为进\n量入为出\n精打细算\n快马加鞭\n按部就班\n由浅入深\n按图索骥\n顺藤摸瓜\n顺水推舟\n抽丝剥茧\n改弦更张\n脱胎换骨\n推波助澜\n勇往直前\n斩钉截铁\n一气呵成\n势如破竹\n披荆斩棘\n身先士卒\n因事制宜",
+    "title": "入门常用·行动与方法"
+  },
+  "chapter_path": "books/chengyu-catalog/chapters/chapter-003.json",
+  "provider": "bundled-local",
+  "schema_version": 2,
+  "source_title": "成語目錄",
+  "source_url": "the-big-learn://chengyu-catalog"
+}

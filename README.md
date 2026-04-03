@@ -14,7 +14,7 @@ The project is built around a small number of explicit ideas:
 - Turn durable confusion points into flashcards and review them through a weighted random prompt-and-reveal loop.
 - Keep prompts, curriculum data, fixtures, and policies in the repository so the behavior is inspectable and editable.
 
-The current curriculum spine starts with the Four Books and begins with `Da Xue`. The guided-reading menu now reflects the full curriculum in `CURRICULUM.md`, while keeping `Da Xue` as the recommended starting point. The install bundle now ships with prepackaged local source catalogs and chapter payloads with precomputed reading units for the current curriculum set: `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, and `Sanguo Yanyi`. Guided reading now uses that bundled source-backed chapter path across the shipped curriculum, with live assistant support during the reading pass and saved generated help available on reread.
+The current curriculum spine starts with the Four Books and begins with `Da Xue`. The guided-reading menu now reflects the full curriculum in `CURRICULUM.md`, while keeping `Da Xue` as the recommended starting point. The install bundle now ships with prepackaged local source catalogs and chapter payloads with precomputed reading units for the current curriculum set: `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, `Sanguo Yanyi`, and `Chengyu Catalog`. Guided reading now uses that bundled source-backed chapter path across the shipped curriculum, with live assistant support during the reading pass and saved generated help available on reread.
 
 ## Learning Loop
 
@@ -32,6 +32,7 @@ The current curriculum spine starts with the Four Books and begins with `Da Xue`
 - `skills/`: reusable learning skills
 - `hosts/`: host-specific assets for Codex, Claude Code, and Gemini
 - `books/`: bundled and saved full-book source catalogs plus raw chapter payloads
+- `references/`: bundled inspectable reference datasets for recurring Chinese-learning structures
 - `scripts/the_big_learn/`: optional Python host-support CLI for installers, source cataloging, progress storage, flashcard storage, and browsable learner-artifact mirrors
 - `flashcards/`: bundled static flashcard assets only. The repo currently carries `schema/bank-entry.schema.json` and `templates/default-variation-policy.json` here; saved flashcards and review state live under the runtime state dir, not in the repository.
 - `scripts/`: Python package source plus any local development helpers
@@ -61,7 +62,7 @@ If you want the helper runtime without the bootstrap, you can still install it m
 python3 -m pip install -e .
 ```
 
-A normal install now comes bundled with the full text of the current curriculum set under the local `books/`, so `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, and `Sanguo Yanyi` are available immediately after install without a post-install fetch.
+A normal install now comes bundled with the full text of the current curriculum set under the local `books/`, so `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, `Sanguo Yanyi`, and `Chengyu Catalog` are available immediately after install without a post-install fetch.
 
 Optional verification commands:
 
@@ -77,7 +78,8 @@ python3 -m unittest discover -s tests
 ## Current Scope
 
 - Guided-reading menu: full curriculum from `CURRICULUM.md`
-- Bundled curriculum source text: prepackaged full-book chapter catalogs and chapter payloads with precomputed reading units for `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, and `Sanguo Yanyi` in `books/`
+- Bundled curriculum source text: prepackaged full-book chapter catalogs and chapter payloads with precomputed reading units for `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, `Sanguo Yanyi`, and `Chengyu Catalog` in `books/`
+- Bundled idiom support pack: `Chengyu Catalog` currently ships 1000 four-character idioms in a pedagogy-first sequence split into 20 local chapters
 - Repository content starts from bundled `books/` chapter data, while richer line-shell help is generated and saved locally as users read
 - Live source support beyond the bundled curriculum set: full-book source catalogs, saved raw chapter downloads, and raw-source reading units from selected source URLs
 - Supported workflow: guided reading with line-grounded question handling for bundled or download-on-demand source texts

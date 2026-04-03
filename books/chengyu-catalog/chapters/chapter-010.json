@@ -1,0 +1,14 @@
+{
+  "chapter": {
+    "id": "chapter-010",
+    "order": 10,
+    "summary": "别有天地",
+    "text": "别有天地\n无所事事\n等而下之\n一相情原\n不好意思\n有本有原\n若无其事\n用武之地\n不得不尔\n不死不活\n论世知人\n知人论世\n公之于众\n人不聊生\n不敢后人\n一无所取\n好生之德\n得人死力\n无往不复\n不闻不问\n不问不闻\n时不再来\n地利人和\n自然而然\n动不失时\n十指连心\n四方之志\n经国之才\n不教之教\n二心三意\n三心二意\n风行一时\n一文如命\n三思而行\n万人之敌\n国将不国\n无所不包\n不省人事\n相安无事\n一家之辞\n不学无术\n一事不知\n不间不界\n分内之事\n存而不论\n小时了了\n回天之力\n人百其身\n百不失一\n生而知之",
+    "title": "常用拓展·高透明度 IV"
+  },
+  "chapter_path": "books/chengyu-catalog/chapters/chapter-010.json",
+  "provider": "bundled-local",
+  "schema_version": 2,
+  "source_title": "成語目錄",
+  "source_url": "the-big-learn://chengyu-catalog"
+}

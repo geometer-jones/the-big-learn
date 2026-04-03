@@ -1,0 +1,14 @@
+{
+  "chapter": {
+    "id": "chapter-007",
+    "order": 7,
+    "summary": "一无所有",
+    "text": "一无所有\n人事不知\n有一无二\n不明不白\n天地不容\n无可不可\n无所不作\n事在人为\n一事无成\n一得之见\n不一而足\n无大无小\n不言而喻\n一文不名\n不可一世\n言之无物\n周而不比\n无地自容\n无恶不为\n无中生有\n无天无日\n不了了之\n一言中的\n不当人子\n求之不得\n一物不知\n不当不正\n无所不通\n不知所以\n可有可无\n无所不至\n无为之治\n百无一是\n不以为意\n天理不容\n天不绝人\n不识之无\n无为自成\n无所作为\n不可多得\n不以为然\n方外之人\n不世之功\n不名一文\n不直一文\n一无长物\n不可理喻\n自知之明\n不毛之地\n无所用心",
+    "title": "常用拓展·高透明度 I"
+  },
+  "chapter_path": "books/chengyu-catalog/chapters/chapter-007.json",
+  "provider": "bundled-local",
+  "schema_version": 2,
+  "source_title": "成語目錄",
+  "source_url": "the-big-learn://chengyu-catalog"
+}

@@ -567,6 +567,33 @@ class SourceCatalogTests(unittest.TestCase):
         self.assertTrue(Path(payload["chapter_path"]).exists())
         self.assertNotIn(str(Path(tmp)), payload["chapter_path"])
 
+    def test_download_source_chapter_uses_packaged_chengyu_chapter_without_network(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp, patch(
+            "the_big_learn.source_catalog.state_dir",
+            return_value=Path(tmp),
+        ), patch(
+            "the_big_learn.source_catalog._fetch_source_html",
+            side_effect=AssertionError("Bundled source chapters should not fetch remote HTML."),
+        ):
+            catalog = source_catalog.build_source_catalog(BUNDLED_SOURCES["chengyu-catalog"]["source_url"])
+            payload = source_catalog.download_source_chapter(BUNDLED_SOURCES["chengyu-catalog"]["source_url"], "1")
+
+        self.assertEqual(catalog["chapter_count"], 20)
+        self.assertEqual(sum(chapter["reading_unit_count"] for chapter in catalog["chapters"]), 1000)
+        self.assertEqual(payload["chapter"]["title"], "入门常用·学习与积累")
+        self.assertEqual(payload["chapter"]["reading_unit_count"], 50)
+        self.assertEqual(payload["chapter"]["reading_units"][0]["text"], "持之以恒")
+        self.assertEqual(payload["chapter"]["reading_units"][-1]["text"], "精耕细作")
+        self.assertTrue(Path(payload["chapter_path"]).exists())
+        self.assertNotIn(str(Path(tmp)), payload["chapter_path"])
+
+    def test_bundled_local_source_catalog_cannot_refresh_from_remote(self) -> None:
+        with self.assertRaisesRegex(
+            source_catalog.SourceCatalogError,
+            "Bundled local source catalogs cannot be refreshed",
+        ):
+            source_catalog.build_source_catalog(BUNDLED_SOURCES["chengyu-catalog"]["source_url"], refresh=True)
+
     def test_detect_source_provider_rejects_unknown_host(self) -> None:
         with self.assertRaises(source_catalog.SourceCatalogError):
             source_catalog.detect_source_provider("https://example.com/book")

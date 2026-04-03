@@ -1,0 +1,14 @@
+{
+  "chapter": {
+    "id": "chapter-002",
+    "order": 2,
+    "summary": "深思熟虑",
+    "text": "深思熟虑\n明辨是非\n当机立断\n审时度势\n见机行事\n权衡轻重\n高瞻远瞩\n未雨绸缪\n见微知著\n深谋远虑\n随机应变\n因地制宜\n因势利导\n对症下药\n有的放矢\n居安思危\n防患未然\n量力而行\n量体裁衣\n当务之急\n轻重缓急\n兼容并包\n兼收并蓄\n运筹帷幄\n权宜之计\n深谋远略\n适可而止\n见仁见智\n洞若观火\n一叶知秋\n防微杜渐\n当仁不让\n有条不紊\n高屋建瓴\n统筹兼顾\n明察秋毫\n远见卓识\n见机而作\n先见之明\n因材施教\n居高临下\n见缝插针\n因陋就简\n顺理成章\n从长计议\n深图远算\n因人制宜\n见机而行\n权衡利弊\n因时制宜",
+    "title": "入门常用·思考与判断"
+  },
+  "chapter_path": "books/chengyu-catalog/chapters/chapter-002.json",
+  "provider": "bundled-local",
+  "schema_version": 2,
+  "source_title": "成語目錄",
+  "source_url": "the-big-learn://chengyu-catalog"
+}

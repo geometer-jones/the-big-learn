@@ -24,6 +24,7 @@ HTML_CACHE_FILE = "source.html"
 CATALOG_CACHE_FILE = "catalog.json"
 CHAPTERS_DIRNAME = "chapters"
 COMMENTARY_DIRNAME = "commentary"
+BUNDLED_LOCAL_SOURCE_SCHEME = "the-big-learn"
 SOURCE_CHAPTER_SCHEMA_VERSION = 2
 READING_UNIT_MAX_CHARS = 120
 GENERATED_ANNOTATION_DEFAULT_STATUS = "generated"
@@ -167,7 +168,11 @@ def packaged_source_chapter_path(source_url: str, chapter_id: str) -> Path:
 
 
 def detect_source_provider(source_url: str) -> str:
-    hostname = urlsplit(source_url).netloc.lower()
+    parsed = urlsplit(source_url)
+    if parsed.scheme == BUNDLED_LOCAL_SOURCE_SCHEME:
+        return "bundled-local"
+
+    hostname = parsed.netloc.lower()
     if hostname.endswith("wikisource.org"):
         return "wikisource-html"
     if hostname == "ctext.org" or hostname.endswith(".ctext.org"):
@@ -913,6 +918,10 @@ def load_saved_source_catalog(source_url: str) -> dict[str, Any] | None:
 
 
 def _build_full_source_catalog(source_url: str, *, refresh: bool = False) -> dict[str, Any]:
+    if urlsplit(source_url).scheme == BUNDLED_LOCAL_SOURCE_SCHEME:
+        raise SourceCatalogError(
+            f"Bundled local source catalogs cannot be refreshed from a remote URL: {source_url}"
+        )
     html_text = _fetch_source_html(source_url, refresh=refresh)
     return _build_catalog_from_html(source_url, html_text)
 

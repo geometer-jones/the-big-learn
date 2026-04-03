@@ -13,6 +13,7 @@ BUNDLED_ASSET_PATHS = [
     "evals",
     "flashcards",
     "hosts",
+    "references",
     "skills",
     "books",
     "ARCHITECTURE.md",
@@ -49,7 +50,7 @@ class build_py(_build_py):
 
 setup(
     name="the-big-learn",
-    version="0.2.10",
+    version="0.3",
     description="Open-source agent skill pack and runtime for learning Chinese inside coding assistants.",
     packages=find_packages(where="scripts", include=["the_big_learn", "the_big_learn.*"]),
     package_dir={"": "scripts"},

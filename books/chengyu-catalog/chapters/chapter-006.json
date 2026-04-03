@@ -1,0 +1,14 @@
+{
+  "chapter": {
+    "id": "chapter-006",
+    "order": 6,
+    "summary": "自相矛盾",
+    "text": "自相矛盾\n画蛇添足\n守株待兔\n刻舟求剑\n叶公好龙\n掩耳盗铃\n狐假虎威\n井底之蛙\n滥竽充数\n南辕北辙\n杯弓蛇影\n画饼充饥\n塞翁失马\n愚公移山\n对牛弹琴\n班门弄斧\n毛遂自荐\n完璧归赵\n负荆请罪\n纸上谈兵\n四面楚歌\n指鹿为马\n洛阳纸贵\n闻鸡起舞\n程门立雪\n卧薪尝胆\n凿壁偷光\n三顾茅庐\n东施效颦\n惊弓之鸟\n揠苗助长\n望梅止渴\n高山流水\n门庭若市\n望洋兴叹\n买椟还珠\n守口如瓶\n邯郸学步\n退避三舍\n唇亡齿寒\n朝三暮四\n盲人摸象\n螳臂当车\n伯乐相马\n车水马龙\n不耻下问\n草木皆兵\n老马识途\n讳疾忌医\n一鸣惊人",
+    "title": "典故起步·高频故事成语"
+  },
+  "chapter_path": "books/chengyu-catalog/chapters/chapter-006.json",
+  "provider": "bundled-local",
+  "schema_version": 2,
+  "source_title": "成語目錄",
+  "source_url": "the-big-learn://chengyu-catalog"
+}

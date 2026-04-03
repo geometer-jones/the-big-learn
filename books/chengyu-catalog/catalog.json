@@ -1,0 +1,214 @@
+{
+  "cache_dir": "books/chengyu-catalog",
+  "catalog_path": "books/chengyu-catalog/catalog.json",
+  "chapter_count": 20,
+  "chapters": [
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-001.json",
+      "character_count": 200,
+      "id": "chapter-001",
+      "order": 1,
+      "reading_unit_count": 50,
+      "summary": "持之以恒",
+      "supplemental_unit_count": 0,
+      "title": "入门常用·学习与积累"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-002.json",
+      "character_count": 200,
+      "id": "chapter-002",
+      "order": 2,
+      "reading_unit_count": 50,
+      "summary": "深思熟虑",
+      "supplemental_unit_count": 0,
+      "title": "入门常用·思考与判断"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-003.json",
+      "character_count": 200,
+      "id": "chapter-003",
+      "order": 3,
+      "reading_unit_count": 50,
+      "summary": "知难而进",
+      "supplemental_unit_count": 0,
+      "title": "入门常用·行动与方法"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-004.json",
+      "character_count": 200,
+      "id": "chapter-004",
+      "order": 4,
+      "reading_unit_count": 50,
+      "summary": "同舟共济",
+      "supplemental_unit_count": 0,
+      "title": "入门常用·人际与协作"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-005.json",
+      "character_count": 200,
+      "id": "chapter-005",
+      "order": 5,
+      "reading_unit_count": 50,
+      "summary": "光明磊落",
+      "supplemental_unit_count": 0,
+      "title": "入门常用·品格与表达"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-006.json",
+      "character_count": 200,
+      "id": "chapter-006",
+      "order": 6,
+      "reading_unit_count": 50,
+      "summary": "自相矛盾",
+      "supplemental_unit_count": 0,
+      "title": "典故起步·高频故事成语"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-007.json",
+      "character_count": 200,
+      "id": "chapter-007",
+      "order": 7,
+      "reading_unit_count": 50,
+      "summary": "一无所有",
+      "supplemental_unit_count": 0,
+      "title": "常用拓展·高透明度 I"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-008.json",
+      "character_count": 200,
+      "id": "chapter-008",
+      "order": 8,
+      "reading_unit_count": 50,
+      "summary": "不败之地",
+      "supplemental_unit_count": 0,
+      "title": "常用拓展·高透明度 II"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-009.json",
+      "character_count": 200,
+      "id": "chapter-009",
+      "order": 9,
+      "reading_unit_count": 50,
+      "summary": "不仁不义",
+      "supplemental_unit_count": 0,
+      "title": "常用拓展·高透明度 III"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-010.json",
+      "character_count": 200,
+      "id": "chapter-010",
+      "order": 10,
+      "reading_unit_count": 50,
+      "summary": "别有天地",
+      "supplemental_unit_count": 0,
+      "title": "常用拓展·高透明度 IV"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-011.json",
+      "character_count": 200,
+      "id": "chapter-011",
+      "order": 11,
+      "reading_unit_count": 50,
+      "summary": "无论如何",
+      "supplemental_unit_count": 0,
+      "title": "常用拓展·高透明度 V"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-012.json",
+      "character_count": 200,
+      "id": "chapter-012",
+      "order": 12,
+      "reading_unit_count": 50,
+      "summary": "高高在上",
+      "supplemental_unit_count": 0,
+      "title": "书面拓展·中高透明度 I"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-013.json",
+      "character_count": 200,
+      "id": "chapter-013",
+      "order": 13,
+      "reading_unit_count": 50,
+      "summary": "妙不可言",
+      "supplemental_unit_count": 0,
+      "title": "书面拓展·中高透明度 II"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-014.json",
+      "character_count": 200,
+      "id": "chapter-014",
+      "order": 14,
+      "reading_unit_count": 50,
+      "summary": "一目十行",
+      "supplemental_unit_count": 0,
+      "title": "书面拓展·中高透明度 III"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-015.json",
+      "character_count": 200,
+      "id": "chapter-015",
+      "order": 15,
+      "reading_unit_count": 50,
+      "summary": "三人为众",
+      "supplemental_unit_count": 0,
+      "title": "书面拓展·中高透明度 IV"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-016.json",
+      "character_count": 200,
+      "id": "chapter-016",
+      "order": 16,
+      "reading_unit_count": 50,
+      "summary": "以文乱法",
+      "supplemental_unit_count": 0,
+      "title": "书面拓展·中高透明度 V"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-017.json",
+      "character_count": 200,
+      "id": "chapter-017",
+      "order": 17,
+      "reading_unit_count": 50,
+      "summary": "物尽其用",
+      "supplemental_unit_count": 0,
+      "title": "典故进阶·中透明度 I"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-018.json",
+      "character_count": 200,
+      "id": "chapter-018",
+      "order": 18,
+      "reading_unit_count": 50,
+      "summary": "文不加点",
+      "supplemental_unit_count": 0,
+      "title": "典故进阶·中透明度 II"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-019.json",
+      "character_count": 200,
+      "id": "chapter-019",
+      "order": 19,
+      "reading_unit_count": 50,
+      "summary": "一往而深",
+      "supplemental_unit_count": 0,
+      "title": "文言进阶·较高难度 I"
+    },
+    {
+      "chapter_path": "books/chengyu-catalog/chapters/chapter-020.json",
+      "character_count": 200,
+      "id": "chapter-020",
+      "order": 20,
+      "reading_unit_count": 50,
+      "summary": "青山一发",
+      "supplemental_unit_count": 0,
+      "title": "文言进阶·较高难度 II"
+    }
+  ],
+  "commentary_chapter_count": 0,
+  "commentary_chapters": [],
+  "pedagogy_note": "Pedagogy-first ordering: chapters 1-6 are hand-curated core idioms grouped by theme and story value; chapters 7-20 continue from more transparent/common written idioms toward more source-heavy and literary items.",
+  "provenance_note": "Derived from the MIT-licensed pwxcoo/chinese-xinhua idiom list and reordered for pedagogy-first study inside The Big Learn.",
+  "selection_note": "Front chapters prioritize transparent, high-utility, culturally central idioms. Later chapters are scored by explanation brevity, character commonness within the idiom corpus, and penalties for source-heavy or opaque glosses.",
+  "source_url": "the-big-learn://chengyu-catalog",
+  "title": "成語目錄"
+}

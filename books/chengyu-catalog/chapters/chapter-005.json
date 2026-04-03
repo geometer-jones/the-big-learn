@@ -1,0 +1,14 @@
+{
+  "chapter": {
+    "id": "chapter-005",
+    "order": 5,
+    "summary": "光明磊落",
+    "text": "光明磊落\n大公无私\n克己奉公\n先公后私\n言行一致\n见贤思齐\n闻过则喜\n改过自新\n坚忍不拔\n百折不挠\n心平气和\n心旷神怡\n喜出望外\n满载而归\n如释重负\n意气风发\n从容不迫\n泰然自若\n胸有成竹\n一举两得\n名副其实\n实至名归\n有口皆碑\n脍炙人口\n一目了然\n一针见血\n言简意赅\n画龙点睛\n引人入胜\n出类拔萃\n名列前茅\n后来居上\n蒸蒸日上\n日新月异\n卓有成效\n当之无愧\n有目共睹\n熟视无睹\n文质彬彬\n落落大方\n神采奕奕\n不慌不忙\n励精图治\n厚德载物\n名不虚传\n宽宏大量\n问心无愧\n从容自若\n不骄不躁\n谦虚谨慎",
+    "title": "入门常用·品格与表达"
+  },
+  "chapter_path": "books/chengyu-catalog/chapters/chapter-005.json",
+  "provider": "bundled-local",
+  "schema_version": 2,
+  "source_title": "成語目錄",
+  "source_url": "the-big-learn://chengyu-catalog"
+}

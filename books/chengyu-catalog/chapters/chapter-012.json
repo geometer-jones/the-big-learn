@@ -1,0 +1,14 @@
+{
+  "chapter": {
+    "id": "chapter-012",
+    "order": 12,
+    "summary": "高高在上",
+    "text": "高高在上\n一孔之见\n何罪之有\n小家子气\n兵出无名\n爱人以德\n食指大动\n不解之缘\n无动为大\n水天一色\n是是非非\n无恶不造\n一心无二\n无声无息\n一来二去\n不名一钱\n一钱不名\n天各一方\n一之谓甚\n说是道非\n金玉之言\n记问之学\n一言难尽\n死得其所\n去就之分\n大难不死\n清静无为\n不足为奇\n见可而进\n一得之功\n不同戴天\n不绝如发\n三人成虎\n易子而食\n齐心一力\n敬而远之\n变色之言\n不同流俗\n言外之意\n述而不作\n儿女之情\n无为而成\n流水无情\n何乐不为\n不可终日\n加人一等\n无往不利\n出头之日\n言行若一\n一定之规",
+    "title": "书面拓展·中高透明度 I"
+  },
+  "chapter_path": "books/chengyu-catalog/chapters/chapter-012.json",
+  "provider": "bundled-local",
+  "schema_version": 2,
+  "source_title": "成語目錄",
+  "source_url": "the-big-learn://chengyu-catalog"
+}

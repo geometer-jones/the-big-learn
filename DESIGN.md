@@ -171,6 +171,34 @@ Rules:
 - Do not end the exploder with flashcard candidate recommendations or save prompts.
 - Try to divine the etymology, but be disciplined in qualifying the strength of your hunches
 
+### Component Reference Turn
+
+Hierarchy:
+
+1. One brief orientation line that this is a reference lookup, not a guided-reading pass
+2. A compact component table
+3. Short follow-up cue for another component, group, or range
+
+Table:
+
+1. `Chinese Forms`
+2. `Reading`
+3. `English Meaning`
+4. `Example Words`
+
+Rules:
+
+- The `Chinese Forms` cell shows the canonical form first and then variant forms in the same cell.
+- Render every reading inline as `pinyin (zhuyin)`.
+- For bound or non-character components, the reading should be the conventional spoken component name rather than pretending the form is always an independent word.
+- `English Meaning` should stay concise: one short gloss or short semicolon-separated cluster, not an essay.
+- `Example Words` should contain 1-4 short examples that visibly use the component.
+- The default browse view should show 100 component groups at a time, ordered by descending frequency.
+- Use the grouped official `occurrence_count` totals in the reference dataset as the local frequency proxy, and keep the sort deterministic with a stable tie-breaker.
+- When the learner asks for more, continue with the next 100 rows in the same frequency order.
+- If the reference dataset only stores the grouped forms or source example characters, make clear that readings, English meanings, or example words are live assistant help rather than pre-encoded repository annotation.
+- If the learner asks for a range, keep one component group per row and do not dump oversized prose between rows.
+
 ### Flashcard-Review Turn
 
 Hierarchy:

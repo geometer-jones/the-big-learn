@@ -8,7 +8,7 @@ The current model is:
 - The Big Learn installs custom command files into Gemini CLI.
 - Those commands turn ordinary Gemini CLI threads into Chinese tutorial threads.
 - The guided-reading menu should present the full curriculum listed in `CURRICULUM.md`.
-- A normal install now comes bundled with local full-book source catalogs and raw chapter files for the current curriculum set: `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, and `Sanguo Yanyi`.
+- A normal install now comes bundled with local full-book source catalogs and raw chapter files for the current curriculum set: `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, `Sanguo Yanyi`, and `Chengyu Catalog`.
 - The repo now starts clean from bundled source text rather than a seeded annotation stash.
 - Richer line-shell help is generated and saved locally as learners read.
 - For books outside that bundled curriculum set, or when the learner wants an alternate source, Gemini should search the web for plausible source pages, let the learner choose among multiple sources, then use the optional `the-big-learn` CLI to build a real full-book chapter menu, save raw chapters locally, and continue guided reading from saved reading units.

@@ -1,0 +1,14 @@
+{
+  "chapter": {
+    "id": "chapter-001",
+    "order": 1,
+    "summary": "持之以恒",
+    "text": "持之以恒\n厚积薄发\n脚踏实地\n实事求是\n精益求精\n温故知新\n举一反三\n触类旁通\n融会贯通\n孜孜不倦\n锲而不舍\n熟能生巧\n勤能补拙\n学以致用\n循序渐进\n博采众长\n取长补短\n去粗取精\n去伪存真\n推陈出新\n字斟句酌\n专心致志\n全神贯注\n聚精会神\n一丝不苟\n好学不倦\n开卷有益\n博闻强识\n旁征博引\n滚瓜烂熟\n博学多才\n学富五车\n才高八斗\n自强不息\n学而不厌\n温文尔雅\n闻一知十\n博古通今\n博大精深\n追本溯源\n融汇贯通\n手不释卷\n日积月累\n废寝忘食\n勤学苦练\n水滴石穿\n博学多闻\n孜孜以求\n触类而长\n精耕细作",
+    "title": "入门常用·学习与积累"
+  },
+  "chapter_path": "books/chengyu-catalog/chapters/chapter-001.json",
+  "provider": "bundled-local",
+  "schema_version": 2,
+  "source_title": "成語目錄",
+  "source_url": "the-big-learn://chengyu-catalog"
+}
