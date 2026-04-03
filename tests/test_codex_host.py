@@ -239,6 +239,7 @@ class CodexHostTests(unittest.TestCase):
             self.assertIn("If the invocation does not include a target character", explode_content)
             self.assertIn("ask the learner to confirm which character to explode", explode_content)
             self.assertIn("## Definition", explode_content)
+            self.assertIn("## Etymology", explode_content)
             self.assertIn("## Meaning Map", explode_content)
             self.assertIn("## Simplified | Traditional", explode_content)
             self.assertIn("keep the learner's reading place intact", explode_content)
@@ -257,15 +258,19 @@ class CodexHostTests(unittest.TestCase):
             self.assertNotIn("the-big-learn-flashcard-bank-add", explode_content)
             self.assertLess(
                 explode_content.index("2. `## Definition`"),
-                explode_content.index("3. `## Simplified | Traditional`"),
+                explode_content.index("3. `## Etymology`"),
             )
             self.assertLess(
-                explode_content.index("4. `## Analysis`"),
-                explode_content.index("5. `## Synthesis`"),
+                explode_content.index("3. `## Etymology`"),
+                explode_content.index("4. `## Simplified | Traditional`"),
             )
             self.assertLess(
-                explode_content.index("5. `## Synthesis`"),
-                explode_content.index("6. `## Meaning Map`"),
+                explode_content.index("5. `## Analysis`"),
+                explode_content.index("6. `## Synthesis`"),
+            )
+            self.assertLess(
+                explode_content.index("6. `## Synthesis`"),
+                explode_content.index("7. `## Meaning Map`"),
             )
             self.assertLess(
                 explode_content.index("### Containing Characters"),

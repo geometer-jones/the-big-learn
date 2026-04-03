@@ -18,6 +18,7 @@ Stay inside the host thread and work directly from the repository context alread
 - accept one or more Chinese characters and handle them one at a time in the order given
 - show the simplified form in the primary position and append the traditional form in parentheses only when it differs
 - make `## Definition` the first visible section of the explosion so the learner gets the chosen reading and sense before the structural breakdown
+- follow `## Definition` immediately with `## Etymology` so the learner gets the historical note before any script comparison or structural teaching breakdown
 - keep that simplified-primary display rule throughout `## Analysis`, including component nodes, and do not add redundant traditional parentheses when the scripts match
 - if the request came from guided reading, use one brief bridge line to signal that this is a quick sidecar answer and keep the learner's reading place intact
 - when the simplified and traditional forms differ, show a short `## Simplified | Traditional` block before `## Analysis` so both forms are visible without duplicating the whole turn
@@ -50,28 +51,30 @@ For a single target character, keep the turn compact and use visible blocks in t
 
 1. one brief bridge line when the learner arrived from guided reading
 2. `## Definition`
-3. `## Simplified | Traditional` only when the scripts differ
-4. `## Analysis`
-5. `## Synthesis`
-6. `## Meaning Map`
-7. a short return cue when the learner should resume guided reading
+3. `## Etymology`
+4. `## Simplified | Traditional` only when the scripts differ
+5. `## Analysis`
+6. `## Synthesis`
+7. `## Meaning Map`
+8. a short return cue when the learner should resume guided reading
 
 For multiple target characters, repeat the same order for each character before moving to the next one. Use:
 
 1. one brief bridge line only when it helps preserve guided-reading continuity
 2. `## Definition: <character>`
-3. `## Simplified | Traditional: <character>` only when the scripts differ
-4. `## Analysis: <character>`
-5. `## Synthesis: <character>`
-6. `## Meaning Map: <character>`
+3. `## Etymology: <character>`
+4. `## Simplified | Traditional: <character>` only when the scripts differ
+5. `## Analysis: <character>`
+6. `## Synthesis: <character>`
+7. `## Meaning Map: <character>`
 
-Do not add extra top-level headings beyond `## Definition`, the optional `## Simplified | Traditional` block, `## Analysis`, `## Synthesis`, and `## Meaning Map`.
+Do not add extra top-level headings beyond `## Definition`, `## Etymology`, the optional `## Simplified | Traditional` block, `## Analysis`, `## Synthesis`, and `## Meaning Map`.
 
 Do not use tables for the main answer. Use nested bullet lists so the structure reads like a tree.
 
 ### Definition
 
-Lead with a compact definition block before any script note or decomposition so the learner sees the selected reading and meaning first.
+Lead with a compact definition block before any etymology note, script note, or decomposition so the learner sees the selected reading and meaning first.
 
 Include:
 
@@ -83,6 +86,20 @@ Include:
 Preferred pattern:
 
 - `语` (`語`): `yu3 (ㄩˇ)` - language; speech
+
+### Etymology
+
+Place this section immediately after `## Definition`.
+
+Keep it concise and historical:
+
+- explain the most useful historical origin or character-formation note for the chosen sense
+- distinguish that historical note from the learner-facing decomposition you will use later in `## Analysis`
+- if the history is uncertain, disputed, or only partially recoverable, say that plainly instead of overstating it
+
+Preferred pattern:
+
+- Historically, `語` is treated as a speech-related character built with `言` plus `吾`, where `吾` mainly helps cue the older sound; the modern teaching breakdown is still useful, but it is not the whole historical story.
 
 ### Analysis
 
@@ -237,6 +254,7 @@ If the target character is not normally used as a standalone word for the intend
 - If simplified and traditional forms differ in a way that affects decomposition, mention that briefly.
 - If no target character is provided, mine only the recent thread context for plausible Hanzi candidates, then stop and get confirmation before doing the full explosion.
 - In `## Definition`, state the chosen reading and sense plainly before the decomposition starts.
+- In `## Etymology`, keep the historical note brief and place it immediately after `## Definition`.
 - In `## Analysis`, keep simplified primary at every node and append traditional in parentheses only when it differs.
 - In `## Synthesis`, include phrase-use examples, larger containing-character examples, and a homophone list.
 - In `## Meaning Map`, put `#### Synonyms` and `#### Antonyms` after `## Analysis` and `## Synthesis`.
@@ -261,6 +279,15 @@ If the target character is not normally used as a standalone word for the intend
 ## Definition
 
 - `语` (`語`): `yu3 (ㄩˇ)` - language; speech
+
+## Etymology
+
+- Historically, `語` is a speech-related character built with `言` plus `吾`, with `吾` mainly helping cue the older sound.
+- The learner-facing decomposition below is still useful, but it is a teaching breakdown rather than a full etymology.
+
+## Simplified | Traditional
+
+- `语` | `語` - the traditional form preserves the fuller `言` component, which makes the historical structure easier to see.
 
 ## Analysis
 

@@ -78,9 +78,14 @@ class SkillMetadataTests(unittest.TestCase):
             content,
         )
         self.assertIn(
-            "Lead with a compact definition block before any script note or decomposition",
+            "follow `## Definition` immediately with `## Etymology`",
             content,
         )
+        self.assertIn(
+            "Lead with a compact definition block before any etymology note, script note, or decomposition",
+            content,
+        )
+        self.assertIn("## Etymology", content)
         self.assertIn(
             "Place the meaning map after structural analysis and synthesis",
             content,
@@ -104,14 +109,18 @@ class SkillMetadataTests(unittest.TestCase):
         self.assertIn("#### Different Tone", content)
         self.assertLess(
             content.index("2. `## Definition`"),
-            content.index("3. `## Simplified | Traditional`"),
+            content.index("3. `## Etymology`"),
         )
         self.assertLess(
-            content.index("4. `## Analysis`"),
-            content.index("5. `## Synthesis`"),
+            content.index("3. `## Etymology`"),
+            content.index("4. `## Simplified | Traditional`"),
         )
         self.assertLess(
-            content.index("6. `## Meaning Map`"),
+            content.index("5. `## Analysis`"),
+            content.index("6. `## Synthesis`"),
+        )
+        self.assertLess(
+            content.index("7. `## Meaning Map`"),
             content.index("## Rules"),
         )
         self.assertLess(
