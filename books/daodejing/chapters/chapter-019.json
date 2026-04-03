@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 45,
+    "id": "chapter-019",
+    "order": 19,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 45,
+        "id": "chapter-019-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "絕聖棄智，民利百倍；絕仁棄義，民復孝慈；絕巧棄利，盜賊無有。此三者以為文不足。故令有所屬：見素抱樸，少私寡欲。"
+      }
+    ],
+    "summary": "絕聖棄智，民利百倍；絕仁棄義，民復孝慈；絕巧棄利，盜賊無有",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "絕聖棄智，民利百倍；絕仁棄義，民復孝慈；絕巧棄利，盜賊無有。此三者以為文不足。故令有所屬：見素抱樸，少私寡欲。",
+    "title": "第19章"
+  },
+  "chapter_path": "books/daodejing/chapters/chapter-019.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

@@ -1,0 +1,78 @@
+{
+  "chapter": {
+    "character_count": 50,
+    "id": "chapter-011",
+    "order": 11,
+    "reading_unit_count": 3,
+    "reading_units": [
+      {
+        "character_count": 16,
+        "id": "chapter-011-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "子曰：「素隱行怪，後世有述焉，吾弗為之矣。"
+      },
+      {
+        "character_count": 15,
+        "id": "chapter-011-line-002",
+        "order": 2,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "君子遵道而行，半塗而廢，吾弗能已矣。"
+      },
+      {
+        "character_count": 19,
+        "id": "chapter-011-line-003",
+        "order": 3,
+        "source_block_chunk": 1,
+        "source_block_order": 3,
+        "text": "君子依乎中庸，遯世不見知而不悔，唯聖者能之。"
+      }
+    ],
+    "summary": "子思所引夫子之言，以明首章之義者止此",
+    "supplemental_text": "素，按漢書當作索，蓋字之誤也。索隱行怪，言深求隱僻之理，而過為詭異之行也。然以其足以欺世而盜名，故後世或有稱述之者。此知之過而不擇乎善，行之過而不用其中，不當強而強者也，聖人豈為之哉！遵道而行，則能擇乎善矣；半塗而廢，則力之不足也。此其知雖足以及之，而行有不逮，當強而不強者也。已，止也。聖人於此，非勉焉而不敢廢，蓋至誠無息，自有所不能止也。不為索隱行怪，則依乎中庸而已。不能半塗而廢，是以遯世不見知而不悔也。此中庸之成德，知之盡、仁之至、不賴勇而裕如者，正吾夫子之事，而猶不自居也。故曰唯聖者能之而已。\n右第十一章。子思所引夫子之言，以明首章之義者止此。蓋此篇大旨，以知仁勇三達德為入道之門。故於篇首，即以大舜、顏淵、子路之事明之。舜，知也；顏淵，仁也；子路，勇也：三者廢其一，則無以造道而成德矣。餘見第二十章。",
+    "supplemental_unit_count": 4,
+    "supplemental_units": [
+      {
+        "character_count": 100,
+        "id": "chapter-011-supp-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "素，按漢書當作索，蓋字之誤也。索隱行怪，言深求隱僻之理，而過為詭異之行也。然以其足以欺世而盜名，故後世或有稱述之者。此知之過而不擇乎善，行之過而不用其中，不當強而強者也，聖人豈為之哉！遵道而行，則能擇乎善矣；半塗而廢，則力之不足也。"
+      },
+      {
+        "character_count": 76,
+        "id": "chapter-011-supp-002",
+        "order": 2,
+        "source_block_chunk": 2,
+        "source_block_order": 1,
+        "text": "此其知雖足以及之，而行有不逮，當強而不強者也。已，止也。聖人於此，非勉焉而不敢廢，蓋至誠無息，自有所不能止也。不為索隱行怪，則依乎中庸而已。不能半塗而廢，是以遯世不見知而不悔也。"
+      },
+      {
+        "character_count": 40,
+        "id": "chapter-011-supp-003",
+        "order": 3,
+        "source_block_chunk": 3,
+        "source_block_order": 1,
+        "text": "此中庸之成德，知之盡、仁之至、不賴勇而裕如者，正吾夫子之事，而猶不自居也。故曰唯聖者能之而已。"
+      },
+      {
+        "character_count": 86,
+        "id": "chapter-011-supp-004",
+        "order": 4,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "右第十一章。子思所引夫子之言，以明首章之義者止此。蓋此篇大旨，以知仁勇三達德為入道之門。故於篇首，即以大舜、顏淵、子路之事明之。舜，知也；顏淵，仁也；子路，勇也：三者廢其一，則無以造道而成德矣。餘見第二十章。"
+      }
+    ],
+    "text": "子曰：「素隱行怪，後世有述焉，吾弗為之矣。\n君子遵道而行，半塗而廢，吾弗能已矣。\n君子依乎中庸，遯世不見知而不悔，唯聖者能之。",
+    "title": "右第十一章"
+  },
+  "chapter_path": "books/zhong-yong/chapters/chapter-011.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "四書章句集注 : 中庸章句",
+  "source_url": "https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju?if=en"
+}

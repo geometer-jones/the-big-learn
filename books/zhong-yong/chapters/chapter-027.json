@@ -1,0 +1,118 @@
+{
+  "chapter": {
+    "character_count": 121,
+    "id": "chapter-027",
+    "order": 27,
+    "reading_unit_count": 7,
+    "reading_units": [
+      {
+        "character_count": 6,
+        "id": "chapter-027-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "大哉聖人之道！"
+      },
+      {
+        "character_count": 11,
+        "id": "chapter-027-line-002",
+        "order": 2,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "洋洋乎！發育萬物，峻極于天。"
+      },
+      {
+        "character_count": 12,
+        "id": "chapter-027-line-003",
+        "order": 3,
+        "source_block_chunk": 1,
+        "source_block_order": 3,
+        "text": "優優大哉！禮儀三百，威儀三千。"
+      },
+      {
+        "character_count": 6,
+        "id": "chapter-027-line-004",
+        "order": 4,
+        "source_block_chunk": 1,
+        "source_block_order": 4,
+        "text": "待其人而後行。"
+      },
+      {
+        "character_count": 11,
+        "id": "chapter-027-line-005",
+        "order": 5,
+        "source_block_chunk": 1,
+        "source_block_order": 5,
+        "text": "故曰苟不至德，至道不凝焉。"
+      },
+      {
+        "character_count": 34,
+        "id": "chapter-027-line-006",
+        "order": 6,
+        "source_block_chunk": 1,
+        "source_block_order": 6,
+        "text": "故君子尊德性而道問學，致廣大而盡精微，極高明而道中庸。溫故而知新，敦厚以崇禮。"
+      },
+      {
+        "character_count": 41,
+        "id": "chapter-027-line-007",
+        "order": 7,
+        "source_block_chunk": 1,
+        "source_block_order": 7,
+        "text": "是故居上不驕，為下不倍，國有道其言足以興，國無道其默足以容。詩曰「既明且哲，以保其身」，其此之謂與！"
+      }
+    ],
+    "summary": "言人道也",
+    "supplemental_text": "包下文兩節而言。峻，高大也。此言道之極於至大而無外也。優優，充足有餘之意。禮儀，經禮也。威儀，曲禮也。此言道之入於至小而無閒也。總結上兩節。至德，謂其人。至道，指上兩節而言也。凝，聚也，成也。尊者，恭敬奉持之意。德性者，吾所受於天之正理。道，由也。溫，猶燖溫之溫，謂故學之矣，復時習之也。敦，加厚也。尊德性，所以存心而極乎道體之大也。道問學，所以致知而盡乎道體之細也。二者修德凝道之大端也。不以一毫私意自蔽，不以一毫私欲自累，涵泳乎其所已知。敦篤乎其所已能，此皆存心之屬也。析理則不使有毫釐之差，處事則不使有過不及之謬，理義則日知其所未知，節文則日謹其所未謹，此皆致知之屬也。蓋非存心無以致知，而存心者又不可以不致知。故此五句，大小相資，首尾相應，聖賢所示入德之方，莫詳於此，學者宜盡心焉。倍，與背同。與，平聲。興，謂興起在位也。詩大雅烝民之篇。\n右第二十七章。言人道也。",
+    "supplemental_unit_count": 5,
+    "supplemental_units": [
+      {
+        "character_count": 96,
+        "id": "chapter-027-supp-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "包下文兩節而言。峻，高大也。此言道之極於至大而無外也。優優，充足有餘之意。禮儀，經禮也。威儀，曲禮也。此言道之入於至小而無閒也。總結上兩節。至德，謂其人。至道，指上兩節而言也。凝，聚也，成也。尊者，恭敬奉持之意。德性者，吾所受於天之正理。"
+      },
+      {
+        "character_count": 100,
+        "id": "chapter-027-supp-002",
+        "order": 2,
+        "source_block_chunk": 2,
+        "source_block_order": 1,
+        "text": "道，由也。溫，猶燖溫之溫，謂故學之矣，復時習之也。敦，加厚也。尊德性，所以存心而極乎道體之大也。道問學，所以致知而盡乎道體之細也。二者修德凝道之大端也。不以一毫私意自蔽，不以一毫私欲自累，涵泳乎其所已知。敦篤乎其所已能，此皆存心之屬也。"
+      },
+      {
+        "character_count": 102,
+        "id": "chapter-027-supp-003",
+        "order": 3,
+        "source_block_chunk": 3,
+        "source_block_order": 1,
+        "text": "析理則不使有毫釐之差，處事則不使有過不及之謬，理義則日知其所未知，節文則日謹其所未謹，此皆致知之屬也。蓋非存心無以致知，而存心者又不可以不致知。故此五句，大小相資，首尾相應，聖賢所示入德之方，莫詳於此，學者宜盡心焉。倍，與背同。與，平聲。"
+      },
+      {
+        "character_count": 14,
+        "id": "chapter-027-supp-004",
+        "order": 4,
+        "source_block_chunk": 4,
+        "source_block_order": 1,
+        "text": "興，謂興起在位也。詩大雅烝民之篇。"
+      },
+      {
+        "character_count": 10,
+        "id": "chapter-027-supp-005",
+        "order": 5,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "右第二十七章。言人道也。"
+      }
+    ],
+    "text": "大哉聖人之道！\n洋洋乎！發育萬物，峻極于天。\n優優大哉！禮儀三百，威儀三千。\n待其人而後行。\n故曰苟不至德，至道不凝焉。\n故君子尊德性而道問學，致廣大而盡精微，極高明而道中庸。溫故而知新，敦厚以崇禮。\n是故居上不驕，為下不倍，國有道其言足以興，國無道其默足以容。詩曰「既明且哲，以保其身」，其此之謂與！",
+    "title": "右第二十七章"
+  },
+  "chapter_path": "books/zhong-yong/chapters/chapter-027.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "四書章句集注 : 中庸章句",
+  "source_url": "https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju?if=en"
+}

@@ -1,0 +1,54 @@
+{
+  "chapter": {
+    "character_count": 34,
+    "id": "chapter-023",
+    "order": 23,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 34,
+        "id": "chapter-023-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "其次致曲，曲能有誠，誠則形，形則著，著則明，明則動，動則變，變則化，唯天下至誠為能化。"
+      }
+    ],
+    "summary": "言人道也",
+    "supplemental_text": "其次，通大賢以下凡誠有未至者而言也。致，推致也。曲，一偏也。形者，積中而發外。著，則又加顯矣。明，則又有光輝發越之盛也。動者，誠能動物。變者，物從而變。化，則有不知其所以然者。蓋人之性無不同，而氣則有異，故惟聖人能舉其性之全體而盡之。其次則必自其善端發見之偏，而悉推致之，以各造其極也。曲無不致，則德無不實，而形、著、動、變之功自不能已。積而至於能化，則其至誠之妙，亦不異於聖人矣。\n右第二十三章。言人道也。",
+    "supplemental_unit_count": 3,
+    "supplemental_units": [
+      {
+        "character_count": 96,
+        "id": "chapter-023-supp-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "其次，通大賢以下凡誠有未至者而言也。致，推致也。曲，一偏也。形者，積中而發外。著，則又加顯矣。明，則又有光輝發越之盛也。動者，誠能動物。變者，物從而變。化，則有不知其所以然者。蓋人之性無不同，而氣則有異，故惟聖人能舉其性之全體而盡之。"
+      },
+      {
+        "character_count": 62,
+        "id": "chapter-023-supp-002",
+        "order": 2,
+        "source_block_chunk": 2,
+        "source_block_order": 1,
+        "text": "其次則必自其善端發見之偏，而悉推致之，以各造其極也。曲無不致，則德無不實，而形、著、動、變之功自不能已。積而至於能化，則其至誠之妙，亦不異於聖人矣。"
+      },
+      {
+        "character_count": 10,
+        "id": "chapter-023-supp-003",
+        "order": 3,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "右第二十三章。言人道也。"
+      }
+    ],
+    "text": "其次致曲，曲能有誠，誠則形，形則著，著則明，明則動，動則變，變則化，唯天下至誠為能化。",
+    "title": "右第二十三章"
+  },
+  "chapter_path": "books/zhong-yong/chapters/chapter-023.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "四書章句集注 : 中庸章句",
+  "source_url": "https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju?if=en"
+}

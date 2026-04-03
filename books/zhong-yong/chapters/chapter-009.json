@@ -1,0 +1,46 @@
+{
+  "chapter": {
+    "character_count": 25,
+    "id": "chapter-009",
+    "order": 9,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 25,
+        "id": "chapter-009-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "子曰：「天下國家可均也，爵祿可辭也，白刃可蹈也，中庸不可能也。」"
+      }
+    ],
+    "summary": "亦承上章以起下章",
+    "supplemental_text": "均，平治也。三者亦知仁勇之事，天下之至難也，然不必其合於中庸，則質之近似者皆能以力為之。若中庸，則雖不必皆如三者之難，然非義精仁熟，而無一毫人欲之私者，不能及也。三者難而易，中庸易而難，此民之所以鮮能也。\n右第九章。亦承上章以起下章。",
+    "supplemental_unit_count": 2,
+    "supplemental_units": [
+      {
+        "character_count": 88,
+        "id": "chapter-009-supp-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "均，平治也。三者亦知仁勇之事，天下之至難也，然不必其合於中庸，則質之近似者皆能以力為之。若中庸，則雖不必皆如三者之難，然非義精仁熟，而無一毫人欲之私者，不能及也。三者難而易，中庸易而難，此民之所以鮮能也。"
+      },
+      {
+        "character_count": 12,
+        "id": "chapter-009-supp-002",
+        "order": 2,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "右第九章。亦承上章以起下章。"
+      }
+    ],
+    "text": "子曰：「天下國家可均也，爵祿可辭也，白刃可蹈也，中庸不可能也。」",
+    "title": "右第九章"
+  },
+  "chapter_path": "books/zhong-yong/chapters/chapter-009.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "四書章句集注 : 中庸章句",
+  "source_url": "https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju?if=en"
+}

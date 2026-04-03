@@ -10,13 +10,11 @@ from setuptools.command.build_py import build_py as _build_py
 ROOT = Path(__file__).resolve().parent
 BUNDLE_DIRNAME = "bundle"
 BUNDLED_ASSET_PATHS = [
-    "annotations",
     "evals",
     "flashcards",
     "hosts",
     "skills",
-    "source-store",
-    "workflows",
+    "books",
     "ARCHITECTURE.md",
     "CONTRIBUTING.md",
     "CURRICULUM.md",
@@ -51,9 +49,10 @@ class build_py(_build_py):
 
 setup(
     name="the-big-learn",
-    version="0.2.9",
+    version="0.2.10",
     description="Open-source agent skill pack and runtime for learning Chinese inside coding assistants.",
-    packages=find_packages(include=["the_big_learn", "the_big_learn.*"]),
+    packages=find_packages(where="scripts", include=["the_big_learn", "the_big_learn.*"]),
+    package_dir={"": "scripts"},
     cmdclass={"build_py": build_py},
     entry_points={
         "console_scripts": [

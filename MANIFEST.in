@@ -1,10 +1,8 @@
-graft annotations
 graft evals
 graft flashcards
 graft hosts
 graft skills
-graft source-store
-graft workflows
+graft books
 include ARCHITECTURE.md
 include CONTRIBUTING.md
 include CURRICULUM.md

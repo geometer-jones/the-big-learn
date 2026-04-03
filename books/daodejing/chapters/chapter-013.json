@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 81,
+    "id": "chapter-013",
+    "order": 13,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 81,
+        "id": "chapter-013-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "寵辱若驚，貴大患若身。何謂寵辱若驚？寵為下，得之若驚，失之若驚，是謂寵辱若驚。何謂貴大患若身？吾所以有大患者，為吾有身，及吾無身，吾有何患？故貴以身為天下，若可寄天下；愛以身為天下，若可託天下。"
+      }
+    ],
+    "summary": "寵辱若驚，貴大患若身",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "寵辱若驚，貴大患若身。何謂寵辱若驚？寵為下，得之若驚，失之若驚，是謂寵辱若驚。何謂貴大患若身？吾所以有大患者，為吾有身，及吾無身，吾有何患？故貴以身為天下，若可寄天下；愛以身為天下，若可託天下。",
+    "title": "第13章"
+  },
+  "chapter_path": "books/daodejing/chapters/chapter-013.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

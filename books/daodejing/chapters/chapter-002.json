@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 88,
+    "id": "chapter-002",
+    "order": 2,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 88,
+        "id": "chapter-002-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "天下皆知美之為美，斯惡已。皆知善之為善，斯不善已。故有無相生，難易相成，長短相較，高下相傾，音聲相和，前後相隨。是以聖人處無為之事，行不言之教；萬物作焉而不辭，生而不有。為而不恃，功成而弗居。夫唯弗居，是以不去。"
+      }
+    ],
+    "summary": "天下皆知美之為美，斯惡已",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "天下皆知美之為美，斯惡已。皆知善之為善，斯不善已。故有無相生，難易相成，長短相較，高下相傾，音聲相和，前後相隨。是以聖人處無為之事，行不言之教；萬物作焉而不辭，生而不有。為而不恃，功成而弗居。夫唯弗居，是以不去。",
+    "title": "第2章"
+  },
+  "chapter_path": "books/daodejing/chapters/chapter-002.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

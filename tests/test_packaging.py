@@ -33,6 +33,16 @@ class PackagingTests(unittest.TestCase):
         gitignore = (REPO_ROOT / ".gitignore").read_text(encoding="utf-8")
         self.assertRegex(gitignore, r"(?m)^build/$")
 
+    def test_pyproject_declares_setuptools_build_backend(self) -> None:
+        pyproject = (REPO_ROOT / "pyproject.toml").read_text(encoding="utf-8")
+        self.assertIn("[build-system]", pyproject)
+        self.assertIn('build-backend = "setuptools.build_meta"', pyproject)
+
+    def test_setup_uses_scripts_package_dir(self) -> None:
+        setup_py = (REPO_ROOT / "setup.py").read_text(encoding="utf-8")
+        self.assertIn('packages=find_packages(where="scripts"', setup_py)
+        self.assertIn('package_dir={"": "scripts"}', setup_py)
+
     def test_bundle_assets_include_design_doc(self) -> None:
         self.assertIn("DESIGN.md", _bundled_asset_paths())
 
@@ -43,7 +53,7 @@ class PackagingTests(unittest.TestCase):
     def test_bundled_source_store_uses_readable_work_ids(self) -> None:
         bundled_source_dirs = sorted(
             path.name
-            for path in (REPO_ROOT / "source-store").iterdir()
+            for path in (REPO_ROOT / "books").iterdir()
             if path.is_dir()
         )
         self.assertEqual(bundled_source_dirs, sorted(BUNDLED_SOURCES))

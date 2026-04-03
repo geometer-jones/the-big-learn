@@ -1,0 +1,78 @@
+{
+  "chapter": {
+    "character_count": 162,
+    "id": "chapter-018",
+    "order": 18,
+    "reading_unit_count": 3,
+    "reading_units": [
+      {
+        "character_count": 26,
+        "id": "chapter-018-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "子曰：「無憂者其惟文王乎！以王季為父，以武王為子，父作之，子述之。"
+      },
+      {
+        "character_count": 44,
+        "id": "chapter-018-line-002",
+        "order": 2,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "武王纘大王、王季、文王之緒。壹戎衣而有天下，身不失天下之顯名。尊為天子，富有四海之內。宗廟饗之，子孫保之。"
+      },
+      {
+        "character_count": 92,
+        "id": "chapter-018-line-003",
+        "order": 3,
+        "source_block_chunk": 1,
+        "source_block_order": 3,
+        "text": "武王末受命，周公成文武之德，追王大王、王季，上祀先公以天子之禮。斯禮也，達乎諸侯大夫，及士庶人。父為大夫，子為士；葬以大夫，祭以士。父為士，子為大夫；葬以士，祭以大夫。期之喪達乎大夫，三年之喪達乎天子，父母之喪無貴賤一也。」"
+      }
+    ],
+    "summary": "",
+    "supplemental_text": "此言文王之事。書言「王季其勤王家」，蓋其所作，亦積功累仁之事也。大，音泰，下同。此言武王之事。纘，繼也。大王，王季之父也。書云：「大王肇基王跡。」詩云「至于大王，實始翦商。」緒，業也。戎衣，甲冑之屬。壹戎衣，武成文，言一著戎衣以伐紂也。追王之王，去聲。此言周公之事。末，猶老也。追王，蓋推文武之意，以及乎王跡之所起也。先公，組紺以上至后稷也。上祀先公以天子之禮，又推大王、王季之意，以及於無窮也。制為禮法，以及天下，使葬用死者之爵，祭用生者之祿。喪服自期以下，諸侯絕；大夫降；而父母之喪，上下同之，推己以及人也。\n右第十八章。",
+    "supplemental_unit_count": 4,
+    "supplemental_units": [
+      {
+        "character_count": 89,
+        "id": "chapter-018-supp-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "此言文王之事。書言「王季其勤王家」，蓋其所作，亦積功累仁之事也。大，音泰，下同。此言武王之事。纘，繼也。大王，王季之父也。書云：「大王肇基王跡。」詩云「至于大王，實始翦商。」緒，業也。戎衣，甲冑之屬。壹戎衣，武成文，言一著戎衣以伐紂也。"
+      },
+      {
+        "character_count": 99,
+        "id": "chapter-018-supp-002",
+        "order": 2,
+        "source_block_chunk": 2,
+        "source_block_order": 1,
+        "text": "追王之王，去聲。此言周公之事。末，猶老也。追王，蓋推文武之意，以及乎王跡之所起也。先公，組紺以上至后稷也。上祀先公以天子之禮，又推大王、王季之意，以及於無窮也。制為禮法，以及天下，使葬用死者之爵，祭用生者之祿。喪服自期以下，諸侯絕；大夫降；"
+      },
+      {
+        "character_count": 15,
+        "id": "chapter-018-supp-003",
+        "order": 3,
+        "source_block_chunk": 3,
+        "source_block_order": 1,
+        "text": "而父母之喪，上下同之，推己以及人也。"
+      },
+      {
+        "character_count": 5,
+        "id": "chapter-018-supp-004",
+        "order": 4,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "右第十八章。"
+      }
+    ],
+    "text": "子曰：「無憂者其惟文王乎！以王季為父，以武王為子，父作之，子述之。\n武王纘大王、王季、文王之緒。壹戎衣而有天下，身不失天下之顯名。尊為天子，富有四海之內。宗廟饗之，子孫保之。\n武王末受命，周公成文武之德，追王大王、王季，上祀先公以天子之禮。斯禮也，達乎諸侯大夫，及士庶人。父為大夫，子為士；葬以大夫，祭以士。父為士，子為大夫；葬以士，祭以大夫。期之喪達乎大夫，三年之喪達乎天子，父母之喪無貴賤一也。」",
+    "title": "右第十八章"
+  },
+  "chapter_path": "books/zhong-yong/chapters/chapter-018.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "四書章句集注 : 中庸章句",
+  "source_url": "https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju?if=en"
+}

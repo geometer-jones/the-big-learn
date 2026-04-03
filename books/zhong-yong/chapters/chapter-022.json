@@ -1,0 +1,54 @@
+{
+  "chapter": {
+    "character_count": 61,
+    "id": "chapter-022",
+    "order": 22,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 61,
+        "id": "chapter-022-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "唯天下至誠，為能盡其性；能盡其性，則能盡人之性；能盡人之性，則能盡物之性；能盡物之性，則可以贊天地之化育；可以贊天地之化育，則可以與天地參矣。"
+      }
+    ],
+    "summary": "言天道也",
+    "supplemental_text": "天下至誠，謂聖人之德之實，天下莫能加也。盡其性者德無不實，故無人欲之私，而天命之在我者，察之由之，巨細精粗，無毫髮之不盡也。人物之性，亦我之性，但以所賦形氣不同而有異耳。能盡之者，謂知之無不明而處之無不當也。贊，猶助也。與天地參，謂與天地並立為三也。此自誠而明者之事也。\n右第二十二章。言天道也。",
+    "supplemental_unit_count": 3,
+    "supplemental_units": [
+      {
+        "character_count": 94,
+        "id": "chapter-022-supp-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "天下至誠，謂聖人之德之實，天下莫能加也。盡其性者德無不實，故無人欲之私，而天命之在我者，察之由之，巨細精粗，無毫髮之不盡也。人物之性，亦我之性，但以所賦形氣不同而有異耳。能盡之者，謂知之無不明而處之無不當也。贊，猶助也。"
+      },
+      {
+        "character_count": 22,
+        "id": "chapter-022-supp-002",
+        "order": 2,
+        "source_block_chunk": 2,
+        "source_block_order": 1,
+        "text": "與天地參，謂與天地並立為三也。此自誠而明者之事也。"
+      },
+      {
+        "character_count": 10,
+        "id": "chapter-022-supp-003",
+        "order": 3,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "右第二十二章。言天道也。"
+      }
+    ],
+    "text": "唯天下至誠，為能盡其性；能盡其性，則能盡人之性；能盡人之性，則能盡物之性；能盡物之性，則可以贊天地之化育；可以贊天地之化育，則可以與天地參矣。",
+    "title": "右第二十二章"
+  },
+  "chapter_path": "books/zhong-yong/chapters/chapter-022.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "四書章句集注 : 中庸章句",
+  "source_url": "https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju?if=en"
+}

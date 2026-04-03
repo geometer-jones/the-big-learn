@@ -11,7 +11,7 @@ Use this skill to create a reusable bank entry.
 
 No startup command is required.
 
-Use the repository files in the workspace to recover the source line, segment, and flashcard policy before drafting a bank entry.
+Use the repository files and the current source-backed reading context in the workspace to recover the source line, any segment data that exists, and the flashcard policy before drafting a bank entry.
 
 ## Job
 

@@ -1,0 +1,78 @@
+{
+  "chapter": {
+    "character_count": 59,
+    "id": "chapter-032",
+    "order": 32,
+    "reading_unit_count": 3,
+    "reading_units": [
+      {
+        "character_count": 31,
+        "id": "chapter-032-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "唯天下至誠，為能經綸天下之大經，立天下之大本，知天地之化育。夫焉有所倚？"
+      },
+      {
+        "character_count": 12,
+        "id": "chapter-032-line-002",
+        "order": 2,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "肫肫其仁！淵淵其淵！浩浩其天！"
+      },
+      {
+        "character_count": 16,
+        "id": "chapter-032-line-003",
+        "order": 3,
+        "source_block_chunk": 1,
+        "source_block_order": 3,
+        "text": "苟不固聰明聖知達天德者，其孰能知之？"
+      }
+    ],
+    "summary": "承上章而言大德之敦化，亦天道也",
+    "supplemental_text": "夫，音扶。焉，於虔反。經，綸，皆治絲之事。經者，理其緒而分之；綸者，比其類而合之也。經，常也。大經者，五品之人倫。大本者，所性之全體也。惟聖人之德極誠無妄，故於人倫各盡其當然之實，而皆可以為天下後世法，所謂經綸之也。其於所性之全體，無一毫人欲之偽以雜之，而天下之道千變萬化皆由此出，所謂立之也。其於天地之化育，則亦其極誠無妄者有默契焉，非但聞見之知而已。此皆至誠無妄，自然之功用，夫豈有所倚著於物而後能哉。肫，之純反。○肫肫，懇至貌，以經綸而言也。淵淵，靜深貌，以立本而言也。浩浩，廣大貌，以知化而言也。其淵其天，則非特如之而已。聖知之知，去聲。固，猶實也。鄭氏曰：「惟聖人能知聖人也。」\n右第三十二章。承上章而言大德之敦化，亦天道也。前章言至聖之德，此章言至誠之道。然至誠之道，非至聖不能知；至聖之德，非至誠不能為，則亦非二物矣。此篇言聖人天道之極致，至此而無以加矣。",
+    "supplemental_unit_count": 4,
+    "supplemental_units": [
+      {
+        "character_count": 87,
+        "id": "chapter-032-supp-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "夫，音扶。焉，於虔反。經，綸，皆治絲之事。經者，理其緒而分之；綸者，比其類而合之也。經，常也。大經者，五品之人倫。大本者，所性之全體也。惟聖人之德極誠無妄，故於人倫各盡其當然之實，而皆可以為天下後世法，所謂經綸之也。"
+      },
+      {
+        "character_count": 101,
+        "id": "chapter-032-supp-002",
+        "order": 2,
+        "source_block_chunk": 2,
+        "source_block_order": 1,
+        "text": "其於所性之全體，無一毫人欲之偽以雜之，而天下之道千變萬化皆由此出，所謂立之也。其於天地之化育，則亦其極誠無妄者有默契焉，非但聞見之知而已。此皆至誠無妄，自然之功用，夫豈有所倚著於物而後能哉。肫，之純反。○肫肫，懇至貌，以經綸而言也。"
+      },
+      {
+        "character_count": 54,
+        "id": "chapter-032-supp-003",
+        "order": 3,
+        "source_block_chunk": 3,
+        "source_block_order": 1,
+        "text": "淵淵，靜深貌，以立本而言也。浩浩，廣大貌，以知化而言也。其淵其天，則非特如之而已。聖知之知，去聲。固，猶實也。鄭氏曰：「惟聖人能知聖人也。」"
+      },
+      {
+        "character_count": 78,
+        "id": "chapter-032-supp-004",
+        "order": 4,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "右第三十二章。承上章而言大德之敦化，亦天道也。前章言至聖之德，此章言至誠之道。然至誠之道，非至聖不能知；至聖之德，非至誠不能為，則亦非二物矣。此篇言聖人天道之極致，至此而無以加矣。"
+      }
+    ],
+    "text": "唯天下至誠，為能經綸天下之大經，立天下之大本，知天地之化育。夫焉有所倚？\n肫肫其仁！淵淵其淵！浩浩其天！\n苟不固聰明聖知達天德者，其孰能知之？",
+    "title": "右第三十二章"
+  },
+  "chapter_path": "books/zhong-yong/chapters/chapter-032.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "四書章句集注 : 中庸章句",
+  "source_url": "https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju?if=en"
+}

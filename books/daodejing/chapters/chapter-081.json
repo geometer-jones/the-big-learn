@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 57,
+    "id": "chapter-081",
+    "order": 81,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 57,
+        "id": "chapter-081-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "信言不美，美言不信。善者不辯，辯者不善。知者不博，博者不知。聖人不積，既以為人己愈有，既以與人己愈多。天之道，利而不害；聖人之道，為而不爭。"
+      }
+    ],
+    "summary": "信言不美，美言不信",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "信言不美，美言不信。善者不辯，辯者不善。知者不博，博者不知。聖人不積，既以為人己愈有，既以與人己愈多。天之道，利而不害；聖人之道，為而不爭。",
+    "title": "第81章"
+  },
+  "chapter_path": "books/daodejing/chapters/chapter-081.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

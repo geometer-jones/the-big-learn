@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 69,
+    "id": "chapter-065",
+    "order": 65,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 69,
+        "id": "chapter-065-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "古之善為道者，非以明民，將以愚之。民之難治，以其智多。故以智治國，國之賊；不以智治國，國之福。知此兩者亦𥡴式。常知𥡴式，是謂玄德。玄德深矣，遠矣，與物反矣，然後乃至大順。"
+      }
+    ],
+    "summary": "古之善為道者，非以明民，將以愚之",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "古之善為道者，非以明民，將以愚之。民之難治，以其智多。故以智治國，國之賊；不以智治國，國之福。知此兩者亦𥡴式。常知𥡴式，是謂玄德。玄德深矣，遠矣，與物反矣，然後乃至大順。",
+    "title": "第65章"
+  },
+  "chapter_path": "books/daodejing/chapters/chapter-065.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

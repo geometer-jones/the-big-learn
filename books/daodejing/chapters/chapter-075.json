@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 53,
+    "id": "chapter-075",
+    "order": 75,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 53,
+        "id": "chapter-075-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "民之飢，以其上食稅之多，是以飢。民之難治，以其上之有為，是以難治。民之輕死，以其求生之厚，是以輕死。夫唯無以生為者，是賢於貴生。"
+      }
+    ],
+    "summary": "民之飢，以其上食稅之多，是以飢",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "民之飢，以其上食稅之多，是以飢。民之難治，以其上之有為，是以難治。民之輕死，以其求生之厚，是以輕死。夫唯無以生為者，是賢於貴生。",
+    "title": "第75章"
+  },
+  "chapter_path": "books/daodejing/chapters/chapter-075.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

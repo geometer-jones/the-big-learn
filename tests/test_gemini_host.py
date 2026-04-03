@@ -32,11 +32,11 @@ class GeminiHostTests(unittest.TestCase):
                 guided_reading,
             )
             self.assertIn(
-                "annotations/da-xue/starter.annotations.json",
+                "books/da-xue/catalog.json",
                 guided_reading,
             )
             self.assertIn(
-                "bundled local `source-store/` for the shipped curriculum set",
+                "bundled local `books/` for the shipped curriculum set",
                 guided_reading,
             )
             self.assertIn(
@@ -104,7 +104,7 @@ class GeminiHostTests(unittest.TestCase):
                 guided_reading,
             )
             self.assertIn(
-                "full `Da Xue` chapter menu and raw chapter text are bundled locally in `source-store/`",
+                "full `Da Xue` chapter menu and raw chapter text are bundled locally in `books/`",
                 guided_reading,
             )
             self.assertIn(
@@ -192,6 +192,10 @@ class GeminiHostTests(unittest.TestCase):
                 guided_reading,
             )
             self.assertIn(
+                "point `THE_BIG_LEARN_STATE_DIR` elsewhere if they want a different storage location",
+                guided_reading,
+            )
+            self.assertIn(
                 "Resume where you left off",
                 guided_reading,
             )
@@ -222,6 +226,10 @@ class GeminiHostTests(unittest.TestCase):
 
             self.assertIn(
                 "persist the current log immediately with `python3 -m the_big_learn progress-save --format json`",
+                guided_reading,
+            )
+            self.assertIn(
+                "the learner can rewrite their personal translation if they wish",
                 guided_reading,
             )
             self.assertIn(
@@ -418,7 +426,7 @@ class GeminiHostTests(unittest.TestCase):
                 guided_reading,
             )
             self.assertIn(
-                "Do not substitute `annotations/da-xue/starter.annotations.json` for the bundled `chapter-001` through `chapter-003` flow",
+                "Do not substitute a repo-local starter annotation slice for the bundled `chapter-001` through `chapter-003` flow",
                 guided_reading,
             )
             self.assertIn(
@@ -502,7 +510,7 @@ class GeminiHostTests(unittest.TestCase):
                 guided_reading,
             )
             self.assertIn(
-                "bundled curriculum `source-store/` data where it is packaged",
+                "bundled curriculum `books/` data where it is packaged",
                 guided_reading,
             )
             self.assertIn(

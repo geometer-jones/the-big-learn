@@ -140,8 +140,7 @@ Before opening a PR:
 - note any assumptions that are still unresolved
 - add fixtures or tests if behavior changed
 - run `python3 -m unittest discover -s tests` if you changed the runtime layer
-- if you changed starter curriculum or fixture data, review `scripts/verify_starter_data.py` before relying on it, because it currently trails the combined `hanzi` and `reading` flashcard policy used by the runtime tests
-- run `python3 setup.py build` if you changed bundled docs or packaged assets under the top level, `annotations/`, `flashcards/`, `hosts/`, `skills/`, `source-store/`, or `workflows/`
+- run `python3 setup.py build` if you changed bundled docs or packaged assets under the top level, `evals/`, `flashcards/`, `hosts/`, `skills/`, or `books/`
 - run `the-big-learn codex path` and `the-big-learn codex install --target <tmpdir>` if you changed Codex host integration
 - run `the-big-learn claude path` and `the-big-learn claude install --target <tmpdir>` if you changed Claude Code host integration
 - run `the-big-learn gemini path` and `the-big-learn gemini install --target <tmpdir>` if you changed Gemini host integration

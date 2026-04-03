@@ -1,0 +1,70 @@
+{
+  "chapter": {
+    "character_count": 66,
+    "id": "chapter-025",
+    "order": 25,
+    "reading_unit_count": 3,
+    "reading_units": [
+      {
+        "character_count": 10,
+        "id": "chapter-025-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "誠者自成也，而道自道也。"
+      },
+      {
+        "character_count": 18,
+        "id": "chapter-025-line-002",
+        "order": 2,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "誠者物之終始，不誠無物。是故君子誠之為貴。"
+      },
+      {
+        "character_count": 38,
+        "id": "chapter-025-line-003",
+        "order": 3,
+        "source_block_chunk": 1,
+        "source_block_order": 3,
+        "text": "誠者非自成己而已也，所以成物也。成己，仁也；成物，知也。性之德也，合外內之道也，故時措之宜也。"
+      }
+    ],
+    "summary": "言人道也",
+    "supplemental_text": "道也之道，音導。言誠者物之所以自成，而道者人之所當自行也。誠以心言，本也；道以理言，用也。天下之物，皆實理之所為，故必得是理，然後有是物。所得之理既盡，則是物亦盡而無有矣。故人之心一有不實，則雖有所為亦如無有，而君子必以誠為貴也。蓋人之心能無不實，乃為有以自成，而道之在我者亦無不行矣。知，去聲。誠雖所以成己，然既有以自成，則自然及物，而道亦行於彼矣。仁者體之存，知者用之發，是皆吾性之固有，而無內外之殊。既得於己，則見於事者，以時措之，而皆得其宜也。\n右第二十五章。言人道也。",
+    "supplemental_unit_count": 3,
+    "supplemental_units": [
+      {
+        "character_count": 98,
+        "id": "chapter-025-supp-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "道也之道，音導。言誠者物之所以自成，而道者人之所當自行也。誠以心言，本也；道以理言，用也。天下之物，皆實理之所為，故必得是理，然後有是物。所得之理既盡，則是物亦盡而無有矣。故人之心一有不實，則雖有所為亦如無有，而君子必以誠為貴也。"
+      },
+      {
+        "character_count": 94,
+        "id": "chapter-025-supp-002",
+        "order": 2,
+        "source_block_chunk": 2,
+        "source_block_order": 1,
+        "text": "蓋人之心能無不實，乃為有以自成，而道之在我者亦無不行矣。知，去聲。誠雖所以成己，然既有以自成，則自然及物，而道亦行於彼矣。仁者體之存，知者用之發，是皆吾性之固有，而無內外之殊。既得於己，則見於事者，以時措之，而皆得其宜也。"
+      },
+      {
+        "character_count": 10,
+        "id": "chapter-025-supp-003",
+        "order": 3,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "右第二十五章。言人道也。"
+      }
+    ],
+    "text": "誠者自成也，而道自道也。\n誠者物之終始，不誠無物。是故君子誠之為貴。\n誠者非自成己而已也，所以成物也。成己，仁也；成物，知也。性之德也，合外內之道也，故時措之宜也。",
+    "title": "右第二十五章"
+  },
+  "chapter_path": "books/zhong-yong/chapters/chapter-025.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "四書章句集注 : 中庸章句",
+  "source_url": "https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju?if=en"
+}

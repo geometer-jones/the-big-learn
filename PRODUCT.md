@@ -116,18 +116,18 @@ When a learner asks about a word, phrase, or character, that is strong evidence 
 
 Those items should be eligible for automatic insertion into the flashcard bank.
 
-The bank should support mappings between the learner-facing units derived from the six stored layers.
+The bank should preserve the underlying six stored layers, but the current learner-facing review surface should stay simple: two combined faces derived from those layers.
 
-Examples:
+- Hanzi face: simplified Chinese, with traditional in parens when it differs
+- Reading face: pinyin, with zhuyin in parens, followed by the saved English definitions
 
-- Hanzi -> Reading
-- Reading -> Hanzi
-- Hanzi -> English gloss
-- English gloss -> Hanzi
-- holistic translation -> original phrase
-- Hanzi -> holistic translation
+Review should alternate between prompt and reveal.
 
-The project should not assume one fixed flashcard direction. Different recall paths train different kinds of competence.
+On the prompt step, the learner sees one face.
+
+That prompt may start from either side.
+
+On the reveal step, the learner sees both faces together.
 
 ## First Skills To Build
 

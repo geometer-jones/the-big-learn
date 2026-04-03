@@ -32,12 +32,16 @@ class SkillMetadataTests(unittest.TestCase):
 
     def test_update_skill_targets_package_updates(self) -> None:
         content = (ROOT / "skills" / "update" / "SKILL.md").read_text(encoding="utf-8")
-        self.assertIn("python3 -m the_big_learn update-check --force", content)
+        self.assertIn("read the local `VERSION` file", content)
+        self.assertIn("git fetch origin <default-branch>", content)
+        self.assertIn("git show origin/<default-branch>:VERSION", content)
         self.assertIn("git pull --ff-only origin <default-branch>", content)
         self.assertIn("python3 -m the_big_learn claude install --force", content)
         self.assertIn("deleted skills can linger", content)
         self.assertNotIn("Learner Translation Log", content)
         self.assertNotIn("queued questions", content)
+        self.assertNotIn("python3 -m the_big_learn update-check --force", content)
+        self.assertNotIn("python3 -m the_big_learn version", content)
 
     def test_flashcard_repo_skills_call_flashcard_persistence_command(self) -> None:
         bank_add = (ROOT / "skills" / "flashcard-bank-add" / "SKILL.md").read_text(encoding="utf-8")

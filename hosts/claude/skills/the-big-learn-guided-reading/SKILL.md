@@ -22,14 +22,14 @@ Work directly from the repository files in the current workspace.
 - open every new guided-reading session with a short menu of the full curriculum books before rendering any lines
 - when saved work exists, open with a short `Resume where you left off` block, then a `Recommended next step` block, then the full curriculum menu, then one sentence telling the learner to reply with a number or book name
 - for the opening book menu, read only `CURRICULUM.md`, the guided-reading progress store, and the small local catalog metadata you need for status; do not open every bundled source catalog or raw chapter file up front
-- keep the menu curriculum-shaped and honest about reading mode: `Da Xue` is the designed starting point, while every current curriculum book remains supported through bundled local `source-store` catalogs plus raw chapters where they are packaged, and live source selection plus download-on-demand only when no bundled local source is available or the learner wants an alternate source
+- keep the menu curriculum-shaped and honest about reading mode: `Da Xue` is the designed starting point, while every current curriculum book remains supported through bundled local `books` catalogs plus raw chapters where they are packaged, and live source selection plus download-on-demand only when no bundled local source is available or the learner wants an alternate source
 - explain each book entry in English so the learner knows what kind of writing it is, how it fits into the designed curriculum, and whether the book uses bundled local text or alternate source support
 - in book and chapter framing, use compact support-level labels: `bundled text + generated help` or `alternate source`
 - under each book title in the menu, render the title as a miniature reference line using the same order as regular line rendering: full-title Chinese, full-title English, then a char-by-char table in this order: Index, Chinese, Reading, English Definition, Chinese Phrase, English Phrase Translation; do not open the learner translation and response loop for titles
 - let the learner choose which book to read by replying with either the book number or the book name
-- when the learner chooses a book, ensure the chapter menu covers the full book, not only the locally annotated slice or previously downloaded chapters
-- before invoking web discovery for a chosen book, check whether the repository or installed package already ships a bundled full-book source catalog and raw chapter store for that book under local `source-store/`, and use that bundled data directly when it exists
-- when the repository does not already encode a full book-level chapter catalog for the chosen book and the local bundled `source-store/` does not already provide one, run a web query for likely source pages before inventing any chapter count or chapter menu
+- when the learner chooses a book, ensure the chapter menu covers the full book, not only previously downloaded chapters or any hypothetical local starter slice
+- before invoking web discovery for a chosen book, check whether the repository or installed package already ships a bundled full-book source catalog and raw chapter store for that book under local `books/`, and use that bundled data directly when it exists
+- when the repository does not already encode a full book-level chapter catalog for the chosen book and the local bundled `books/` does not already provide one, run a web query for likely source pages before inventing any chapter count or chapter menu
 - when choosing among live source pages for guided reading, prefer sources that expose the base text directly in reading order; treat commentary-heavy editions as secondary unless the learner explicitly asks to read commentary
 - if web search or browsing is unavailable in the current agent environment, warn the learner plainly before continuing: explain that live source discovery cannot proceed until web search is available or a source URL is supplied directly
 - if that web query turns up multiple plausible source pages, show a short source-selection menu and let the learner choose which source to use
@@ -41,8 +41,9 @@ Work directly from the repository files in the current workspace.
 - indicate the length of each chapter entry in lines and approximate Chinese character count
 - when the learner chooses a chapter from a live source page, run `python3 -m the_big_learn source read --url <source-url> --chapter <chapter-number-or-id> --format json` so the raw chapter is downloaded if needed, saved locally, and loaded into deterministic local reading units before any further processing
 - for a chapter loaded through `python3 -m the_big_learn source read`, continue guided reading in raw-source mode instead of stopping
-- for shipped `Da Xue` chapters 1 through 3, stay on the bundled source-backed chapter path; do not switch back to the legacy starter annotations
+- for shipped `Da Xue` chapters 1 through 3, stay on the bundled source-backed chapter path; do not invent or restore a repo-local starter annotation slice
 - read the local guided-reading progress store before showing the opening book menu: use `$THE_BIG_LEARN_STATE_DIR/reading-progress.json` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise use `~/.the-big-learn/reading-progress.json`
+- in that opening menu, add one brief English note that saved progress, books, and flashcards live under `THE_BIG_LEARN_STATE_DIR` when it is set, otherwise under `~/.the-big-learn`, and that the learner can point `THE_BIG_LEARN_STATE_DIR` elsewhere if they want a different storage location
 - do not offer or persist a separate reading-style mode switch; guided reading uses one steady support posture
 - use that steady support posture consistently: keep support labels explicit, answer direct questions in the current line discussion, let the learner defer a question to the stopping point without creating a visible queue, persist progress as soon as it is available, and surface flashcard candidates from durable confusion
 - use the recurring prompt vocabulary from `DESIGN.md` exactly: `Continue reading`, `Choose a chapter`, `Your translation?`, `Your response?`, and `Retry save`
@@ -65,7 +66,7 @@ Work directly from the repository files in the current workspace.
 - after each line, keep the request in English and pad `Your translation?` with that brief flow cue instead of presenting it as an abrupt standalone command
 - if the learner asks about the current line or a phrase inside it, answer directly and then return to the translation, discussion, and response loop
 - after the learner gives a personal translation, give brief, text-grounded feedback on it and invite discussion before advancing
-- if that translation feedback discussion closes, pad `Your response?` with the same brief flow cue and use it for a short personal response to the line or claim before advancing
+- if that translation feedback discussion closes, pad `Your response?` with the same brief flow cue, include a brief note that the learner can rewrite their personal translation if they wish, and use it for a short personal response to the line or claim before advancing
 - after the learner gives that line-level response, give brief, text-grounded feedback and invite discussion before advancing
 - after the learner gives that line-level response, automatically recommend at most one or two salient characters from the current line that would be worth exploding with `the-big-learn-explode-char`, and at most one or two salient characters or phrases worth saving as flashcards, with a short reason for each recommendation
 - if a phrase rather than a single Hanzi is doing the main conceptual work, recommend the phrase for flashcards and, if helpful, the most semantically dense character inside it for explosion
@@ -102,16 +103,15 @@ Work directly from the repository files in the current workspace.
 ## Repository Files
 
 - `CURRICULUM.md` defines the full guided-reading curriculum and the intended sequence across the Four Books, bonus tracks, bridge texts, and later expansion works.
-- `evals/fixtures/da-xue-reading-session.json` holds the starter guided-reading question example.
-- The repository `source-store/` and the installed package `source-store/` hold bundled full-book source catalogs plus raw chapter files for the current curriculum set: `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, and `Sanguo Yanyi`.
+- The repository `books/` and the installed package `books/` hold bundled full-book source catalogs plus raw chapter files for the current curriculum set: `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, and `Sanguo Yanyi`.
 - The guided-reading progress store lives at `$THE_BIG_LEARN_STATE_DIR/reading-progress.json` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise at `~/.the-big-learn/reading-progress.json`.
-- Source catalogs and downloaded raw chapters are saved under `$THE_BIG_LEARN_STATE_DIR/source-store/` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise under `~/.the-big-learn/source-store/`.
+- Source catalogs and downloaded raw chapters are saved under `$THE_BIG_LEARN_STATE_DIR/books/` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise under `~/.the-big-learn/books/`.
 - Flashcard bank entries are saved under `$THE_BIG_LEARN_STATE_DIR/flashcards/bank/` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise under `~/.the-big-learn/flashcards/bank/`.
 - Flashcard review-step state is saved under `$THE_BIG_LEARN_STATE_DIR/flashcards/review-state.json` when `THE_BIG_LEARN_STATE_DIR` is set, otherwise under `~/.the-big-learn/flashcards/review-state.json`.
 
 The opening guided-reading menu should include the full curriculum from `CURRICULUM.md`:
 
-- `1. Da Xue`. Explain that this is the recommended start and the first book in the designed curriculum spine. Also explain that the full book chapter menu and raw chapter text are bundled locally in `source-store/`.
+- `1. Da Xue`. Explain that this is the recommended start and the first book in the designed curriculum spine. Also explain that the full book chapter menu and raw chapter text are bundled locally in `books/`.
 - Under the `Da Xue` book entry, if saved work already exists for a source-backed chapter, show it compactly inline, for example: `Chapter 1 [translation saved] [response saved]`. Treat that label as progress metadata, not as a featured excerpt or substitute for the full book chapter menu.
 - `2. Zhong Yong`. Explain that this is the second Four Books text in the default sequence and is supported through bundled local source catalogs plus raw chapters when local annotations are absent.
 - `3. Lunyu`. Explain that this is the Analects, the third Four Books text in the default sequence, and is supported through bundled local source catalogs plus raw chapters when local annotations are absent.
@@ -124,8 +124,8 @@ The opening guided-reading menu should include the full curriculum from `CURRICU
 
 For `Da Xue`, use the same source-backed chapter path as the rest of the shipped curriculum:
 
-- The guided-reading chapter menu should come from the bundled `source-store/da-xue/catalog.json` entries `chapter-001` through `chapter-007`.
-- Do not substitute the legacy `annotations/da-xue/starter.annotations.json` slice for Chapters 1 through 3 in guided reading.
+- The guided-reading chapter menu should come from the bundled `books/da-xue/catalog.json` entries `chapter-001` through `chapter-007`.
+- Do not substitute any legacy repo-local starter annotation slice for Chapters 1 through 3 in guided reading.
 - For `Da Xue`, the guided-reading purpose is to read the base text. Do not open Chapter 1 with Zhu Xi's editorial preface or other commentator framing; use commentary only as optional support after or alongside the base-text lines.
 - In the chapter menu and the opening book menu, indicate whether each saved `Da Xue` chapter already has a personal translation, a personal response, both, or neither.
 
@@ -137,10 +137,10 @@ For `Da Xue`, use the same source-backed chapter path as the rest of the shipped
 - Read the guided-reading progress store before displaying the opening menu.
 - In the opening menu, show each saved source-backed chapter with its saved-status indicators for personal translation and personal response.
 - Do not read every bundled full-book catalog while rendering the opening book menu. Read only enough local data to list books and saved-status indicators.
-- For curriculum books that are packaged locally, prefer bundled `source-store/` chapter catalogs and raw chapter files before any live source discovery.
+- For curriculum books that are packaged locally, prefer bundled `books/` chapter catalogs and raw chapter files before any live source discovery.
 - For books that are in `CURRICULUM.md` but not yet locally encoded or locally bundled, mark them plainly as supported through live source discovery and download-on-demand rather than as unavailable.
 - If the opening request already resolves to a valid curriculum book and nothing more specific, confirm the resolved book in English and go straight to that book's chapter menu without first showing the opening book menu.
-- If the user picks a curriculum book whose full chapter list is neither already encoded locally nor available from bundled local `source-store/`, do not invent a partial chapter menu from only what is locally annotated or already downloaded. Query the web for likely source pages first.
+- If the user picks a curriculum book whose full chapter list is neither already encoded locally nor available from bundled local `books/`, do not invent a partial chapter menu from only what is already downloaded. Query the web for likely source pages first.
 - If you cannot search the web in the current environment, throw a warning immediately instead of pretending source discovery succeeded.
 - If the web query returns multiple plausible source pages, show them plainly and let the learner choose which source to draw from.
 - When multiple source pages are plausible, prefer the one that presents the base text most directly. Mention commentary-oriented sources as optional references rather than as the default guided-reading path when a cleaner base-text source is available.
@@ -160,7 +160,7 @@ For `Da Xue`, use the same source-backed chapter path as the rest of the shipped
 - After the learner chooses a chapter, load only that chapter payload or source-backed chapter read for the reading pass. Do not load the full book text when the chapter menu alone is enough.
 - If the user replies with a chapter number or a chapter name, confirm the resolved chapter in English and then begin the reading pass.
 - For a chapter chosen from a live source page, run `python3 -m the_big_learn source read --url <source-url> --chapter <chapter-number-or-id> --format json` before continuing, and only describe it as loaded after that command succeeds.
-- Do not swap the shipped `Da Xue` chapter flow into the legacy starter annotations; keep the reading pass on the bundled source-backed chapter text.
+- Do not swap the shipped `Da Xue` chapter flow into a repo-local starter annotation slice; keep the reading pass on the bundled source-backed chapter text.
 - If the chosen live-source chapter starts with commentary or editorial framing before the base text, skip or defer that framing in the main reading pass and begin from the base text instead. Surface the commentary later only as optional support.
 - If a chapter does not yet have saved generated help, continue in raw-source mode instead of stopping. Tell the learner the chapter is supported through saved local source text and live assistant help.
 - Before rendering the first line of the selected text, recommend the default pattern explicitly: We recommend you submit questions or comments as they arise, but stay in the same continuous pass of reading. This way you come to your questions when the answers are ready, and you do not disturb the flow of reading.
@@ -202,4 +202,4 @@ The current shipped guided-reading path is source-backed:
 - line-grounded question handling
 - flashcard entry generation
 
-All curriculum books and chapters are still supported through bundled curriculum `source-store/` data where it is packaged, and live-source download-on-demand only when no bundled local path exists or the learner wants an alternate source. If the user asks for text outside the curriculum or cannot provide a usable source page when no local path exists, say so plainly.
+All curriculum books and chapters are still supported through bundled curriculum `books/` data where it is packaged, and live-source download-on-demand only when no bundled local path exists or the learner wants an alternate source. If the user asks for text outside the curriculum or cannot provide a usable source page when no local path exists, say so plainly.

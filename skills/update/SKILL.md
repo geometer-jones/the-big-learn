@@ -11,12 +11,12 @@ Use this skill for package maintenance, not learner-state tracking.
 
 No startup command is required.
 
-Work in the repository checkout already open in the workspace. Prefer the package's own update flow before inventing a new one.
+Work in the repository checkout already open in the workspace. Prefer the repository's own version file and git history over inventing a separate update-tracking flow.
 
 ## Job
 
-- detect the local installed version
-- check whether a newer upstream version is available
+- read the local `VERSION` file
+- check whether a newer upstream version is available on the upstream branch
 - if a newer version exists, update the repository checkout to the official upstream branch
 - reinstall the package from the updated checkout
 - verify that the CLI and tests still pass
@@ -25,11 +25,12 @@ Work in the repository checkout already open in the workspace. Prefer the packag
 
 Use these checks in order:
 
-1. `python3 -m the_big_learn version`
-2. `python3 -m the_big_learn update-check --force`
-3. inspect `git remote -v` and the current branch
+1. read the local `VERSION` file
+2. inspect `git remote -v` and the current branch
+3. run `git fetch origin <default-branch>`
+4. compare the local version with `git show origin/<default-branch>:VERSION`
 
-Treat `UPGRADE_AVAILABLE <local> <remote>` as the signal that the package should be updated.
+Treat a newer upstream `VERSION` value as the signal that the package should be updated.
 
 ## Update Path
 
@@ -40,18 +41,18 @@ When the checkout is connected to the official repository and the working tree i
 3. run `python3 -m pip install -e .`
 4. reinstall the current host assets with `python3 -m the_big_learn claude install --force`, `python3 -m the_big_learn codex install --force`, or `python3 -m the_big_learn gemini install --force` for the host that owns the checkout
 5. run `python3 -m unittest discover -s tests`
-6. rerun `python3 -m the_big_learn version`
+6. reread the local `VERSION` file
 
-The goal is to update the whole package from the repository source of truth: runtime code, host assets, and repo skills.
+The goal is to update the whole package from the repository source of truth: host assets, support CLI, and repo skills.
 
 ## Rules
 
-- Prefer `python3 -m the_big_learn update-check --force` over ad hoc version comparisons.
+- Prefer `VERSION` plus `git show origin/<default-branch>:VERSION` over ad hoc version comparisons.
 - Prefer a fast-forward update. Do not create merge commits for routine package updates.
 - Do not stop after the editable package reinstall; refresh the copied host assets too, or deleted skills can linger and new skills will not appear.
 - If the working tree has local changes that would make the update unsafe, stop and explain the blocker instead of forcing through it.
 - If no upstream repository or default branch can be determined, say so plainly and report what was missing.
-- If `update-check` reports no newer version, say that the package is already up to date and stop.
+- If the upstream `VERSION` file does not show a newer release, say that the package is already up to date and stop.
 - After updating, report the old version, the new version, and the verification results.
 
 ## Output

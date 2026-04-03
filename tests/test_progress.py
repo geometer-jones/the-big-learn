@@ -203,6 +203,28 @@ class ProgressTests(unittest.TestCase):
             )
             books = progress.guided_reading_catalog()
             payload = json.loads((Path(tmp) / "reading-progress.json").read_text(encoding="utf-8"))
+            chapter_progress = json.loads(
+                (
+                    Path(tmp)
+                    / "reading"
+                    / "da-xue"
+                    / "chapters"
+                    / "chapter-001"
+                    / "progress.json"
+                ).read_text(encoding="utf-8")
+            )
+            response_log = json.loads(
+                (
+                    Path(tmp)
+                    / "reading"
+                    / "da-xue"
+                    / "chapters"
+                    / "chapter-001"
+                    / "learner-response-log.json"
+                ).read_text(encoding="utf-8")
+            )
+            catalog = json.loads((Path(tmp) / "reading" / "catalog.json").read_text(encoding="utf-8"))
+            readme = (Path(tmp) / "reading" / "README.md").read_text(encoding="utf-8")
 
         self.assertEqual(
             payload["books"]["da-xue"]["chapters"]["chapter-001"]["learner_response_log"],
@@ -216,6 +238,12 @@ class ProgressTests(unittest.TestCase):
         )
         self.assertNotIn("personal_response_en", saved)
         self.assertEqual(books[0]["chapters"][0]["status_label"], "[response saved]")
+        self.assertEqual(chapter_progress["status_label"], "[response saved]")
+        self.assertEqual(chapter_progress["learner_response_log_entry_count"], 1)
+        self.assertTrue(chapter_progress["learner_response_log_path"].endswith("learner-response-log.json"))
+        self.assertEqual(response_log["entries"][0]["line_id"], "chapter-001-line-001")
+        self.assertEqual(catalog["books"][0]["id"], "da-xue")
+        self.assertIn("Guided Reading Artifacts", readme)
 
     def test_save_book_progress_records_summary_and_response(self) -> None:
         with tempfile.TemporaryDirectory() as tmp, patch(
@@ -239,6 +267,9 @@ class ProgressTests(unittest.TestCase):
             )
             books = progress.guided_reading_catalog()
             payload = json.loads((Path(tmp) / "reading-progress.json").read_text(encoding="utf-8"))
+            book_progress = json.loads(
+                (Path(tmp) / "reading" / "da-xue" / "book.json").read_text(encoding="utf-8")
+            )
 
         self.assertEqual(
             saved["personal_summary_en"],
@@ -251,6 +282,9 @@ class ProgressTests(unittest.TestCase):
         self.assertEqual(payload["books"]["da-xue"]["personal_summary_saved_at"], 1712345678)
         self.assertTrue(books[0]["has_personal_summary"])
         self.assertTrue(books[0]["has_book_personal_response"])
+        self.assertEqual(book_progress["personal_summary_en"], saved["personal_summary_en"])
+        self.assertEqual(book_progress["personal_response_en"], saved["personal_response_en"])
+        self.assertEqual(book_progress["book_status_label"], "[summary saved] [response saved]")
 
     def test_save_learner_style_merges_global_and_work_scopes(self) -> None:
         with tempfile.TemporaryDirectory() as tmp, patch(
@@ -277,6 +311,7 @@ class ProgressTests(unittest.TestCase):
             loaded = progress.load_progress()
             resolved_default = progress.resolved_learner_style()
             resolved_work = progress.resolved_learner_style("da-xue")
+            learner_style = json.loads((Path(tmp) / "reading" / "learner-style.json").read_text(encoding="utf-8"))
 
         self.assertEqual(saved["global"]["prompt_explicitness"], "explicit")
         self.assertEqual(saved["works"]["da-xue"]["discussion_depth"], "brief")
@@ -285,6 +320,8 @@ class ProgressTests(unittest.TestCase):
         self.assertEqual(resolved_default["prompt_explicitness"], "explicit")
         self.assertEqual(resolved_work["discussion_depth"], "brief")
         self.assertEqual(resolved_work["prompt_explicitness"], "explicit")
+        self.assertEqual(learner_style["global"]["prompt_explicitness"], "explicit")
+        self.assertEqual(learner_style["works"]["da-xue"]["discussion_depth"], "brief")
 
     def test_save_chapter_progress_returns_resolved_learner_style(self) -> None:
         with tempfile.TemporaryDirectory() as tmp, patch(
@@ -393,7 +430,7 @@ class ProgressTests(unittest.TestCase):
             "the_big_learn.progress.save_source_chapter_generated_annotations",
             return_value={
                 "chapter_id": "chapter-001",
-                "chapter_path": str(Path(tmp) / "source-store" / "lunyu" / "chapters" / "chapter-001.json"),
+                "chapter_path": str(Path(tmp) / "books" / "lunyu" / "chapters" / "chapter-001.json"),
                 "saved_annotation_count": 1,
                 "line_ids": ["chapter-001-line-001"],
             },

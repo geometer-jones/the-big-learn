@@ -443,7 +443,7 @@ class SourceCatalogTests(unittest.TestCase):
                     self.assertEqual(catalog["chapter_count"], spec["chapter_count"])
                     self.assertTrue(Path(catalog["catalog_path"]).exists())
                     self.assertNotIn(str(Path(tmp)), catalog["catalog_path"])
-                    self.assertIn(f"source-store/{work}/catalog.json", catalog["catalog_path"])
+                    self.assertIn(f"books/{work}/catalog.json", catalog["catalog_path"])
                     self.assertNotIn("text", catalog["chapters"][0])
                     self.assertIn("reading_unit_count", catalog["chapters"][0])
 

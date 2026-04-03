@@ -2,11 +2,9 @@
   "version": 1,
   "supported_layers": [
     "hanzi",
-    "reading",
-    "gloss_en",
-    "translation_en"
+    "reading"
   ],
-  "rule": "Any supported layer may prompt any other supported layer, as long as prompt and answer layers are different.",
+  "rule": "The default review surface alternates between the two combined learner-facing faces: hanzi and reading.",
   "default_priority_pairs": [
     {
       "prompt_layer": "hanzi",
@@ -15,25 +13,12 @@
     {
       "prompt_layer": "reading",
       "answer_layer": "hanzi"
-    },
-    {
-      "prompt_layer": "hanzi",
-      "answer_layer": "gloss_en"
-    },
-    {
-      "prompt_layer": "translation_en",
-      "answer_layer": "hanzi"
-    },
-    {
-      "prompt_layer": "hanzi",
-      "answer_layer": "translation_en"
     }
   ],
   "notes": [
     "Hanzi cards should display simplified as primary, with the traditional form in parentheses when it differs.",
-    "Reading cards should display pinyin as primary, with zhuyin in parentheses when it differs.",
-    "Variation generators should treat gloss_en and translation_en as one effective review layer when they render to the same English text for a given entry.",
-    "The full direction set is intentionally open, but these default pairs cover the most useful early-stage reviews.",
+    "Reading cards should display pinyin as primary, with zhuyin in parentheses when it differs, followed by the saved English definitions.",
+    "Prompt shows one face, and reveal shows both faces together.",
     "Variation generators should avoid same-layer cards."
   ]
 }

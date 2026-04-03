@@ -8,9 +8,9 @@ The current model is:
 - The Big Learn installs `SKILL.md` folders into Codex.
 - Those skills turn ordinary Codex threads into Chinese tutorial threads.
 - The guided-reading menu should present the full curriculum listed in `CURRICULUM.md`.
-- Locally annotated texts such as `Da Xue` still read directly from repository annotation files where that annotation exists.
 - A normal install now comes bundled with local full-book source catalogs and raw chapter files for the current curriculum set: `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, and `Sanguo Yanyi`.
-- Only `Da Xue` currently has the richer six-layer local annotation set; the other bundled texts currently read from bundled raw-source chapters by default.
+- The repo now starts clean from bundled source text rather than a seeded annotation stash.
+- Richer line-shell help is generated and saved locally as learners read.
 - For books outside that bundled curriculum set, or when the learner wants an alternate source, Codex should search the web for plausible source pages, let the learner choose among multiple sources, then use the optional `the-big-learn` CLI to build a real full-book chapter menu, save raw chapters locally, and continue guided reading from saved reading units.
 - If Codex cannot search or browse the web in the current environment, it should warn plainly instead of pretending source discovery succeeded.
 

@@ -1,0 +1,69 @@
+{
+  "chapter": {
+    "character_count": 344,
+    "id": "chapter-002",
+    "order": 2,
+    "reading_unit_count": 6,
+    "reading_units": [
+      {
+        "character_count": 53,
+        "id": "chapter-002-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "孫子曰：凡用兵之法，馳車千駟，革車千乘，帶甲十萬；千里饋糧，則內外之費賓客之用，膠漆之材，車甲之奉，日費千金，然後十萬之師舉矣。"
+      },
+      {
+        "character_count": 73,
+        "id": "chapter-002-line-002",
+        "order": 2,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "其用戰也，勝久則鈍兵挫銳，攻城則力屈，久暴師則國用不足。夫鈍兵，挫銳，屈力，殫貨，則諸侯乘其弊而起，雖有智者，不能善其後矣！故兵聞拙速，未睹巧之久也；夫兵久而國利者，未之有也。"
+      },
+      {
+        "character_count": 45,
+        "id": "chapter-002-line-003",
+        "order": 3,
+        "source_block_chunk": 1,
+        "source_block_order": 3,
+        "text": "故不盡知用兵之害者，則不能盡知用兵之利也。善用兵者，役不再籍，糧不三載，取用于國，因糧于敵，故軍食可足也。"
+      },
+      {
+        "character_count": 76,
+        "id": "chapter-002-line-004",
+        "order": 4,
+        "source_block_chunk": 2,
+        "source_block_order": 3,
+        "text": "國之貧于師者遠輸，遠輸則百姓貧，近于師者貴賣，貴賣則百姓財竭，財竭則急于丘役，力屈財殫，中原內虛于家，百姓之費，十去其七，公家之費，破車罷馬，甲冑矢弩，戟楯蔽櫓，丘牛大車，十去其六。"
+      },
+      {
+        "character_count": 74,
+        "id": "chapter-002-line-005",
+        "order": 5,
+        "source_block_chunk": 1,
+        "source_block_order": 4,
+        "text": "故智將務食於敵，食敵一鍾，當吾二十鍾，𦮼秆一石，當我二十石。故殺敵者怒也，取敵之利者貨也。故車戰，得車十乘以上，賞其先得者，而更其旌旗，車雜而乘之，卒善而養之，是謂勝敵而益強。"
+      },
+      {
+        "character_count": 23,
+        "id": "chapter-002-line-006",
+        "order": 6,
+        "source_block_chunk": 1,
+        "source_block_order": 5,
+        "text": "故兵貴勝，不貴久；故知兵之將，民之司命，國家安危之主也。"
+      }
+    ],
+    "summary": "",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "孫子曰：凡用兵之法，馳車千駟，革車千乘，帶甲十萬；千里饋糧，則內外之費賓客之用，膠漆之材，車甲之奉，日費千金，然後十萬之師舉矣。\n其用戰也，勝久則鈍兵挫銳，攻城則力屈，久暴師則國用不足。夫鈍兵，挫銳，屈力，殫貨，則諸侯乘其弊而起，雖有智者，不能善其後矣！故兵聞拙速，未睹巧之久也；夫兵久而國利者，未之有也。\n故不盡知用兵之害者，則不能盡知用兵之利也。善用兵者，役不再籍，糧不三載，取用于國，因糧于敵，故軍食可足也。國之貧于師者遠輸，遠輸則百姓貧，近于師者貴賣，貴賣則百姓財竭，財竭則急于丘役，力屈財殫，中原內虛于家，百姓之費，十去其七，公家之費，破車罷馬，甲冑矢弩，戟楯蔽櫓，丘牛大車，十去其六。\n故智將務食於敵，食敵一鍾，當吾二十鍾，𦮼秆一石，當我二十石。故殺敵者怒也，取敵之利者貨也。故車戰，得車十乘以上，賞其先得者，而更其旌旗，車雜而乘之，卒善而養之，是謂勝敵而益強。\n故兵貴勝，不貴久；故知兵之將，民之司命，國家安危之主也。",
+    "title": "作戰"
+  },
+  "chapter_path": "books/sunzi-bingfa/chapters/chapter-002.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "The Art of War",
+  "source_url": "https://ctext.org/art-of-war?if=en"
+}

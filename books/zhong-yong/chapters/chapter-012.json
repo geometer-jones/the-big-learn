@@ -1,0 +1,86 @@
+{
+  "chapter": {
+    "character_count": 114,
+    "id": "chapter-012",
+    "order": 12,
+    "reading_unit_count": 4,
+    "reading_units": [
+      {
+        "character_count": 7,
+        "id": "chapter-012-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "君子之道費而隱。"
+      },
+      {
+        "character_count": 74,
+        "id": "chapter-012-line-002",
+        "order": 2,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "夫婦之愚，可以與知焉，及其至也，雖聖人亦有所不知焉；夫婦之不肖，可以能行焉，及其至也，雖聖人亦有所不能焉。天地之大也，人猶有所憾。故君子語大，天下莫能載焉；語小，天下莫能破焉。"
+      },
+      {
+        "character_count": 16,
+        "id": "chapter-012-line-003",
+        "order": 3,
+        "source_block_chunk": 1,
+        "source_block_order": 3,
+        "text": "詩云：「鳶飛戾天，魚躍于淵。」言其上下察也。"
+      },
+      {
+        "character_count": 17,
+        "id": "chapter-012-line-004",
+        "order": 4,
+        "source_block_chunk": 1,
+        "source_block_order": 4,
+        "text": "君子之道，造端乎夫婦；及其至也，察乎天地。"
+      }
+    ],
+    "summary": "子思之言，蓋以申明首章道不可離之意也",
+    "supplemental_text": "費，符味反。○費，用之廣也。隱，體之微也。與，去聲。君子之道，近自夫婦居室之間，遠而至於聖人天地之所不能盡，其大無外，其小無內，可謂費矣。然其理之所以然，則隱而莫之見也。蓋可知可能者，道中之一事，及其至而聖人不知不能。則舉全體而言，聖人固有所不能盡也。侯氏曰：「聖人所不知，如孔子問禮問官之類；所不能，如孔子不得位、堯舜病博施之類。」愚謂人所憾於天地，如覆載生成之偏，及寒暑災祥之不得其正者。鳶，余專反。詩大雅旱麓之篇。鳶，鴟類。戾，至也。察，著也。子思引此詩以明化育流行，上下昭著，莫非此理之用，所謂費也。然其所以然者，則非見聞所及，所謂隱也。故程子曰：「此一節，子思喫緊為人處，活潑潑地，讀者其致思焉。」結上文。\n右第十二章。子思之言，蓋以申明首章道不可離之意也。其下八章，雜引孔子之言以明之。",
+    "supplemental_unit_count": 4,
+    "supplemental_units": [
+      {
+        "character_count": 90,
+        "id": "chapter-012-supp-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "費，符味反。○費，用之廣也。隱，體之微也。與，去聲。君子之道，近自夫婦居室之間，遠而至於聖人天地之所不能盡，其大無外，其小無內，可謂費矣。然其理之所以然，則隱而莫之見也。蓋可知可能者，道中之一事，及其至而聖人不知不能。"
+      },
+      {
+        "character_count": 94,
+        "id": "chapter-012-supp-002",
+        "order": 2,
+        "source_block_chunk": 2,
+        "source_block_order": 1,
+        "text": "則舉全體而言，聖人固有所不能盡也。侯氏曰：「聖人所不知，如孔子問禮問官之類；所不能，如孔子不得位、堯舜病博施之類。」愚謂人所憾於天地，如覆載生成之偏，及寒暑災祥之不得其正者。鳶，余專反。詩大雅旱麓之篇。鳶，鴟類。戾，至也。察，著也。"
+      },
+      {
+        "character_count": 68,
+        "id": "chapter-012-supp-003",
+        "order": 3,
+        "source_block_chunk": 3,
+        "source_block_order": 1,
+        "text": "子思引此詩以明化育流行，上下昭著，莫非此理之用，所謂費也。然其所以然者，則非見聞所及，所謂隱也。故程子曰：「此一節，子思喫緊為人處，活潑潑地，讀者其致思焉。」結上文。"
+      },
+      {
+        "character_count": 35,
+        "id": "chapter-012-supp-004",
+        "order": 4,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "右第十二章。子思之言，蓋以申明首章道不可離之意也。其下八章，雜引孔子之言以明之。"
+      }
+    ],
+    "text": "君子之道費而隱。\n夫婦之愚，可以與知焉，及其至也，雖聖人亦有所不知焉；夫婦之不肖，可以能行焉，及其至也，雖聖人亦有所不能焉。天地之大也，人猶有所憾。故君子語大，天下莫能載焉；語小，天下莫能破焉。\n詩云：「鳶飛戾天，魚躍于淵。」言其上下察也。\n君子之道，造端乎夫婦；及其至也，察乎天地。",
+    "title": "右第十二章"
+  },
+  "chapter_path": "books/zhong-yong/chapters/chapter-012.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "四書章句集注 : 中庸章句",
+  "source_url": "https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju?if=en"
+}

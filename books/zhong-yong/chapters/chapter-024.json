@@ -1,0 +1,46 @@
+{
+  "chapter": {
+    "character_count": 52,
+    "id": "chapter-024",
+    "order": 24,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 52,
+        "id": "chapter-024-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "至誠之道，可以前知。國家將興，必有禎祥；國家將亡，必有妖孽；見乎蓍龜，動乎四體。禍福將至：善，必先知之；不善，必先知之。故至誠如神。"
+      }
+    ],
+    "summary": "言天道也",
+    "supplemental_text": "見，音現。禎祥者，福之兆。妖孽者，禍之萌。蓍，所以筮。龜，所以卜。四體，謂動作威儀之閒，如執玉高卑，其容俯仰之類。凡此皆理之先見者也。然惟誠之至極，而無一毫私偽留於心目之間者，乃能有以察其幾焉。神，謂鬼神。\n右第二十四章。言天道也。",
+    "supplemental_unit_count": 2,
+    "supplemental_units": [
+      {
+        "character_count": 83,
+        "id": "chapter-024-supp-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "見，音現。禎祥者，福之兆。妖孽者，禍之萌。蓍，所以筮。龜，所以卜。四體，謂動作威儀之閒，如執玉高卑，其容俯仰之類。凡此皆理之先見者也。然惟誠之至極，而無一毫私偽留於心目之間者，乃能有以察其幾焉。神，謂鬼神。"
+      },
+      {
+        "character_count": 10,
+        "id": "chapter-024-supp-002",
+        "order": 2,
+        "source_block_chunk": 1,
+        "source_block_order": 2,
+        "text": "右第二十四章。言天道也。"
+      }
+    ],
+    "text": "至誠之道，可以前知。國家將興，必有禎祥；國家將亡，必有妖孽；見乎蓍龜，動乎四體。禍福將至：善，必先知之；不善，必先知之。故至誠如神。",
+    "title": "右第二十四章"
+  },
+  "chapter_path": "books/zhong-yong/chapters/chapter-024.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "四書章句集注 : 中庸章句",
+  "source_url": "https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju?if=en"
+}

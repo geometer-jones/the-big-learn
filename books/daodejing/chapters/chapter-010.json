@@ -1,0 +1,29 @@
+{
+  "chapter": {
+    "character_count": 69,
+    "id": "chapter-010",
+    "order": 10,
+    "reading_unit_count": 1,
+    "reading_units": [
+      {
+        "character_count": 69,
+        "id": "chapter-010-line-001",
+        "order": 1,
+        "source_block_chunk": 1,
+        "source_block_order": 1,
+        "text": "載營魄抱一，能無離乎？專氣致柔，能嬰兒乎？滌除玄覽，能無疵乎？愛民治國，能無知乎？天門開闔，能為雌乎？明白四達，能無知乎？生之、畜之，生而不有，為而不恃，長而不宰，是謂玄德。"
+      }
+    ],
+    "summary": "載營魄抱一，能無離乎？專氣致柔，能嬰兒乎？滌除玄覽，能無疵乎？愛民治國，能無知乎？天門開闔，能為雌乎？明白四達，能無知乎？生之、畜之，生而不有，為而不恃，長而不宰，是謂玄德",
+    "supplemental_text": "",
+    "supplemental_unit_count": 0,
+    "supplemental_units": [],
+    "text": "載營魄抱一，能無離乎？專氣致柔，能嬰兒乎？滌除玄覽，能無疵乎？愛民治國，能無知乎？天門開闔，能為雌乎？明白四達，能無知乎？生之、畜之，生而不有，為而不恃，長而不宰，是謂玄德。",
+    "title": "第10章"
+  },
+  "chapter_path": "books/daodejing/chapters/chapter-010.json",
+  "provider": "ctext-html",
+  "schema_version": 2,
+  "source_title": "Dao De Jing",
+  "source_url": "https://ctext.org/dao-de-jing?if=en"
+}

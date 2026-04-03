@@ -1,6 +1,6 @@
 # The Big Learn
 
-The Big Learn is an open-source Chinese learning system designed to run inside coding assistants. Its primary interface is a set of host-native skills and commands for Codex, Claude Code, and Gemini. The Python package in this repository is a support layer for installation, rendering, bundled source access, live source cataloging, fixture playback, update checks, and local progress inspection.
+The Big Learn is an open-source Chinese learning system designed to run inside coding assistants. Its primary interface is a set of host-native skills and commands for Codex, Claude Code, and Gemini. The Python package in this repository is a host-support layer for installation, bundled source access, live source cataloging, learner-artifact persistence, and local flashcard state.
 
 ## Approach
 
@@ -29,14 +29,12 @@ The current curriculum spine starts with the Four Books and begins with `Da Xue`
 
 ## System Shape
 
-- `annotations/`: reviewed line records, segmentation, and provenance metadata
 - `skills/`: reusable learning skills
-- `workflows/`: multi-step study flows
 - `hosts/`: host-specific assets for Codex, Claude Code, and Gemini
-- `source-store/`: bundled and saved full-book source catalogs plus raw chapter payloads
-- `the_big_learn/`: optional Python runtime, renderers, installers, progress storage, live source cataloging, and update helpers
-- `flashcards/`: bank schemas and review-state support
-- `scripts/`: local verification and source-store build helpers
+- `books/`: bundled and saved full-book source catalogs plus raw chapter payloads
+- `scripts/the_big_learn/`: optional Python host-support CLI for installers, source cataloging, progress storage, flashcard storage, and browsable learner-artifact mirrors
+- `flashcards/`: bundled static flashcard assets only. The repo currently carries `schema/bank-entry.schema.json` and `templates/default-variation-policy.json` here; saved flashcards and review state live under the runtime state dir, not in the repository.
+- `scripts/`: Python package source plus any local development helpers
 - `evals/` and `tests/`: fixtures and regression coverage
 
 ## Quick Start
@@ -63,16 +61,15 @@ If you want the helper runtime without the bootstrap, you can still install it m
 python3 -m pip install -e .
 ```
 
-A normal install now comes bundled with the full text of the current curriculum set under the local `source-store/`, so `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, and `Sanguo Yanyi` are available immediately after install without a post-install fetch.
+A normal install now comes bundled with the full text of the current curriculum set under the local `books/`, so `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, and `Sanguo Yanyi` are available immediately after install without a post-install fetch.
 
 Optional verification commands:
 
 ```bash
-python3 -m the_big_learn render --work da-xue --start 1 --end 3
-python3 -m the_big_learn session
-python3 -m the_big_learn progress
+python3 -m the_big_learn claude install --force
+python3 -m the_big_learn codex install --force
+python3 -m the_big_learn gemini install --force
 python3 -m the_big_learn source catalog --url 'https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju1?if=en'
-python3 -m the_big_learn source download --url 'https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju1?if=en' --chapter 1
 python3 -m the_big_learn source read --url 'https://ctext.org/si-shu-zhang-ju-ji-zhu/zhong-yong-zhang-ju1?if=en' --chapter 1
 python3 -m unittest discover -s tests
 ```
@@ -80,11 +77,11 @@ python3 -m unittest discover -s tests
 ## Current Scope
 
 - Guided-reading menu: full curriculum from `CURRICULUM.md`
-- Bundled curriculum source text: prepackaged full-book chapter catalogs and chapter payloads with precomputed reading units for `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, and `Sanguo Yanyi` in `source-store/`
-- Repository annotation assets: starter `Da Xue` data remains in `annotations/da-xue/` for repo-native tooling, while guided reading uses the source-backed chapter flow
+- Bundled curriculum source text: prepackaged full-book chapter catalogs and chapter payloads with precomputed reading units for `Da Xue`, `Zhong Yong`, `Lunyu`, `Mengzi`, `Sunzi Bingfa`, `Daodejing`, `San Zi Jing`, `Qian Zi Wen`, and `Sanguo Yanyi` in `books/`
+- Repository content starts from bundled `books/` chapter data, while richer line-shell help is generated and saved locally as users read
 - Live source support beyond the bundled curriculum set: full-book source catalogs, saved raw chapter downloads, and raw-source reading units from selected source URLs
 - Supported workflow: guided reading with line-grounded question handling for bundled or download-on-demand source texts
-- Saved progress inspection: `python3 -m the_big_learn progress` currently reports chapter-level saved line-translation and line-response status plus book-level summary and response status from `reading-progress.json`
+- Saved progress and learner artifacts: host flows persist chapter-level and book-level state into `reading-progress.json`, with a browsable mirror of learner artifacts under `reading/`
 - Flashcards: bank entry creation and weighted review
 - Supported hosts: Codex, Claude Code, and Gemini
 - Runtime: Python 3.9+, `setuptools`, and the standard library
