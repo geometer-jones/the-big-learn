@@ -262,6 +262,14 @@ def _validate_citation(citation: Any, *, index: int) -> dict[str, Any]:
             )
         normalized["line_index_in_container"] = line_index_in_container
 
+    for key in ("segment_start_char_index", "segment_char_count"):
+        value = citation.get(key)
+        if value is None:
+            continue
+        if not isinstance(value, int) or value < 1:
+            raise ValueError(f"Flashcard citation {index} field {key!r} must be a positive integer.")
+        normalized[key] = value
+
     for key in (
         "char_traditional",
         "char_simplified",
@@ -273,13 +281,23 @@ def _validate_citation(citation: Any, *, index: int) -> dict[str, Any]:
         "line_zhuyin",
         "line_pinyin",
         "line_translation_en",
+        "segment_id",
+        "segment_traditional",
+        "segment_simplified",
+        "segment_zhuyin",
+        "segment_pinyin",
+        "segment_gloss_en",
     ):
         value = citation.get(key)
         if value is None:
             continue
         if not isinstance(value, str) or not value.strip():
             raise ValueError(f"Flashcard citation {index} field {key!r} must be a non-empty string.")
-        normalized[key] = _normalize_semicolon_text(value.strip()) if key in {"char_gloss_en", "line_translation_en"} else value.strip()
+        normalized[key] = (
+            _normalize_semicolon_text(value.strip())
+            if key in {"char_gloss_en", "line_translation_en", "segment_gloss_en"}
+            else value.strip()
+        )
 
     return normalized
 
@@ -763,12 +781,27 @@ def _build_character_index_entry(
             citation_key = f"line_{key}"
             citation[citation_key] = _normalize_semicolon_text(value.strip()) if key == "translation_en" else value.strip()
 
+    segment = _segment_for_char_index(line, char_index=char_index)
+    source_segment_ids: list[str] = []
+    if segment is not None:
+        segment_id = str(segment.get("id", "")).strip()
+        if segment_id:
+            source_segment_ids.append(segment_id)
+        if int(segment["start_char_index"]) == char_index:
+            citation["segment_start_char_index"] = int(segment["start_char_index"])
+            citation["segment_char_count"] = int(segment["char_count"])
+            for key in ("id", "traditional", "simplified", "zhuyin", "pinyin", "gloss_en"):
+                value = segment.get(key)
+                if not isinstance(value, str) or not value.strip():
+                    continue
+                citation[f"segment_{key}"] = value.strip()
+
     return {
         "id": character_index_entry_id(traditional_char, simplified_char),
         "source_work": work,
         "source_works": [work],
         "source_line_ids": [str(line["id"])],
-        "source_segment_ids": [],
+        "source_segment_ids": source_segment_ids,
         "origin": {
             "kind": CHARACTER_INDEX_ORIGIN_KIND,
             "note": CHARACTER_INDEX_ORIGIN_NOTE,
@@ -787,6 +820,52 @@ def _build_character_index_entry(
         "citations": [citation],
         "significance_flag_count": 0,
     }
+
+
+def _segment_for_char_index(line: dict[str, Any], *, char_index: int) -> dict[str, Any] | None:
+    layers = line.get("layers")
+    segments = line.get("segments")
+    if not isinstance(layers, dict) or not isinstance(segments, list):
+        return None
+
+    simplified_text = str(layers.get("simplified", "")).strip()
+    if not simplified_text:
+        return None
+
+    target_offset = char_index - 1
+    cursor = 0
+    for segment in segments:
+        if not isinstance(segment, dict):
+            continue
+        segment_simplified = str(segment.get("simplified", "")).strip()
+        if len(segment_simplified) <= 1:
+            continue
+
+        start = simplified_text.find(segment_simplified, cursor)
+        if start == -1:
+            start = simplified_text.find(segment_simplified)
+        if start == -1:
+            continue
+
+        end = start + len(segment_simplified)
+        cursor = end
+        if not start <= target_offset < end:
+            continue
+
+        normalized = {
+            "start_char_index": start + 1,
+            "char_count": end - start,
+        }
+        for key in ("id", "traditional", "simplified", "zhuyin", "pinyin", "gloss_en"):
+            value = segment.get(key)
+            if value is None:
+                continue
+            text = str(value).strip()
+            if text:
+                normalized[key] = text
+        return normalized
+
+    return None
 
 
 def build_character_index_entries(
@@ -946,7 +1025,9 @@ def reconstruct_line_from_character_index(
             return None
         character_glosses_en.append(gloss_text)
 
-    return {
+    segments = _reconstruct_segments_from_character_index(by_char_index, line_length=len(simplified_text))
+
+    reconstructed = {
         **line,
         "annotation_source": "saved-character-index",
         "has_saved_character_index_annotation": True,
@@ -960,6 +1041,57 @@ def reconstruct_line_from_character_index(
         },
         "character_glosses_en": character_glosses_en,
     }
+    if segments:
+        reconstructed["segments"] = segments
+    return reconstructed
+
+
+def _reconstruct_segments_from_character_index(
+    by_char_index: dict[int, dict[str, Any]],
+    *,
+    line_length: int,
+) -> list[dict[str, Any]]:
+    segments: list[dict[str, Any]] = []
+    for char_index in sorted(by_char_index):
+        citation = by_char_index[char_index]["citation"]
+        if "segment_start_char_index" not in citation:
+            continue
+
+        try:
+            start_char_index = int(citation["segment_start_char_index"])
+            char_count = int(citation["segment_char_count"])
+        except (TypeError, ValueError):
+            return []
+
+        if start_char_index != char_index or char_count <= 1:
+            return []
+
+        end_char_index = start_char_index + char_count - 1
+        if end_char_index > line_length:
+            return []
+
+        simplified = str(citation.get("segment_simplified", "")).strip()
+        if len(simplified) != char_count:
+            return []
+
+        segment: dict[str, Any] = {}
+        segment_id = str(citation.get("segment_id", "")).strip()
+        if segment_id:
+            segment["id"] = segment_id
+        for key in ("traditional", "simplified", "zhuyin", "pinyin", "gloss_en"):
+            value = citation.get(f"segment_{key}")
+            if value is None:
+                continue
+            text = str(value).strip()
+            if text:
+                segment[key] = text
+
+        if "simplified" not in segment:
+            return []
+
+        segments.append(segment)
+
+    return segments
 
 
 def save_bank_entry(bank_entry: dict) -> dict:

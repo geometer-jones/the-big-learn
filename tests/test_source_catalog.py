@@ -9,6 +9,7 @@ from unittest.mock import patch
 from the_big_learn import flashcards
 from the_big_learn import source_catalog
 from the_big_learn.bundled_sources import BUNDLED_SOURCES
+from the_big_learn.rendering import build_character_rows
 
 
 WIKISOURCE_HTML = """
@@ -386,6 +387,112 @@ class SourceCatalogTests(unittest.TestCase):
             reading_pass["lines"][0]["character_glosses_en"],
             ["study", "and", "timely", "practice", "it"],
         )
+
+    def test_build_source_reading_pass_reconstructs_multi_character_segments_from_character_index(self) -> None:
+        source_url = "https://ctext.org/demo-memory-segments"
+        chapter_payload = {
+            "provider": "ctext-html",
+            "source_url": source_url,
+            "source_title": "Demo Memory Source",
+            "chapter_path": "/tmp/chapter-001.json",
+            "chapter": {
+                "id": "chapter-001",
+                "order": 1,
+                "title": "大學章句",
+                "character_count": 4,
+                "reading_unit_count": 1,
+                "reading_units": [
+                    {
+                        "id": "chapter-001-line-001",
+                        "order": 1,
+                        "text": "大學之道",
+                        "character_count": 4,
+                    }
+                ],
+            },
+        }
+
+        with tempfile.TemporaryDirectory() as tmp, patch(
+            "the_big_learn.source_catalog.state_dir",
+            return_value=Path(tmp),
+        ), patch(
+            "the_big_learn.flashcards.state_dir",
+            return_value=Path(tmp),
+        ), patch(
+            "the_big_learn.source_catalog.download_source_chapter",
+            return_value=chapter_payload,
+        ):
+            flashcards.save_character_index_entries(
+                "da-xue",
+                "chapter-001",
+                [
+                    {
+                        "id": "chapter-001-line-001",
+                        "line_index_in_container": 1,
+                        "layers": {
+                            "traditional": "大學之道",
+                            "simplified": "大学之道",
+                            "zhuyin": "ㄉㄚˋ ㄒㄩㄝˊ ㄓ ㄉㄠˋ",
+                            "pinyin": "dà xué zhī dào",
+                            "gloss_en": "great learning; the way of",
+                            "translation_en": "The way of great learning.",
+                        },
+                        "segments": [
+                            {
+                                "id": "chapter-001-line-001-segment-001",
+                                "traditional": "大學",
+                                "simplified": "大学",
+                                "zhuyin": "ㄉㄚˋ ㄒㄩㄝˊ",
+                                "pinyin": "dà xué",
+                                "gloss_en": "great learning",
+                            },
+                            {
+                                "id": "chapter-001-line-001-segment-002",
+                                "traditional": "之道",
+                                "simplified": "之道",
+                                "zhuyin": "ㄓ ㄉㄠˋ",
+                                "pinyin": "zhī dào",
+                                "gloss_en": "the way of",
+                            },
+                        ],
+                        "character_glosses_en": ["great", "learning", "of", "way"],
+                    }
+                ],
+                source_url=source_url,
+            )
+            reading_pass = source_catalog.build_source_reading_pass(source_url, "1")
+
+        line = reading_pass["lines"][0]
+        self.assertEqual(line["annotation_source"], "saved-character-index")
+        self.assertEqual(
+            line["segments"],
+            [
+                {
+                    "id": "chapter-001-line-001-segment-001",
+                    "traditional": "大學",
+                    "simplified": "大学",
+                    "zhuyin": "ㄉㄚˋ ㄒㄩㄝˊ",
+                    "pinyin": "dà xué",
+                    "gloss_en": "great learning",
+                },
+                {
+                    "id": "chapter-001-line-001-segment-002",
+                    "traditional": "之道",
+                    "simplified": "之道",
+                    "zhuyin": "ㄓ ㄉㄠˋ",
+                    "pinyin": "zhī dào",
+                    "gloss_en": "the way of",
+                },
+            ],
+        )
+
+        rows = build_character_rows(line)
+        self.assertEqual(rows[0]["phrase"], {"text": "大学(大學) 〃", "rowspan": 2})
+        self.assertIsNone(rows[1]["phrase"])
+        self.assertEqual(rows[2]["phrase"], {"text": "之道 〃", "rowspan": 2})
+        self.assertIsNone(rows[3]["phrase"])
+        self.assertEqual(rows[0]["phrase_translation"], {"text": "great learning", "rowspan": 2})
+        self.assertIsNone(rows[1]["phrase_translation"])
 
     def test_build_source_reading_pass_strips_ctext_control_text(self) -> None:
         source_url = "https://ctext.org/demo-with-controls"
